@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Receipt apps pay you pennies because your data is worth dollars — Dune Apps</title>
+<meta name="description" content="The biggest receipt apps are not expense trackers. They are data companies. Here is what they actually sell, and what I built instead.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%234D7DFE'/><path d='M20 62c10-14 18-14 28 0s18 14 28 0' stroke='white' stroke-width='7' fill='none' stroke-linecap='round'/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header class="wrap">
+  <a class="brand" href="../">
+    <span class="mark" aria-hidden="true"></span>
+    <span>Dune Apps</span>
+  </a>
+  <nav><a href="../#apps">Apps</a><a href="../#writing">Writing</a></nav>
+</header>
+
+<main class="wrap">
+<article class="post">
+  <h1>Receipt apps pay you pennies because your data is worth dollars</h1>
+  <p class="byline">30 August 2026</p>
+
+  <p>Search the App Store for "receipt" and the top results are not expense trackers. They look like games. Spin the wheel, earn coins, unlock a gift card. One of them has 7.6 million ratings.</p>
+
+  <p>I spent a week reading how they work, because I wanted to know why an app that helps you organise paper would need a leaderboard.</p>
+
+  <p>The answer is that organising your paper is not the product. You are.</p>
+
+  <h2>What is actually being sold</h2>
+
+  <p>When you photograph a grocery receipt and send it to one of these apps, you are not filing it. You are contributing a line to a purchase database: what you bought, which brand you chose over which competitor, what you paid, where, and how often you come back.</p>
+
+  <p>Consumer goods companies pay real money for that. It tells them whether a price change moved customers to a rival, which promotions actually worked, and which shelf a shopper walked past. Panel data like this used to be gathered with paid diaries and small survey groups. Now it is gathered by an app that gamifies your grocery run.</p>
+
+  <p>The economics are not subtle. You get points that convert to a few dollars a month. The data goes out the door at a much higher rate. That gap is the business.</p>
+
+  <blockquote><p>An app that pays you for your receipts is not being generous. It is buying inventory cheaply.</p></blockquote>
+
+  <p>None of this is illegal, and to be fair, most of these apps disclose it somewhere in the terms. But almost nobody reads a privacy policy while standing in a car park trying to clear their wallet.</p>
+
+  <h2>The part that annoyed me</h2>
+
+  <p>I did not set out to make a statement. I have a drawer of receipts, a VAT filing to keep clean, and a habit of losing the one receipt I need. I wanted software that files them and shuts up.</p>
+
+  <p>What I found instead was a category split into two halves. On one side, the data brokers with polished apps and free scanning. On the other, a handful of genuine expense trackers, most of them built for corporate reimbursement, priced for finance teams, and designed like it is still 2014.</p>
+
+  <p>Nothing in the middle. Nothing that treats a person's own spending as their own business.</p>
+
+  <h2>What I built instead</h2>
+
+  <p>Receipt Snap does one thing. You point the camera at a receipt, and about two seconds later the merchant, date, total and tax are extracted and filed.</p>
+
+  <p>The part that matters is where that happens. All of it runs on the phone. Text recognition uses Apple's on-device Vision framework. On newer iPhones, the model that reads meaning out of the text is the one Apple ships inside iOS, so the receipt never has to be understood by a server to be understood at all.</p>
+
+  <p>There is no account, no login, no analytics SDK, and no backend to receive anything. Not as a policy I promise to keep, but as an architecture. There is no server to send data to, so there is no version of this app that quietly starts collecting later.</p>
+
+  <p>The App Store privacy label reads "Data Not Collected." Very few apps in this category can print that line honestly.</p>
+
+  <h2>What that decision cost</h2>
+
+  <p>Building this way is not free. I gave up the easiest revenue model in the category, the one where scanning stays free forever because someone else pays for it.</p>
+
+  <p>I also gave up conveniences that need a server: cross-device sync out of the box, a dashboard on the web, sending a receipt from a laptop. Some of that comes back later through iCloud, which runs on the user's own Apple account rather than mine. Some of it simply will not exist.</p>
+
+  <p>And the parsing is harder. A cloud service can throw a large model at every receipt and improve it centrally with everyone's data. I get one phone, offline, and a test suite full of real receipts that broke it. The first UK receipt I tried read the operator's holding company as the merchant, mistook the tax line for the total, and defaulted to the wrong currency. Each of those is now a test that fails if it ever comes back.</p>
+
+  <p>That is the trade. Slower, narrower, and mine to fix. In exchange, the sentence "your receipts never leave your phone" is a fact about the code rather than a marketing line.</p>
+
+  <h2>Where it is now</h2>
+
+  <p>Version one is with Apple for review. It is free at launch, which is not a growth tactic so much as an admission that a scanner earns trust by working before it asks for money. A paid tier arrives once the free one has proved itself.</p>
+
+  <p>If you have a wallet full of paper and a healthy suspicion of apps that offer to pay you for it, this one was built for you.</p>
+
+  <a class="back" href="../">← All writing</a>
+</article>
+</main>
+
+<footer class="wrap">
+  <p>Dune Apps · built in Dubai</p>
+</footer>
+</body>
+</html>
