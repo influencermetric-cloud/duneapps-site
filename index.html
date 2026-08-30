@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Dune Apps — small, private software</title>
-<meta name="description" content="Dune Apps builds small, private iPhone and Mac software. No servers, no accounts, no data collection. Notes from building them in public.">
+<title>Dune Apps — private software and how it's built</title>
+<meta name="description" content="Guides on receipts, expenses, VAT and private software — plus the tools that come out of them. No servers, no accounts, no data collection.">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%234D7DFE'/><path d='M20 62c10-14 18-14 28 0s18 14 28 0' stroke='white' stroke-width='7' fill='none' stroke-linecap='round'/></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,53 +12,95 @@
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<header class="wrap">
-  <a class="brand" href="/">
-    <span class="mark" aria-hidden="true"></span>
-    <span>Dune Apps</span>
-  </a>
-  <nav><a href="#apps">Apps</a><a href="#writing">Writing</a></nav>
+<header>
+  <div class="wrap bar">
+    <a class="brand" href="/">
+      <span class="mark" aria-hidden="true"></span>
+      <span>Dune Apps</span>
+    </a>
+    <nav>
+      <a href="#guides">Guides</a>
+      <a href="#tools">Tools</a>
+    </nav>
+  </div>
 </header>
 
-<main class="wrap">
-  <section class="hero">
-    <h1>Small software that keeps its mouth shut.</h1>
-    <p class="lede">I build tiny apps for iPhone and Mac. No servers, no accounts, no analytics. Your data stays on your device because there is nowhere else for it to go.</p>
+<main>
+  <section class="wrap intro">
+    <h1>Answers about receipts, expenses and private software.</h1>
+    <p class="lede">Practical guides, written from building the tools. Everything here runs on your own device — no servers, no accounts, nothing collected.</p>
   </section>
 
-  <section id="apps">
-    <h2 class="section-title">Apps</h2>
-    <div class="cards">
-      <article class="card">
-        <div class="card-icon" aria-hidden="true">
-          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#4D7DFE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8V5a2 2 0 0 1 2-2h3"/><path d="M16 3h3a2 2 0 0 1 2 2v3"/><path d="M21 16v3a2 2 0 0 1-2 2h-3"/><path d="M8 21H5a2 2 0 0 1-2-2v-3"/><path d="M6 12h12"/></svg>
-        </div>
-        <h3>Receipt Snap</h3>
-        <p>Point your camera at a receipt. Merchant, total and tax are read on the phone itself, in about two seconds, and filed where you can find them later.</p>
-        <p class="meta">iPhone · free at launch</p>
-      </article>
-      <article class="card ghost">
-        <h3>Next one</h3>
-        <p>One small app at a time. The list of what is missing is longer than the list of what exists.</p>
-      </article>
+  <section class="wrap" id="guides">
+    <div class="row-head">
+      <h2>Latest guides</h2>
+    </div>
+
+    <div class="grid">
+      <a class="entry featured" href="posts/receipt-apps-pay-you-pennies.html">
+        <span class="tag">Privacy</span>
+        <span class="entry-title">Receipt apps pay you pennies because your data is worth dollars</span>
+        <span class="entry-excerpt">The biggest receipt apps in the App Store are not expense trackers. They are purchase-data companies. Here is what they actually sell.</span>
+        <span class="entry-meta">30 Aug 2026 · 6 min read</span>
+      </a>
+
+      <div class="entry soon">
+        <span class="tag">VAT &amp; tax</span>
+        <span class="entry-title">How to keep VAT-ready receipt records in the UAE</span>
+        <span class="entry-excerpt">What the FTA expects you to hold, for how long, and the simplest way to keep it without a filing cabinet.</span>
+        <span class="entry-meta">In progress</span>
+      </div>
+
+      <div class="entry soon">
+        <span class="tag">How-to</span>
+        <span class="entry-title">Scanning receipts without sending them to anyone</span>
+        <span class="entry-excerpt">On-device text recognition explained plainly, and why it now works well enough to trust with your money.</span>
+        <span class="entry-meta">In progress</span>
+      </div>
+
+      <div class="entry soon">
+        <span class="tag">Expenses</span>
+        <span class="entry-title">A simple monthly expense routine that takes four minutes</span>
+        <span class="entry-excerpt">The habit that makes tax season boring, built around scanning as you go instead of sorting in bulk.</span>
+        <span class="entry-meta">In progress</span>
+      </div>
     </div>
   </section>
 
-  <section id="writing">
-    <h2 class="section-title">Writing</h2>
-    <ul class="posts">
-      <li>
-        <a href="posts/receipt-apps-pay-you-pennies.html">
-          <span class="post-title">Receipt apps pay you pennies because your data is worth dollars</span>
-          <span class="post-meta">30 August 2026 · 6 min</span>
-        </a>
-      </li>
-    </ul>
+  <section class="wrap" id="tools">
+    <div class="row-head">
+      <h2>Tools</h2>
+      <p class="row-sub">Built from the problems in the guides above.</p>
+    </div>
+
+    <div class="tools">
+      <a class="tool" href="#">
+        <span class="tool-icon" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4D7DFE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8V5a2 2 0 0 1 2-2h3"/><path d="M16 3h3a2 2 0 0 1 2 2v3"/><path d="M21 16v3a2 2 0 0 1-2 2h-3"/><path d="M8 21H5a2 2 0 0 1-2-2v-3"/><path d="M6 12h12"/></svg>
+        </span>
+        <span class="tool-body">
+          <span class="tool-name">Receipt Snap <span class="pill">iPhone</span></span>
+          <span class="tool-desc">Scan a receipt, get merchant, total and tax in about two seconds. All on the phone.</span>
+        </span>
+      </a>
+
+      <div class="tool disabled">
+        <span class="tool-icon plain" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#9AA0AC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+        </span>
+        <span class="tool-body">
+          <span class="tool-name">Next tool</span>
+          <span class="tool-desc">Built when a guide here proves the problem is worth solving.</span>
+        </span>
+      </div>
+    </div>
   </section>
 </main>
 
-<footer class="wrap">
-  <p>Dune Apps · built in Dubai</p>
+<footer>
+  <div class="wrap">
+    <p>Dune Apps · built in Dubai · <a href="https://github.com/influencermetric-cloud/receiptsnap-support">Support</a></p>
+  </div>
 </footer>
 </body>
 </html>
