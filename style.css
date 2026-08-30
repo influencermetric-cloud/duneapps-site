@@ -187,3 +187,5 @@ footer a { color: var(--ink-2); }
   article.post p { color: #C9CFD9; }
   article.post blockquote p { color: #111827; }
 }
+
+.disclosure { margin-top: 8px !important; font-size: 13px; color: var(--muted); max-width: 62ch; }
