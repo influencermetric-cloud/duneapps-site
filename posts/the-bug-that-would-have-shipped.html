@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-BTY3LVJMBB"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-BTY3LVJMBB', { anonymize_ip: true });
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The bug that would have shipped — Dune Apps</title>
+<meta name="description" content="A mileage tracker that silently recorded zero distance for city driving, and four ways the same app could have put a wrong number on someone's tax return.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%234D7DFE'/><path d='M20 62c10-14 18-14 28 0s18 14 28 0' stroke='white' stroke-width='7' fill='none' stroke-linecap='round'/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+<link rel="canonical" href="https://duneapps.com/posts/the-bug-that-would-have-shipped.html">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://duneapps.com/posts/the-bug-that-would-have-shipped.html">
+<meta property="og:site_name" content="Dune Apps">
+<meta property="og:title" content="The bug that would have shipped">
+<meta property="og:description" content="A mileage tracker that silently recorded zero distance for city driving, and four ways the same app could have put a wrong number on someone's tax return.">
+<meta property="og:image" content="https://duneapps.com/og.png">
+<meta property="article:published_time" content="2026-08-31">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The bug that would have shipped">
+<meta name="twitter:description" content="A mileage tracker that silently recorded zero distance for city driving.">
+<meta name="twitter:image" content="https://duneapps.com/og.png">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"The bug that would have shipped","datePublished":"2026-08-31","author":{"@type":"Person","name":"Nahid Saleem"},"publisher":{"@type":"Organization","name":"Dune Apps","url":"https://duneapps.com/"},"image":"https://duneapps.com/og.png","mainEntityOfPage":"https://duneapps.com/posts/the-bug-that-would-have-shipped.html"}</script>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header>
+  <div class="wrap bar">
+    <a class="brand" href="../">
+      <span class="mark" aria-hidden="true"></span>
+      <span>Dune Apps</span>
+    </a>
+    <nav><a href="../#guides">Guides</a><a href="../#tools">Tools</a></nav>
+  </div>
+</header>
+
+<main class="wrap">
+<article class="post">
+  <h1>The bug that would have shipped</h1>
+  <p class="byline">31 August 2026</p>
+
+  <p>I spent this week building a mileage tracker. It is the kind of app that looks finished long before it works.</p>
+
+  <p>By Sunday afternoon it launched, detected drives, drew a nice card for each one, let you swipe left or right to say whether a trip was for work, added up a deduction and exported a CSV. Every screen looked right. The tests were green. I could have put it on TestFlight and felt good about it.</p>
+
+  <p>Then I read the drive detection line by line, and found that it recorded almost nothing.</p>
+
+  <h2>The bug</h2>
+
+  <p>GPS gives you a stream of positions. To measure a trip you take each new position, work out how far it is from the last one, and add that up. The complication is that GPS jitters: park a phone on a table and it will wander a few metres on its own. So you set a floor. Ignore anything under, say, twelve metres, because that is noise rather than travel.</p>
+
+  <p>I set the floor. What I got wrong was one line below it.</p>
+
+  <p>When a step was under the threshold I skipped the addition, and then I updated the reference point anyway. So the next comparison started from the new position. The distance was not deferred until it grew big enough to count. It was thrown away.</p>
+
+  <p>On a motorway that barely matters: at 70 mph, positions arrive far enough apart to clear any threshold. In a city, at thirty, they do not. Every step falls under the floor, every step gets discarded, and the total stays near zero.</p>
+
+  <p>It gets worse. The same block that added the distance also refreshed a "last moved at" timestamp, used to decide when a trip has ended. That timestamp never advanced either. So five minutes in, the app concluded the car had been stationary since the start, closed the trip, measured it at roughly zero metres, and deleted it for being shorter than the minimum worth recording.</p>
+
+  <blockquote><p>The most common trip a person takes would have been logged as nothing, then silently thrown away.</p></blockquote>
+
+  <p>There is no error state for this. Nothing crashes. You drive to a client, come back, open the app, and the drive simply is not there. You would assume you had set something up wrong. You would probably delete the app.</p>
+
+  <h2>Four ways to get the money wrong</h2>
+
+  <p>The same review turned up four separate ways the app could put a wrong number on a tax return. Every one of them looked fine on screen.</p>
+
+  <p>The first: the rate. In the United States a business mile is worth about seventy cents. In a country using kilometres that same rate is about forty-three cents, because a kilometre is shorter than a mile. I had built the conversion and got it right in the calculation — and then, in the settings screen, defaulted the text field to the literal string "0.70" regardless of unit.</p>
+
+  <p>So on a phone set to kilometres, the app calculated with 0.435 and displayed 0.70. Two different rates, in the same app, on the same launch. Worse: switching the unit picker read the displayed 0.70, assumed it was a per-mile figure, and converted it up to $1.13 per mile. Someone's ten thousand euro claim becomes sixteen thousand, and nothing on screen suggests anything happened.</p>
+
+  <p>The second: history. Deductions were calculated with whatever rate was currently in settings. Update the rate next January and last year's report — the one already filed — quietly changes to a different number. Rates are now stamped onto each drive when it is recorded, so a filed year stays filed.</p>
+
+  <p>The third: commas. Much of the world writes 0,55 rather than 0.55. The parser I used is locale-independent, so it read "0,55" as zero, silently fell back to the default, and produced reports about twenty percent short. The app already handled this correctly in a different screen, which is the most annoying kind of bug — the fix existed twelve lines away.</p>
+
+  <p>The fourth is smaller but says the most. The headline showed a total. Directly beneath it, a caption said "155.3 miles × $0.70". Those two numbers did not quite agree, because the total rounded every drive to the cent before adding, while the caption implied one multiplication. Pennies. But if someone checks the arithmetic on their own tax figure and it does not add up, they are right to stop trusting the app, and they should.</p>
+
+  <h2>What I actually take from this</h2>
+
+  <p>None of these were exotic. No race condition, no memory corruption, nothing that needed a debugger. Four of them were a single line. They survived because everything about the app looked correct, and looking correct is what I was checking.</p>
+
+  <p>The habit that caught them was reading the code as an adversary rather than as its author: assuming each function was wrong and trying to prove it, instead of reading along and nodding. That is a different activity from testing, and it found things the tests could not, because the tests encoded the same assumptions the code did.</p>
+
+  <p>Everything above is now a test with a name that states the danger. <code>testDriveSnapshotsItsRate</code> asserts that changing the rate does not alter a drive already recorded. <code>testCommaDecimalRateIsAccepted</code> types 0,55 like a French user would. They exist so that a future version of me, in a hurry, cannot quietly undo the fix.</p>
+
+  <p>The app goes to TestFlight this week. It will have other problems — real driving will find things a simulator cannot. But it will not record a city commute as zero miles, and it will not put a number on a tax return that its own caption disagrees with.</p>
+
+  <a class="back" href="../#guides">← All guides</a>
+</article>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>Dune Apps · built in Dubai · <a href="https://github.com/influencermetric-cloud/receiptsnap-support">Support</a></p>
+    <p class="disclosure">This website uses Google Analytics to see which pages help people. The apps themselves collect nothing at all.</p>
+  </div>
+</footer>
+</body>
+</html>
