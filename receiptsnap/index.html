@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-BTY3LVJMBB"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-BTY3LVJMBB', { anonymize_ip: true });
+</script>
+<script>document.documentElement.classList.add('js')</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>Receipt Snap — receipts read on your phone and kept there</title>
+<meta name="description" content="Receipt Snap reads the merchant, date, total and tax from a receipt on your iPhone in about two seconds. No account, no servers, nothing uploaded. Twelve currencies, recognised from the receipt.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%2040%2040%27%3E%3Cdefs%3E%3CclipPath%20id%3D%27d%27%3E%3Ccircle%20cx%3D%2720%27%20cy%3D%2720%27%20r%3D%2719%27%2F%3E%3C%2FclipPath%3E%3C%2Fdefs%3E%3Ccircle%20cx%3D%2720%27%20cy%3D%2720%27%20r%3D%2719%27%20fill%3D%27%23EFF3F1%27%2F%3E%3Cg%20clip-path%3D%27url%28%23d%29%27%3E%3Ccircle%20cx%3D%2713%27%20cy%3D%2713%27%20r%3D%275%27%20fill%3D%27%23C3F04C%27%2F%3E%3Cpath%20d%3D%27M13%2041%20L41%2041%20L41%2025%20C%2034%2025.8%2027.5%2028.8%2022%2033.8%20L13%2041%20Z%27%20fill%3D%27%239DB8B2%27%2F%3E%3Cpath%20d%3D%27M-1%2041%20L-1%2029.4%20C%208%2028.6%2015.2%2025.8%2020.4%2021%20C%2021.6%2019.9%2022.9%2019.9%2024%2021.1%20C%2028%2025.4%2033.4%2029%2041%2030.8%20L41%2041%20Z%27%20fill%3D%27%231A4B44%27%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E">
+<link rel="apple-touch-icon" href="/brand/dune-mark-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="canonical" href="https://duneapps.com/receiptsnap/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://duneapps.com/receiptsnap/">
+<meta property="og:site_name" content="Dune Apps">
+<meta property="og:title" content="Receipt Snap — receipts read on your phone and kept there">
+<meta property="og:description" content="Receipt Snap reads the merchant, date, total and tax from a receipt on your iPhone in about two seconds. No account, no servers, nothing uploaded. Twelve currencies, recognised from the receipt.">
+<meta property="og:image" content="https://duneapps.com/og-receiptsnap.png">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Does Receipt Snap upload my receipts?", "acceptedAnswer": {"@type": "Answer", "text": "No. The photo is read on your iPhone using Apple's on-device text recognition, and the result is stored on the device. There is no account and no Receipt Snap server \u2014 the App Store privacy label reads Data Not Collected."}}, {"@type": "Question", "name": "Which currencies does it recognise?", "acceptedAnswer": {"@type": "Answer", "text": "Twelve, detected from the receipt itself. Where no symbol is printed it reads the tax registration number instead \u2014 a UAE TRN means dirhams, an Indian GSTIN means rupees, a UK postcode means sterling."}}, {"@type": "Question", "name": "Do photographs of receipts count as tax records?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. The IRS, HMRC and the UAE Federal Tax Authority all accept electronic records provided they are legible, complete and producible on request. Photograph the whole receipt, including the tax line."}}, {"@type": "Question", "name": "What does it cost?", "acceptedAnswer": {"@type": "Answer", "text": "Receipt Snap is free. A Pro tier is planned for a later version; scanning and searching your receipts will stay free."}}, {"@type": "Question", "name": "What happens if the scan gets something wrong?", "acceptedAnswer": {"@type": "Answer", "text": "Every field is editable before you save, and you can re-crop the photo by dragging the corners if the automatic crop misses. Nothing is filed without you seeing it."}}]}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "Receipt Snap", "applicationCategory": "FinanceApplication", "operatingSystem": "iOS 17.0 or later", "description": "On-device receipt scanner. Reads merchant, date, total and tax on the iPhone; nothing is uploaded.", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}}</script>
+<link rel="stylesheet" href="/style.css">
+<style>
+  .hero { position: relative; padding: 56px 0 92px; overflow: hidden; }
+  .hero .split { display: grid; grid-template-columns: 1.05fr .95fr; gap: 48px; align-items: center; }
+  .badge { display: inline-flex; align-items: center; gap: 9px; background: var(--card);
+    border-radius: 999px; padding: 8px 16px; font-size: .9rem; color: var(--muted);
+    box-shadow: 0 2px 12px rgba(14,19,21,.06); }
+  .badge b { color: var(--teal); }
+  .hero h1 { font-size: clamp(2.4rem, 5vw, 3.9rem); margin: 26px 0 0; }
+  .hero .lede { font-size: 1.13rem; max-width: 50ch; margin-top: 22px; }
+  .hero .actions { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 34px; }
+  .hero .assurances { justify-content: flex-start; }
+  .visual { position: relative; min-height: 520px; }
+  .bubble { position: absolute; right: -22%; top: 50%; transform: translateY(-50%);
+    width: 740px; height: 740px; border-radius: 50%;
+    background:
+      radial-gradient(circle at 30% 28%, #FFE9A8 0%, transparent 42%),
+      radial-gradient(circle at 68% 22%, #A8E4FF 0%, transparent 46%),
+      radial-gradient(circle at 74% 74%, #D8B4FE 0%, transparent 48%),
+      radial-gradient(circle at 26% 76%, #9BF6D2 0%, transparent 46%),
+      conic-gradient(from 210deg, #FDE2E4, #CDE7FF, #E0D4FF, #D6F5E3, #FFF3C4, #FDE2E4);
+    filter: blur(2px) saturate(1.12); opacity: .95; }
+  .phones { position: relative; z-index: 2; display: flex; gap: 18px;
+    align-items: flex-end; justify-content: center; padding: 30px 0; }
+  .phones img { width: 200px; border-radius: 22px; box-shadow: 0 24px 54px rgba(14,19,21,.22); }
+  .phones img:nth-child(2) { width: 228px; margin-bottom: 28px; }
+  @media (max-width: 980px) { .hero .split { grid-template-columns: 1fr; }
+    .bubble { right: -30%; width: 600px; height: 600px; } }
+  .features { display: grid; gap: 22px; grid-template-columns: repeat(3, 1fr);
+    align-items: start; margin-top: 48px; }
+  .feat.wide { grid-column: span 2; display: flex; gap: 28px; align-items: center; }
+  .feat.wide img { width: 172px; border-radius: 18px; flex: 0 0 auto;
+    box-shadow: 0 12px 30px rgba(14,19,21,.14); }
+  @media (max-width: 900px) { .features { grid-template-columns: 1fr; }
+    .feat.wide { grid-column: auto; flex-direction: column; align-items: flex-start; } }
+  .tag { font-size: .82rem; letter-spacing: .08em; text-transform: uppercase;
+    color: var(--teal); font-weight: 600; margin-bottom: 10px; }
+  .stepline { display: grid; grid-template-columns: 92px 1fr; gap: 26px;
+    padding: 32px 0; border-bottom: 1px solid var(--line); align-items: start; }
+  .stepline .n { font-size: 2.5rem; font-weight: 600; color: var(--line-2); line-height: 1; }
+  .stepline h3 { font-size: 1.28rem; margin-bottom: 8px; }
+  table.cmp { width: 100%; border-collapse: collapse; margin-top: 40px;
+    background: var(--card); border-radius: var(--radius); overflow: hidden;
+    box-shadow: 0 2px 16px rgba(14,19,21,.05); }
+  table.cmp th, table.cmp td { text-align: left; padding: 20px 24px; border-bottom: 1px solid var(--line); }
+  table.cmp tbody tr:last-child td { border-bottom: 0; }
+  table.cmp thead th { font-size: .8rem; letter-spacing: .1em; text-transform: uppercase;
+    color: var(--faint); font-weight: 600; }
+  table.cmp td.ours { color: var(--teal); font-weight: 600; }
+  table.cmp td.them { color: var(--faint); }
+  .note { font-size: .88rem; color: var(--faint); margin-top: 16px; }
+  .final { background: var(--card); border-radius: 40px; padding: 84px 40px; text-align: center;
+    box-shadow: 0 4px 30px rgba(14,19,21,.06); }
+  .final h2 { font-size: clamp(2rem, 4.4vw, 3rem); }
+  .final .actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-top: 32px; }
+
+  details.faq { background: var(--card); border-radius: var(--radius-sm); padding: 22px 26px;
+    margin-bottom: 12px; box-shadow: 0 2px 12px rgba(14,19,21,.04); }
+  details.faq summary { font-size: 1.1rem; font-weight: 600; color: var(--text); cursor: pointer;
+    list-style: none; display: flex; justify-content: space-between; gap: 20px; }
+  details.faq summary::-webkit-details-marker { display: none; }
+  details.faq summary::after { content: '+'; color: var(--teal); font-size: 1.4rem; line-height: 1; }
+  details.faq[open] summary::after { content: '\2013'; }
+  details.faq p { margin-top: 14px; max-width: 66ch; }
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header id="hdr"><div class="wrap bar">
+  <a class="brand" href="/"><span class="mark" aria-hidden="true"></span><span>Dune Apps</span></a>
+  <nav class="site-nav">
+    <a href="/#apps">Apps</a>
+    <a href="/writing/">Writing</a>
+    <a href="/drivesnap/">DriveSnap</a>
+    <a class="btn btn-primary btn-sm" href="/drivesnap/">Get Started</a>
+  </nav>
+</div></header>
+<main id="main">
+<section class="hero"><div class="wrap split">
+  <div>
+    <span class="badge">Free · <b>Data Not Collected</b></span>
+    <h1>Your receipts, read on your phone and kept there</h1>
+    <p class="lede">Point the camera at a receipt. Receipt Snap reads the merchant, date, total and tax in about two seconds, files it, and never sends it anywhere.</p>
+    <div class="actions">
+      <a class="btn btn-primary" href="#how">How it works</a>
+      <a class="btn btn-dark" href="/posts/how-long-to-keep-receipts.html">How long to keep receipts</a>
+    </div>
+    <div class="assurances"><span>No account</span><span>0 servers</span><span>12 currencies</span></div>
+  </div>
+  <div class="visual"><div class="bubble"></div><div class="phones">
+    <img src="/assets/receiptsnap-2.png" alt="Searching receipts" loading="lazy">
+    <img src="/assets/receiptsnap-1.png" alt="Receipt Snap home screen" loading="lazy">
+    <img src="/assets/receiptsnap-3.png" alt="Monthly spending summary" loading="lazy">
+  </div></div>
+</div></section>
+
+<div class="wrap marquee-wrap" style="margin-top:60px"><div class="marquee">
+  <span>Vision OCR</span><span>·</span><span>Apple Foundation Models</span><span>·</span><span>GSTIN</span><span>·</span>
+  <span>UAE TRN</span><span>·</span><span>VAT</span><span>·</span><span>CSV export</span><span>·</span><span>Works offline</span><span>·</span>
+  <span>Vision OCR</span><span>·</span><span>Apple Foundation Models</span><span>·</span><span>GSTIN</span><span>·</span>
+  <span>UAE TRN</span><span>·</span><span>VAT</span><span>·</span><span>CSV export</span><span>·</span><span>Works offline</span><span>·</span>
+</div></div>
+
+<section class="section"><div class="wrap">
+  <div class="section-head reveal"><span class="eyebrow">Built for the actual job</span>
+    <h2>Reads the receipt.<br>Keeps it to itself.</h2></div>
+  <div class="features">
+    <div class="card feat wide reveal">
+      <img src="/assets/receiptsnap-1.png" alt="Receipt Snap home" loading="lazy">
+      <div><p class="tag">01 · On device</p><h3>Two seconds, no upload</h3>
+      <p>Apple's Vision framework reads the text on the phone, and on newer iPhones an on-device model pulls structure out of it. The receipt never has to leave the device to be understood.</p></div>
+    </div>
+    <div class="card feat reveal"><p class="tag">02 · Currency</p><h3>Reads the tax number</h3>
+      <p>Where no symbol is printed, it recognises a UAE TRN, an Indian GSTIN or a UK postcode and sets the currency from that.</p></div>
+    <div class="card feat reveal"><p class="tag">03 · Search</p><h3>Find it in words</h3>
+      <p>Search naturally — "coffee in July" — and filter any month or date range.</p></div>
+    <div class="card feat wide reveal">
+      <img src="/assets/receiptsnap-3.png" alt="Monthly summary" loading="lazy">
+      <div><p class="tag">04 · At year end</p><h3>A summary you can hand over</h3>
+      <p>Browse any month, tap a category to see everything spent on it, and share a summary card. Deleted receipts stay recoverable for 30 days.</p></div>
+    </div>
+  </div>
+</div></section>
+
+<section class="section" id="how" style="background:var(--bg-2)"><div class="wrap">
+  <div class="section-head reveal"><span class="eyebrow">From paper to filed</span><h2>Three steps</h2></div>
+  <div style="margin-top:34px">
+    <div class="stepline reveal"><div class="n">01</div><div><h3>Photograph it the day you get it</h3><p>Thermal paper fades — sometimes within months in a hot car. The shutter fires immediately; there is no waiting for the app to find the edges.</p></div></div>
+    <div class="stepline reveal"><div class="n">02</div><div><h3>Check what it read</h3><p>Merchant, date, total and tax come back filled in. Every field is editable, and you can drag the corners to re-crop if the automatic crop misses.</p></div></div>
+    <div class="stepline reveal"><div class="n">03</div><div><h3>Find it years later</h3><p>Search by word, month or category. Records need keeping for three years in the US, five in the UAE, fifteen for UAE property.</p></div></div>
+  </div>
+</div></section>
+
+<section class="section"><div class="wrap">
+  <div class="section-head reveal"><span class="eyebrow">Why it matters</span>
+    <h2>Most receipt apps are not expense trackers</h2>
+    <p>They are purchase-data companies. You photograph a receipt, they sell what you bought, to whom, at what price and how often. The points you earn are the price they pay for it.</p></div>
+  <table class="cmp reveal">
+    <thead><tr><th>&nbsp;</th><th style="color:var(--teal)">Receipt Snap</th><th>Points-and-rewards receipt apps</th></tr></thead>
+    <tbody>
+      <tr><td>Where the photo goes</td><td class="ours">Nowhere — it stays on the phone</td><td class="them">Their servers</td></tr>
+      <tr><td>Account required</td><td class="ours">Never</td><td class="them">Yes</td></tr>
+      <tr><td>Purchase data sold</td><td class="ours">Never</td><td class="them">That is the business model</td></tr>
+      <tr><td>App Store privacy label</td><td class="ours">Data Not Collected</td><td class="them">Linked to you</td></tr>
+    </tbody>
+  </table>
+  <p class="note"><a href="/posts/receipt-apps-pay-you-pennies.html">The long version, with the numbers →</a></p>
+</div></section>
+
+<section class="section" style="background:var(--bg-2)"><div class="wrap">
+  <div class="section-head reveal"><span class="eyebrow">Questions</span><h2>Straight answers</h2></div>
+  <div style="margin-top:30px"><details class="faq"><summary>Does Receipt Snap upload my receipts?</summary><p>No. The photo is read on your iPhone using Apple's on-device text recognition, and the result is stored on the device. There is no account and no Receipt Snap server — the App Store privacy label reads Data Not Collected.</p></details><details class="faq"><summary>Which currencies does it recognise?</summary><p>Twelve, detected from the receipt itself. Where no symbol is printed it reads the tax registration number instead — a UAE TRN means dirhams, an Indian GSTIN means rupees, a UK postcode means sterling.</p></details><details class="faq"><summary>Do photographs of receipts count as tax records?</summary><p>Yes. The IRS, HMRC and the UAE Federal Tax Authority all accept electronic records provided they are legible, complete and producible on request. Photograph the whole receipt, including the tax line.</p></details><details class="faq"><summary>What does it cost?</summary><p>Receipt Snap is free. A Pro tier is planned for a later version; scanning and searching your receipts will stay free.</p></details><details class="faq"><summary>What happens if the scan gets something wrong?</summary><p>Every field is editable before you save, and you can re-crop the photo by dragging the corners if the automatic crop misses. Nothing is filed without you seeing it.</p></details></div></div></section>
+
+<section class="section"><div class="wrap"><div class="final reveal">
+  <h2>A receipt vault that has nowhere<br>to send your receipts.</h2>
+  <div class="actions">
+    <a class="btn btn-primary" href="/posts/how-long-to-keep-receipts.html">How long to keep receipts</a>
+    <a class="btn btn-dark" href="/">More from Dune Apps</a></div>
+  <div class="assurances" style="justify-content:center"><span>Free</span><span>No account</span><span>iOS 17 or later</span></div>
+</div></div></section>
+</main>
+<footer>
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <a class="brand" href="/"><span class="mark" aria-hidden="true"></span><span>Dune Apps</span></a>
+        <p style="margin-top:18px;max-width:34ch;color:rgba(255,255,255,.72)">Small, careful iPhone tools that run entirely on your device — no servers, no accounts, nothing collected.</p>
+      </div>
+      <div><h4>Apps</h4>
+        <a href="/drivesnap/">DriveSnap</a>
+        <a href="/receiptsnap/">Receipt Snap</a>
+        <a href="/compare/drivesnap-vs-mileiq/">DriveSnap vs MileIQ</a></div>
+      <div><h4>Guides</h4>
+        <a href="/writing/">All writing</a>
+        <a href="/posts/irs-mileage-log-requirements.html">IRS mileage log rules</a>
+        <a href="/posts/how-long-to-keep-receipts.html">How long to keep receipts</a>
+        <a href="/posts/uae-vat-record-keeping.html">UAE VAT records</a></div>
+      <div><h4>Support</h4>
+        <a href="https://github.com/influencermetric-cloud/drivesnap-support">DriveSnap support</a>
+        <a href="https://github.com/influencermetric-cloud/receiptsnap-support">Receipt Snap support</a>
+        <a href="https://github.com/influencermetric-cloud/drivesnap-support/blob/main/PRIVACY.md">Privacy policy</a></div>
+    </div>
+    <p class="disclosure">Dune Apps · built in Dubai. This website uses Google Analytics to see which pages help people. The apps themselves collect nothing at all.</p>
+  </div>
+</footer>
+
+<script>
+  const hdr = document.getElementById('hdr');
+  addEventListener('scroll', () => hdr.classList.toggle('stuck', scrollY > 8), { passive: true });
+  if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const io = new IntersectionObserver(es => es.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    }), { rootMargin: '0px 0px -8% 0px' });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  } else document.querySelectorAll('.reveal').forEach(el => el.classList.add('in'));
+</script>
+</body>
+</html>

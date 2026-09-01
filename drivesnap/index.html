@@ -25,7 +25,7 @@
 <meta property="og:site_name" content="Dune Apps">
 <meta property="og:title" content="DriveSnap — a mileage log that never leaves your phone">
 <meta property="og:description" content="Records business drives automatically. No account, no servers, no drive caps.">
-<meta property="og:image" content="https://duneapps.com/og.png">
+<meta property="og:image" content="https://duneapps.com/og-drivesnap.png">
 <meta name="twitter:card" content="summary_large_image">
 
 <script type="application/ld+json">
@@ -148,12 +148,14 @@
 </head>
 <body>
 
+<a class="skip" href="#main">Skip to content</a>
+
 <header id="hdr"><div class="wrap bar">
   <a class="brand" href="/"><span class="mark" aria-hidden="true"></span><span>Dune Apps</span></a>
   <nav class="site-nav">
     <a href="/#apps">Apps</a>
-    <a href="/#why">Why</a>
-    <a href="/#writing">Writing</a>
+    <a href="/writing/">Writing</a>
+    <a href="/drivesnap/">DriveSnap</a>
     <a class="btn btn-primary btn-sm" href="/drivesnap/">Get Started</a>
   </nav>
 </div></header>
@@ -372,10 +374,15 @@
         <a class="brand" href="/"><span class="mark" aria-hidden="true"></span><span>Dune Apps</span></a>
         <p style="margin-top:18px;max-width:34ch;color:rgba(255,255,255,.72)">Small, careful iPhone tools that run entirely on your device — no servers, no accounts, nothing collected.</p>
       </div>
-      <div><h4>Apps</h4><a href="/drivesnap/">DriveSnap</a><a href="/#apps">Receipt Snap</a></div>
-      <div><h4>Writing</h4>
-        <a href="/posts/the-bug-that-would-have-shipped.html">The bug that would have shipped</a>
-        <a href="/posts/receipt-apps-pay-you-pennies.html">Why receipt apps pay you pennies</a></div>
+      <div><h4>Apps</h4>
+        <a href="/drivesnap/">DriveSnap</a>
+        <a href="/receiptsnap/">Receipt Snap</a>
+        <a href="/compare/drivesnap-vs-mileiq/">DriveSnap vs MileIQ</a></div>
+      <div><h4>Guides</h4>
+        <a href="/writing/">All writing</a>
+        <a href="/posts/irs-mileage-log-requirements.html">IRS mileage log rules</a>
+        <a href="/posts/how-long-to-keep-receipts.html">How long to keep receipts</a>
+        <a href="/posts/uae-vat-record-keeping.html">UAE VAT records</a></div>
       <div><h4>Support</h4>
         <a href="https://github.com/influencermetric-cloud/drivesnap-support">DriveSnap support</a>
         <a href="https://github.com/influencermetric-cloud/receiptsnap-support">Receipt Snap support</a>
@@ -388,18 +395,6 @@
 <script>
   const hdr = document.getElementById('hdr');
   addEventListener('scroll', () => hdr.classList.toggle('stuck', scrollY > 8), { passive: true });
-
-  const amt = document.getElementById('pro-amt'), per = document.getElementById('pro-per');
-  const yr = document.getElementById('btn-year'), lf = document.getElementById('btn-life');
-  function pick(yearly) {
-    amt.textContent = yearly ? '$29.99' : '$79.99';
-    per.textContent = yearly ? 'a year · first month free' : 'once · nothing renews';
-    yr.classList.toggle('on', yearly);  yr.setAttribute('aria-pressed', yearly);
-    lf.classList.toggle('on', !yearly); lf.setAttribute('aria-pressed', !yearly);
-  }
-  yr.onclick = () => pick(true);
-  lf.onclick = () => pick(false);
-
   if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
     const io = new IntersectionObserver(es => es.forEach(e => {
       if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
