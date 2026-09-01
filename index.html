@@ -11,10 +11,10 @@
 </script>
 <script>document.documentElement.classList.add('js')</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="color-scheme" content="dark">
+<meta name="color-scheme" content="light">
 <title>Dune Apps — iPhone tools that keep your data on your phone</title>
 <meta name="description" content="Small, careful iPhone tools that run entirely on your device — no servers, no accounts, nothing collected. Receipt Snap and DriveSnap, plus essays on building private software.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%23B8F24D'/%3E%3Cpath d='M8 22c3-6 5-6 8 0s5 6 8 0' stroke='%230A1200' stroke-width='3' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='16' fill='%231A4B44'/%3E%3Ccircle cx='16' cy='16' r='6' fill='%23C3F04C'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -28,40 +28,73 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="stylesheet" href="style.css">
 <style>
-  .hero { position: relative; padding: 108px 0 92px; text-align: center; overflow: hidden; }
-  .hero h1 { font-size: clamp(2.6rem, 6.4vw, 4.6rem); margin: 26px 0 0; letter-spacing: -.035em; }
-  .hero h1 .hl { color: var(--accent); }
-  .hero .lede { font-size: 1.2rem; color: var(--muted); max-width: 60ch; margin: 24px auto 0; }
-  .hero .glow-a { width: 620px; height: 420px; top: -140px; left: 50%; transform: translateX(-64%); }
-  .hero .glow-b { width: 540px; height: 400px; top: -110px; left: 50%; transform: translateX(6%); }
-  .hero .inner { position: relative; z-index: 1; }
-  .actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 34px; }
-  .assure { font-family: var(--mono); font-size: .76rem; color: var(--faint); margin-top: 18px; letter-spacing: .04em; }
+  /* Hero: text left, product visual right and bleeding off the edge. */
+  .hero { position: relative; padding: 56px 0 96px; overflow: hidden; }
+  .hero .split { display: grid; grid-template-columns: 1.05fr .95fr; gap: 48px; align-items: center; }
+  .badge { display: inline-flex; align-items: center; gap: 9px; background: var(--card);
+    border-radius: 999px; padding: 8px 16px; font-size: .9rem; color: var(--muted);
+    box-shadow: 0 2px 12px rgba(14,19,21,.06); }
+  .badge a { color: var(--teal); text-decoration: underline; text-underline-offset: 3px; }
+  .hero h1 { font-size: clamp(2.5rem, 5.1vw, 4.05rem); margin: 26px 0 0; }
+  .hero .lede { font-size: 1.13rem; max-width: 50ch; margin-top: 22px; }
+  .hero .actions { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 36px; }
+  .hero .assurances { justify-content: flex-start; }
 
-  .app-card { display: flex; flex-direction: column; gap: 18px; }
-  .app-top { display: flex; align-items: center; gap: 14px; }
-  .app-ico { width: 52px; height: 52px; border-radius: 14px; display: grid; place-items: center;
-    background: rgba(184,242,77,.09); border: 1px solid rgba(184,242,77,.22); flex: 0 0 auto; }
-  .status { font-family: var(--mono); font-size: .68rem; letter-spacing: .1em; text-transform: uppercase;
-    color: var(--accent); }
-  .app-meta { font-family: var(--mono); font-size: .76rem; color: var(--faint); }
-  .app-card .go { color: var(--accent); text-decoration: none; font-size: .95rem; font-weight: 500; }
+  /* Iridescent field standing in for their soap-bubble photograph. */
+  .visual { position: relative; min-height: 520px; }
+  .bubble {
+    position: absolute; right: -22%; top: 50%; transform: translateY(-50%);
+    width: 760px; height: 760px; border-radius: 50%;
+    background:
+      radial-gradient(circle at 30% 28%, #FFE9A8 0%, transparent 42%),
+      radial-gradient(circle at 68% 22%, #A8E4FF 0%, transparent 46%),
+      radial-gradient(circle at 74% 74%, #D8B4FE 0%, transparent 48%),
+      radial-gradient(circle at 26% 76%, #9BF6D2 0%, transparent 46%),
+      conic-gradient(from 210deg, #FDE2E4, #CDE7FF, #E0D4FF, #D6F5E3, #FFF3C4, #FDE2E4);
+    filter: blur(2px) saturate(1.12);
+    opacity: .95;
+  }
+  .phones { position: relative; z-index: 2; display: flex; gap: 18px;
+    align-items: flex-end; justify-content: center; padding: 30px 0; }
+  .phones img { width: 205px; border-radius: 22px; box-shadow: 0 24px 54px rgba(14,19,21,.22); }
+  .phones img:nth-child(2) { width: 232px; margin-bottom: 28px; }
+  @media (max-width: 980px) {
+    .hero .split { grid-template-columns: 1fr; }
+    .visual { min-height: 460px; }
+    .bubble { right: -30%; width: 620px; height: 620px; }
+  }
 
-  .stat .n { font-size: 2.6rem; font-weight: 600; color: var(--accent); letter-spacing: -.03em; line-height: 1; }
-  .stat p { margin-top: 12px; font-size: .98rem; }
+  .logos-band { background: var(--bg-2); padding: 66px 0; }
+  .logos { display: flex; gap: 44px; justify-content: center; flex-wrap: wrap; margin-top: 30px; }
+  .logos span { font-size: 1.04rem; color: var(--faint); font-weight: 500; }
 
-  .rows { display: grid; gap: 0; margin-top: 34px; }
-  .row { display: grid; grid-template-columns: 120px 1fr auto; gap: 24px; align-items: baseline;
-    padding: 26px 0; border-top: 1px solid var(--line); text-decoration: none; }
-  .row:hover h3 { color: var(--accent); }
-  .row .date { font-family: var(--mono); font-size: .78rem; color: var(--faint); }
-  .row h3 { font-size: 1.24rem; margin: 0 0 6px; transition: color .18s ease; }
-  .row p { font-size: .99rem; margin: 0; }
-  .row .arrow { color: var(--faint); }
+  .app-top { display: flex; align-items: center; gap: 14px; margin-bottom: 16px; }
+  .app-ico { width: 54px; height: 54px; border-radius: 16px; display: grid; place-items: center;
+    background: var(--bg-2); flex: 0 0 auto; }
+  .status { font-size: .78rem; color: var(--teal); font-weight: 600; }
+  .app-meta { font-size: .88rem; color: var(--faint); margin-top: 14px; display: block; }
+  .go { color: var(--teal); text-decoration: none; font-weight: 600; font-size: .97rem;
+    margin-top: 16px; display: inline-block; }
+
+  .stat .n { font-size: 2.9rem; font-weight: 600; color: var(--teal); letter-spacing: -.04em; line-height: 1; }
+  .stat p { margin-top: 12px; }
+
+  .row { display: grid; grid-template-columns: 130px 1fr auto; gap: 26px; align-items: baseline;
+    padding: 28px 0; border-bottom: 1px solid var(--line); text-decoration: none; }
+  .row:hover h3 { color: var(--teal); }
+  .row .date { font-size: .88rem; color: var(--faint); }
+  .row h3 { font-size: 1.3rem; margin-bottom: 7px; transition: color .18s ease; }
+  .row .arrow { color: var(--faint); font-size: 1.2rem; }
   @media (max-width: 700px) { .row { grid-template-columns: 1fr; gap: 8px; } .row .arrow { display: none; } }
+
+  .final { background: var(--card); border-radius: 40px; padding: 84px 40px; text-align: center;
+    box-shadow: 0 4px 30px rgba(14,19,21,.06); }
+  .final h2 { font-size: clamp(2rem, 4.4vw, 3rem); }
+  .final .actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-top: 32px; }
 </style>
 </head>
 <body>
+<a class="skip" href="#main">Skip to content</a>
 
 <header id="hdr"><div class="wrap bar">
   <a class="brand" href="/"><span class="mark"></span><span>Dune Apps</span></a>
@@ -69,65 +102,72 @@
     <a href="#apps">Apps</a>
     <a href="#why">Why</a>
     <a href="#writing">Writing</a>
-    <a class="btn btn-accent btn-sm" href="/drivesnap/">Get DriveSnap</a>
+    <a class="btn btn-primary btn-sm" href="/drivesnap/">Get Started</a>
   </nav>
 </div></header>
 
-<main>
+<main id="main">
 
   <section class="hero">
-    <div class="glow glow-a"></div>
-    <div class="glow glow-b"></div>
-    <div class="wrap inner">
-      <span class="eyebrow">Private by construction</span>
-      <h1>Your data stays<br>on <span class="hl">your phone</span>.</h1>
-      <p class="lede">Dune Apps builds small, careful iPhone tools that run entirely on your device. No servers. No accounts. Nothing collected — not as a promise, but as a fact about how they are built.</p>
-      <div class="actions">
-        <a class="btn btn-accent" href="#apps">See the apps</a>
-        <a class="btn btn-ghost" href="#writing">Read the essays</a>
+    <div class="wrap split">
+      <div>
+        <span class="badge">DriveSnap is in TestFlight <a href="/drivesnap/">Learn more</a></span>
+        <h1>Your data stays on your phone. Not on ours.</h1>
+        <p class="lede">Dune Apps builds small, careful iPhone tools that run entirely on your device — so there is no account to create, no server to breach, and nothing to sell.</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="#apps">See the apps</a>
+          <a class="btn btn-dark" href="#writing">Read the essays</a>
+        </div>
+        <div class="assurances">
+          <span>No sign-up</span><span>Works offline</span><span>Data Not Collected</span>
+        </div>
       </div>
-      <p class="assure">iPhone · No sign-up · App Store privacy label: Data Not Collected</p>
+      <div class="visual">
+        <div class="bubble"></div>
+        <div class="phones">
+          <img src="assets/drivesnap-2.png" alt="Classifying a drive with one swipe" loading="lazy">
+          <img src="assets/drivesnap-1.png" alt="DriveSnap home screen" loading="lazy">
+          <img src="assets/drivesnap-3.png" alt="Tax report and CSV export" loading="lazy">
+        </div>
+      </div>
     </div>
   </section>
 
-  <div class="wrap marquee-wrap" style="padding-bottom:8px">
-    <div class="marquee">
-      <span>On-device OCR</span><span>·</span><span>No accounts</span><span>·</span><span>No analytics in-app</span><span>·</span>
-      <span>No ad SDKs</span><span>·</span><span>Works offline</span><span>·</span><span>Export to CSV</span><span>·</span>
-      <span>Data Not Collected</span><span>·</span><span>Built in Dubai</span><span>·</span>
-      <span>On-device OCR</span><span>·</span><span>No accounts</span><span>·</span><span>No analytics in-app</span><span>·</span>
-      <span>No ad SDKs</span><span>·</span><span>Works offline</span><span>·</span><span>Export to CSV</span><span>·</span>
-      <span>Data Not Collected</span><span>·</span><span>Built in Dubai</span><span>·</span>
+  <section class="logos-band">
+    <div class="wrap" style="text-align:center">
+      <h2 style="font-size:clamp(1.5rem,2.6vw,2rem)">Built on what your iPhone already has</h2>
+      <div class="logos">
+        <span>Vision OCR</span><span>Core Location</span><span>Core Motion</span>
+        <span>SwiftData</span><span>StoreKit 2</span><span>MapKit</span><span>Apple Foundation Models</span>
+      </div>
     </div>
-  </div>
+  </section>
 
   <section class="section" id="apps">
     <div class="wrap">
-      <div class="section-head reveal">
+      <div class="section-head center reveal">
         <span class="eyebrow">The apps</span>
         <h2>Two tools, both entirely on-device</h2>
         <p>Each one does a single tedious job properly, and neither has anywhere to send your data.</p>
       </div>
-
-      <div class="grid g-2" style="margin-top:44px">
-        <article class="card app-card reveal">
+      <div class="grid g-2" style="margin-top:52px">
+        <article class="card reveal">
           <div class="app-top">
             <span class="app-ico">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#B8F24D" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12v18l-3-2-3 2-3-2-3 2z"/><path d="M9 8h6M9 12h6"/></svg>
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#1A4B44" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12v18l-3-2-3 2-3-2-3 2z"/><path d="M9 8h6M9 12h6"/></svg>
             </span>
-            <div><h3>Receipt Snap</h3><span class="status">In review</span></div>
+            <div><h3 style="margin:0">Receipt Snap</h3><span class="status">In review</span></div>
           </div>
           <p>Point the camera at a receipt. It reads the merchant, date, total and tax on the device itself, sorts it into a category and files it in a searchable vault. Twelve currencies, recognised from the receipt.</p>
           <span class="app-meta">iPhone · Vision OCR · Free</span>
-          <a class="go" href="#writing">Why receipt apps pay you pennies →</a>
+          <a class="go" href="posts/receipt-apps-pay-you-pennies.html">Why receipt apps pay you pennies →</a>
         </article>
-
-        <article class="card app-card reveal">
+        <article class="card reveal">
           <div class="app-top">
             <span class="app-ico">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#B8F24D" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 17h14l-1.5-5a2 2 0 0 0-1.9-1.5H8.4A2 2 0 0 0 6.5 12z"/><circle cx="8" cy="17" r="2"/><circle cx="16" cy="17" r="2"/></svg>
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#1A4B44" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 17h14l-1.5-5a2 2 0 0 0-1.9-1.5H8.4A2 2 0 0 0 6.5 12z"/><circle cx="8" cy="17" r="2"/><circle cx="16" cy="17" r="2"/></svg>
             </span>
-            <div><h3>DriveSnap</h3><span class="status">In TestFlight</span></div>
+            <div><h3 style="margin:0">DriveSnap</h3><span class="status">In TestFlight</span></div>
           </div>
           <p>Detects your drives, sorts work from personal with one swipe, and adds up what you can claim. No drive caps, ever — most trackers stop logging free users at around 40 a month.</p>
           <span class="app-meta">iPhone · Auto drive detection · Free to track</span>
@@ -137,14 +177,14 @@
     </div>
   </section>
 
-  <section class="section" id="why" style="background:var(--bg-2);border-block:1px solid var(--line)">
+  <section class="section" id="why" style="background:var(--bg-2)">
     <div class="wrap">
       <div class="section-head center reveal">
         <span class="eyebrow">Why it matters</span>
         <h2>Most apps in these categories sell what they see</h2>
         <p>Receipt apps pay you points because your purchase data is worth more than the points. Mileage apps know everywhere you go. We took the other side of that trade.</p>
       </div>
-      <div class="grid g-4" style="margin-top:48px">
+      <div class="grid g-4" style="margin-top:52px">
         <div class="card stat reveal"><div class="n">0</div><p>Servers. There is no backend to receive your data, so there is nothing to breach.</p></div>
         <div class="card stat reveal"><div class="n">0</div><p>Accounts. Nothing to sign up for, nothing to leak, nothing to delete.</p></div>
         <div class="card stat reveal"><div class="n">100%</div><p>On-device processing — Apple's Vision and on-device models do the reading.</p></div>
@@ -160,7 +200,7 @@
         <h2>Notes from the workbench</h2>
         <p>What building private software actually looks like — including the parts that went wrong.</p>
       </div>
-      <div class="rows">
+      <div style="margin-top:34px">
         <a class="row reveal" href="posts/the-bug-that-would-have-shipped.html">
           <span class="date">31 Aug 2026</span>
           <span><h3>The bug that would have shipped</h3><p>A mileage tracker that silently recorded zero distance for city driving, and four ways the same app could have put a wrong number on a tax return.</p></span>
@@ -175,13 +215,17 @@
     </div>
   </section>
 
-  <section class="section" style="text-align:center;position:relative;overflow:hidden">
-    <div class="glow glow-a" style="width:640px;height:380px;top:20px;left:50%;transform:translateX(-50%)"></div>
-    <div class="wrap reveal" style="position:relative;z-index:1">
-      <h2 style="font-size:clamp(2rem,5vw,3.2rem)">Software that has nowhere<br>to send your data.</h2>
-      <div class="actions">
-        <a class="btn btn-accent" href="/drivesnap/">Get DriveSnap</a>
-        <a class="btn btn-ghost" href="#apps">See both apps</a>
+  <section class="section">
+    <div class="wrap">
+      <div class="final reveal">
+        <h2>Software that has nowhere<br>to send your data.</h2>
+        <div class="actions">
+          <a class="btn btn-primary" href="/drivesnap/">Get DriveSnap</a>
+          <a class="btn btn-dark" href="#apps">See both apps</a>
+        </div>
+        <div class="assurances" style="justify-content:center">
+          <span>Free to track</span><span>No account</span><span>iOS 17 or later</span>
+        </div>
       </div>
     </div>
   </section>
@@ -192,10 +236,9 @@
     <div class="cols">
       <div>
         <a class="brand" href="/"><span class="mark"></span><span>Dune Apps</span></a>
-        <p style="margin-top:16px;max-width:34ch">Small, careful iPhone tools that run entirely on your device — no servers, no accounts, nothing collected.</p>
+        <p style="margin-top:18px;max-width:34ch;color:rgba(255,255,255,.72)">Small, careful iPhone tools that run entirely on your device — no servers, no accounts, nothing collected.</p>
       </div>
-      <div><h4>Apps</h4>
-        <a href="/drivesnap/">DriveSnap</a><a href="#apps">Receipt Snap</a></div>
+      <div><h4>Apps</h4><a href="/drivesnap/">DriveSnap</a><a href="#apps">Receipt Snap</a></div>
       <div><h4>Writing</h4>
         <a href="posts/the-bug-that-would-have-shipped.html">The bug that would have shipped</a>
         <a href="posts/receipt-apps-pay-you-pennies.html">Why receipt apps pay you pennies</a></div>
