@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="40" height="40" role="img" aria-label="Dune Apps">
+  <title>Dune Apps</title>
+  <defs><clipPath id="duneClip"><circle cx="20" cy="20" r="19"/></clipPath></defs>
+  <circle cx="20" cy="20" r="19" fill="#EFF3F1"/>
+  <g clip-path="url(#duneClip)">
+    <circle cx="13" cy="13" r="5" fill="#C3F04C"/>
+    <path d="M13 41 L41 41 L41 25 C 34 25.8 27.5 28.8 22 33.8 L13 41 Z" fill="#9DB8B2"/>
+    <path d="M-1 41 L-1 29.4 C 8 28.6 15.2 25.8 20.4 21 C 21.6 19.9 22.9 19.9 24 21.1 C 28 25.4 33.4 29 41 30.8 L41 41 Z" fill="#1A4B44"/>
+  </g>
+</svg>
