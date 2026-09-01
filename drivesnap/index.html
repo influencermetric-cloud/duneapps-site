@@ -11,12 +11,13 @@
 </script>
 <script>document.documentElement.classList.add('js')</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="color-scheme" content="light">
+<meta name="color-scheme" content="dark">
 <title>DriveSnap — a mileage log that never leaves your phone</title>
 <meta name="description" content="DriveSnap records business drives automatically and keeps every one on your iPhone. No account, no servers, no drive caps. Free to track; $29.99/yr to export a tax report.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%23B8F24D'/%3E%3Cpath d='M8 22c3-6 5-6 8 0s5 6 8 0' stroke='%230A1200' stroke-width='3' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..620;1,9..144,300..620&family=Newsreader:ital,opsz,wght@0,6..72,400..600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="canonical" href="https://duneapps.com/drivesnap/">
 <meta property="og:type" content="product">
 <meta property="og:url" content="https://duneapps.com/drivesnap/">
@@ -46,453 +47,343 @@
 </script>
 <link rel="stylesheet" href="../style.css">
 <style>
-  /* ---- Product page. Structure follows the SaaS long-scroll pattern:
-     sticky nav, hero with proof chips, works-with marquee, feature cards,
-     numbered process, metrics band, showcase, pricing, FAQ, closing CTA,
-     fat footer. Identity stays ours: paper, Fraunces, terracotta. ---- */
+  .hero { position: relative; padding: 96px 0 0; text-align: center; overflow: hidden; }
+  .hero .glow-a { width: 620px; height: 400px; top: -150px; left: 50%; transform: translateX(-66%); }
+  .hero .glow-b { width: 560px; height: 380px; top: -120px; left: 50%; transform: translateX(8%); }
+  .hero .inner { position: relative; z-index: 1; }
+  .hero h1 { font-size: clamp(2.5rem, 6vw, 4.3rem); margin: 26px 0 0; letter-spacing: -.035em; }
+  .hero h1 .hl { color: var(--accent); }
+  .hero .lede { font-size: 1.18rem; max-width: 58ch; margin: 24px auto 0; }
+  .chips { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-top: 28px; }
+  .chip { font-family: var(--mono); font-size: .74rem; letter-spacing: .05em; color: var(--muted);
+    border: 1px solid var(--line-2); background: var(--card); border-radius: 999px; padding: 8px 15px; }
+  .chip b { color: var(--accent); font-weight: 500; }
+  .actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 32px; }
+  .assure { font-family: var(--mono); font-size: .76rem; color: var(--faint); margin-top: 18px; }
 
-  .nav-wrap { position: sticky; top: 0; z-index: 60;
-    background: rgba(247,243,235,.88); backdrop-filter: blur(12px);
-    border-bottom: 1px solid transparent; transition: border-color .25s ease; }
-  .nav-wrap.stuck { border-bottom-color: var(--line); }
-  .nav-wrap .bar { display: flex; align-items: center; justify-content: space-between; }
-  .nav-wrap nav { display: flex; gap: 26px; align-items: center; }
-  .nav-cta { font-family: var(--mono); font-size: .72rem; letter-spacing: .08em;
-    text-transform: uppercase; background: var(--ink); color: var(--paper) !important;
-    padding: 9px 16px; border-radius: 8px; text-decoration: none !important; }
+  .shots { display: flex; gap: 22px; justify-content: center; align-items: flex-end; margin: 62px auto 0; }
+  .shots img { width: 248px; border-radius: 22px; border: 1px solid var(--line-2); }
+  .shots img:nth-child(2) { width: 276px; margin-bottom: 28px;
+    box-shadow: 0 30px 70px rgba(0,0,0,.6), 0 0 0 1px rgba(184,242,77,.14); }
+  .shots img:nth-child(1), .shots img:nth-child(3) { opacity: .82; }
 
-  .kicker { font-family: var(--mono); font-size: .72rem; text-transform: uppercase;
-    letter-spacing: .14em; color: var(--faint); }
-  .kicker .rule { display: inline-block; width: 26px; height: 1px;
-    background: var(--terracotta); vertical-align: middle; margin-right: 10px; }
-
-  /* ---- Hero ---- */
-  .p-hero { padding: 72px 0 0; text-align: center; }
-  .p-hero h1 { font-family: var(--serif); font-weight: 560; letter-spacing: -.028em;
-    font-size: clamp(2.5rem, 6.2vw, 4.4rem); line-height: 1.02; margin: 16px 0 0; color: var(--ink); }
-  .p-hero .lede { font-family: var(--prose); font-size: 1.22rem; line-height: 1.55;
-    color: #57503F; max-width: 46ch; margin: 22px auto 0; }
-  .chips { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-top: 26px; }
-  .chip { font-family: var(--mono); font-size: .7rem; letter-spacing: .06em;
-    text-transform: uppercase; color: #57503F; border: 1px solid var(--line);
-    background: var(--raised); border-radius: 999px; padding: 8px 14px; }
-  .chip b { color: var(--terracotta); font-weight: 500; }
-
-  .cta-row { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 28px; }
-  .btn { display: inline-block; font-family: var(--mono); font-size: .8rem; letter-spacing: .06em;
-    text-transform: uppercase; padding: 15px 26px; border-radius: 10px; text-decoration: none;
-    transition: transform .18s ease, box-shadow .18s ease; border: 1px solid var(--ink); }
-  .btn:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(34,30,21,.10); }
-  .btn-solid { background: var(--ink); color: var(--paper); }
-  .btn-ghost { background: transparent; color: var(--ink); }
-  .fineprint { font-family: var(--mono); font-size: .7rem; color: var(--faint);
-    margin-top: 16px; letter-spacing: .04em; }
-
-  /* Screenshot row: centre phone raised, outer two dropped and dimmed. */
-  .shots { display: flex; gap: 22px; justify-content: center; align-items: flex-end;
-    margin: 56px auto 0; }
-  .shots img { width: 250px; border-radius: 20px; border: 1px solid var(--line);
-    background: var(--raised); }
-  .shots img:nth-child(2) { width: 274px; margin-bottom: 26px;
-    box-shadow: 0 26px 60px rgba(34,30,21,.14); }
-  .shots img:nth-child(1), .shots img:nth-child(3) { opacity: .92; }
-
-  /* ---- Works-with marquee ---- */
-  .strip { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
-    margin-top: 88px; padding: 30px 0; overflow: hidden; }
-  .strip .label { text-align: center; margin-bottom: 20px; }
-  .marquee { display: flex; gap: 56px; width: max-content;
-    animation: slide 34s linear infinite; }
-  .marquee span { font-family: var(--serif); font-size: 1.22rem; color: #8C8474;
-    white-space: nowrap; }
-  @keyframes slide { to { transform: translateX(-50%); } }
-  .strip:hover .marquee { animation-play-state: paused; }
-
-  /* ---- Sections ---- */
-  .band { padding: 96px 0; }
-  .band + .band { border-top: 1px solid var(--line); }
-  .band h2 { font-family: var(--serif); font-weight: 560; letter-spacing: -.022em;
-    font-size: clamp(1.9rem, 3.8vw, 2.7rem); margin: 10px 0 0; color: var(--ink); line-height: 1.1; }
-  .band .sub { font-family: var(--prose); color: #57503F; max-width: 58ch;
-    margin: 16px 0 0; font-size: 1.07rem; line-height: 1.62; }
-  .head-split { display: flex; gap: 40px; align-items: flex-end; justify-content: space-between;
-    flex-wrap: wrap; }
-
-  /* Asymmetric feature grid: first card spans two columns. */
-  /* Cards size to their content; stretching the short ones to match the
-     wide ones left large dead panels. */
-  .features { display: grid; gap: 18px; margin-top: 42px;
-    grid-template-columns: repeat(3, 1fr); align-items: start; }
-  .feat { border: 1px solid var(--line); border-radius: 14px; background: var(--raised);
-    padding: 28px; transition: transform .22s ease, box-shadow .22s ease; }
-  .feat:hover { transform: translateY(-3px); box-shadow: 0 12px 30px rgba(34,30,21,.07); }
   .feat.wide { grid-column: span 2; display: flex; gap: 26px; align-items: center; }
-  .feat.wide img { width: 190px; border-radius: 14px; border: 1px solid var(--line); }
-  .feat h3 { font-family: var(--serif); font-weight: 560; font-size: 1.24rem;
-    margin: 12px 0 8px; color: var(--ink); }
-  .feat p { font-family: var(--prose); font-size: 1rem; line-height: 1.58; color: #57503F; margin: 0; }
-  .feat .ico { color: var(--terracotta); }
-  @media (max-width: 860px) {
+  .feat.wide img { width: 178px; border-radius: 16px; border: 1px solid var(--line-2); flex: 0 0 auto; }
+  .features { display: grid; gap: 20px; grid-template-columns: repeat(3, 1fr);
+    align-items: start; margin-top: 44px; }
+  @media (max-width: 900px) {
     .features { grid-template-columns: 1fr; }
     .feat.wide { grid-column: auto; flex-direction: column; align-items: flex-start; }
   }
+  .tag { font-family: var(--mono); font-size: .7rem; letter-spacing: .12em;
+    text-transform: uppercase; color: var(--accent); }
 
-  /* Numbered process */
-  .steps { display: grid; gap: 0; margin-top: 44px; }
-  .stepline { display: grid; grid-template-columns: 92px 1fr; gap: 28px;
+  .stepline { display: grid; grid-template-columns: 88px 1fr; gap: 26px;
     padding: 30px 0; border-top: 1px solid var(--line); align-items: start; }
-  .stepline .n { font-family: var(--serif); font-size: 2.6rem; color: var(--line-strong, #CFC5AE);
-    line-height: 1; }
-  .stepline h3 { font-family: var(--serif); font-weight: 560; font-size: 1.3rem;
-    margin: 0 0 8px; color: var(--ink); }
-  .stepline p { font-family: var(--prose); font-size: 1.03rem; line-height: 1.6;
-    color: #57503F; margin: 0; max-width: 62ch; }
+  .stepline .n { font-size: 2.4rem; font-weight: 600; color: var(--line-2); line-height: 1; }
+  .stepline h3 { font-size: 1.24rem; margin-bottom: 8px; }
+  .stepline p { max-width: 64ch; }
 
-  /* Metrics band */
-  .metrics { display: grid; gap: 18px; margin-top: 40px;
-    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); }
-  .metric { border: 1px solid var(--line); border-radius: 14px; background: var(--raised); padding: 26px; }
-  .metric .big { font-family: var(--serif); font-weight: 560; font-size: 2.5rem;
-    color: var(--terracotta); letter-spacing: -.02em; line-height: 1; }
-  .metric .cap { font-family: var(--prose); font-size: .99rem; color: #57503F;
-    margin-top: 10px; line-height: 1.5; }
+  table.cmp { width: 100%; border-collapse: collapse; margin-top: 38px; }
+  table.cmp th, table.cmp td { text-align: left; padding: 17px 14px; border-bottom: 1px solid var(--line); }
+  table.cmp thead th { font-family: var(--mono); font-size: .7rem; letter-spacing: .12em;
+    text-transform: uppercase; color: var(--faint); font-weight: 500; }
+  table.cmp td.ours { color: var(--accent); font-weight: 600; }
+  table.cmp td.them { color: var(--faint); text-decoration: line-through; }
+  .note { font-family: var(--mono); font-size: .74rem; color: var(--faint); margin-top: 16px; }
 
-  /* Comparison */
-  table.cmp { width: 100%; border-collapse: collapse; margin-top: 38px;
-    font-family: var(--prose); font-size: 1.03rem; }
-  table.cmp th, table.cmp td { text-align: left; padding: 16px 12px; border-bottom: 1px solid var(--line); }
-  table.cmp thead th { font-family: var(--mono); font-size: .7rem; letter-spacing: .14em;
+  .showcase { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+  .showcase img { width: 100%; max-width: 300px; border-radius: 24px; border: 1px solid var(--line-2);
+    box-shadow: 0 30px 70px rgba(0,0,0,.55); }
+  @media (max-width: 900px) { .showcase { grid-template-columns: 1fr; } }
+
+  .toggle { display: inline-flex; border: 1px solid var(--line-2); border-radius: 999px;
+    background: var(--card); padding: 5px; margin-top: 28px; }
+  .toggle button { font-size: .86rem; font-weight: 500; border: 0; background: transparent;
+    color: var(--muted); padding: 10px 22px; border-radius: 999px; cursor: pointer; }
+  .toggle button.on { background: var(--accent); color: var(--accent-ink); font-weight: 600; }
+  .tier { position: relative; }
+  .tier.best { border-color: rgba(184,242,77,.4); background: var(--card-2); }
+  .tier .badge { position: absolute; top: -12px; left: 28px; font-family: var(--mono);
+    font-size: .64rem; letter-spacing: .1em; text-transform: uppercase;
+    background: var(--accent); color: var(--accent-ink); padding: 5px 12px; border-radius: 999px; font-weight: 600; }
+  .tier .name { font-family: var(--mono); font-size: .72rem; letter-spacing: .12em;
     text-transform: uppercase; color: var(--faint); }
-  table.cmp td.ours { color: var(--terracotta); font-weight: 600; }
-  table.cmp td.them { color: var(--faint); }
-  .note { font-family: var(--mono); font-size: .7rem; color: var(--faint); margin-top: 14px; }
+  .tier .amt { font-size: 2.5rem; font-weight: 600; color: var(--text); margin: 12px 0 2px; letter-spacing: -.03em; }
+  .tier .per { font-family: var(--mono); font-size: .74rem; color: var(--faint); }
+  .tier ul { list-style: none; padding: 0; margin: 22px 0 0; }
+  .tier li { font-size: .98rem; padding-left: 24px; position: relative; margin-bottom: 11px; color: var(--muted); }
+  .tier li::before { content: '✓'; position: absolute; left: 0; color: var(--accent); font-size: .9rem; }
 
-  /* Showcase */
-  .showcase { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
-  .showcase img { width: 100%; max-width: 320px; border-radius: 22px;
-    border: 1px solid var(--line); box-shadow: 0 22px 50px rgba(34,30,21,.10); }
-  @media (max-width: 860px) { .showcase { grid-template-columns: 1fr; } }
-
-  /* Pricing */
-  .toggle { display: inline-flex; border: 1px solid var(--line); border-radius: 999px;
-    background: var(--raised); padding: 4px; margin-top: 26px; }
-  .toggle button { font-family: var(--mono); font-size: .72rem; letter-spacing: .08em;
-    text-transform: uppercase; border: 0; background: transparent; color: var(--faint);
-    padding: 9px 18px; border-radius: 999px; cursor: pointer; }
-  .toggle button.on { background: var(--ink); color: var(--paper); }
-  .tiers { display: grid; gap: 18px; margin-top: 30px;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
-  .tier { border: 1px solid var(--line); border-radius: 14px; background: var(--raised);
-    padding: 30px; position: relative; }
-  .tier.best { border-color: var(--ink); }
-  .tier .badge { position: absolute; top: -11px; left: 30px; font-family: var(--mono);
-    font-size: .64rem; letter-spacing: .12em; text-transform: uppercase;
-    background: var(--terracotta); color: #fff; padding: 5px 11px; border-radius: 999px; }
-  .tier .name { font-family: var(--mono); font-size: .72rem; letter-spacing: .14em;
-    text-transform: uppercase; color: var(--faint); }
-  .tier .amt { font-family: var(--serif); font-weight: 560; font-size: 2.5rem;
-    color: var(--ink); margin: 12px 0 2px; letter-spacing: -.02em; }
-  .tier .per { font-family: var(--mono); font-size: .72rem; color: var(--faint); }
-  .tier ul { list-style: none; padding: 0; margin: 20px 0 0; }
-  .tier li { font-family: var(--prose); font-size: .99rem; line-height: 1.5; color: #57503F;
-    padding-left: 22px; position: relative; margin-bottom: 10px; }
-  .tier li::before { content: '—'; position: absolute; left: 0; color: var(--terracotta); }
-
-  /* FAQ */
-  details.faq { border-bottom: 1px solid var(--line); padding: 22px 0; }
-  details.faq summary { font-family: var(--serif); font-weight: 560; font-size: 1.16rem;
-    color: var(--ink); cursor: pointer; list-style: none; display: flex;
-    justify-content: space-between; gap: 18px; }
+  details.faq { border-bottom: 1px solid var(--line); padding: 24px 0; }
+  details.faq summary { font-size: 1.12rem; font-weight: 600; color: var(--text); cursor: pointer;
+    list-style: none; display: flex; justify-content: space-between; gap: 20px; }
   details.faq summary::-webkit-details-marker { display: none; }
-  details.faq summary::after { content: '+'; font-family: var(--mono); color: var(--terracotta); }
+  details.faq summary::after { content: '+'; color: var(--accent); font-size: 1.3rem; line-height: 1; }
   details.faq[open] summary::after { content: '–'; }
-  details.faq p { font-family: var(--prose); font-size: 1.03rem; line-height: 1.64;
-    color: #57503F; margin: 14px 0 0; max-width: 64ch; }
-
-  /* Closing CTA */
-  .close { text-align: center; padding: 104px 0; border-top: 1px solid var(--line); }
-  .close h2 { font-family: var(--serif); font-weight: 560; letter-spacing: -.028em;
-    font-size: clamp(2.1rem, 5.2vw, 3.3rem); color: var(--ink); margin: 0; line-height: 1.06; }
-
-  /* Fat footer */
-  .fat { border-top: 1px solid var(--line); padding: 60px 0 30px; }
-  .fat .cols { display: grid; gap: 34px; grid-template-columns: 1.6fr 1fr 1fr 1fr; }
-  .fat h4 { font-family: var(--mono); font-size: .7rem; letter-spacing: .14em;
-    text-transform: uppercase; color: var(--faint); margin: 0 0 14px; }
-  .fat a { display: block; font-family: var(--prose); font-size: 1rem; color: #57503F;
-    text-decoration: none; margin-bottom: 9px; }
-  .fat a:hover { color: var(--terracotta); }
-  .fat .blurb { font-family: var(--prose); font-size: 1rem; line-height: 1.55; color: #57503F; max-width: 34ch; }
-  @media (max-width: 760px) { .fat .cols { grid-template-columns: 1fr 1fr; } }
-
-  .js .reveal { opacity: 0; transform: translateY(16px);
-    transition: opacity .6s ease, transform .6s ease; }
-  .js .reveal.in { opacity: 1; transform: none; }
-  @media (prefers-reduced-motion: reduce) {
-    .js .reveal { opacity: 1; transform: none; transition: none; }
-    .marquee { animation: none; }
-    .btn:hover, .feat:hover { transform: none; }
-  }
+  details.faq p { margin-top: 14px; max-width: 66ch; }
 </style>
 </head>
 <body>
 
-<div class="nav-wrap" id="navwrap">
-  <header><div class="wrap bar">
-    <a class="brand" href="../"><span class="mark" aria-hidden="true"></span><span>Dune Apps</span></a>
-    <nav>
-      <a href="#how">How it works</a>
-      <a href="#why">Why switch</a>
-      <a href="#pricing">Pricing</a>
-      <a href="#faq">FAQ</a>
-      <a class="nav-cta" href="#pricing">Get DriveSnap</a>
-    </nav>
-  </div></header>
-</div>
+<header id="hdr"><div class="wrap bar">
+  <a class="brand" href="../"><span class="mark"></span><span>Dune Apps</span></a>
+  <nav class="site-nav">
+    <a href="#how">How it works</a>
+    <a href="#why">Why switch</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#faq">FAQ</a>
+    <a class="btn btn-accent btn-sm" href="#pricing">Get DriveSnap</a>
+  </nav>
+</div></header>
 
 <main>
-<div class="wrap">
 
-  <section class="p-hero">
-    <p class="kicker"><span class="rule"></span>DriveSnap · iPhone</p>
-    <h1>A mileage log that<br>never leaves your phone</h1>
-    <p class="lede">DriveSnap notices when you drive, records the trip, and files it. You classify it later with one swipe. Nothing is uploaded, because there is nowhere to upload it to.</p>
-    <div class="chips">
-      <span class="chip"><b>0</b> servers</span>
-      <span class="chip"><b>0</b> accounts</span>
-      <span class="chip"><b>No</b> drive caps</span>
-      <span class="chip">Free to track, <b>forever</b></span>
-    </div>
-    <div class="cta-row">
-      <a class="btn btn-solid" href="#pricing">See pricing</a>
-      <a class="btn btn-ghost" href="#how">How it works</a>
-    </div>
-    <p class="fineprint">iOS 17 or later · First month of Pro free · Cancel any time</p>
+  <section class="hero">
+    <div class="glow glow-a"></div>
+    <div class="glow glow-b"></div>
+    <div class="wrap inner">
+      <span class="eyebrow">DriveSnap · iPhone</span>
+      <h1>A mileage log that<br><span class="hl">never leaves</span> your phone</h1>
+      <p class="lede">DriveSnap notices when you drive, records the trip, and files it. You classify it later with one swipe. Nothing is uploaded, because there is nowhere to upload it to.</p>
+      <div class="chips">
+        <span class="chip"><b>0</b> servers</span>
+        <span class="chip"><b>0</b> accounts</span>
+        <span class="chip"><b>No</b> drive caps</span>
+        <span class="chip">Free to track, <b>forever</b></span>
+      </div>
+      <div class="actions">
+        <a class="btn btn-accent" href="#pricing">See pricing</a>
+        <a class="btn btn-ghost" href="#how">How it works</a>
+      </div>
+      <p class="assure">iOS 17 or later · First month of Pro free · Cancel any time</p>
 
-    <div class="shots reveal">
-      <img src="../assets/drivesnap-2.png" alt="Classifying a drive as business or personal with one swipe" loading="lazy">
-      <img src="../assets/drivesnap-1.png" alt="DriveSnap home screen showing the month's deductible total" loading="lazy">
-      <img src="../assets/drivesnap-3.png" alt="The year-end tax report with a CSV export" loading="lazy">
+      <div class="shots reveal">
+        <img src="../assets/drivesnap-2.png" alt="Classifying a drive as business or personal with one swipe" loading="lazy">
+        <img src="../assets/drivesnap-1.png" alt="DriveSnap home screen showing the month's deductible total" loading="lazy">
+        <img src="../assets/drivesnap-3.png" alt="The year-end tax report with a CSV export" loading="lazy">
+      </div>
     </div>
   </section>
-</div>
 
-<!-- Where a SaaS template puts client logos. We have no clients yet, so this
-     says what the app actually works with instead of inventing social proof. -->
-<div class="strip">
-  <p class="kicker label"><span class="rule"></span>Works with what you already use</p>
-  <div class="marquee">
-    <span>Apple Maps</span><span>·</span><span>Numbers</span><span>·</span><span>Excel</span><span>·</span>
-    <span>Google Sheets</span><span>·</span><span>IRS Schedule C</span><span>·</span><span>HMRC self assessment</span><span>·</span>
-    <span>Your accountant</span><span>·</span><span>Files</span><span>·</span><span>iCloud Drive</span><span>·</span>
-    <span>Apple Maps</span><span>·</span><span>Numbers</span><span>·</span><span>Excel</span><span>·</span>
-    <span>Google Sheets</span><span>·</span><span>IRS Schedule C</span><span>·</span><span>HMRC self assessment</span><span>·</span>
-    <span>Your accountant</span><span>·</span><span>Files</span><span>·</span><span>iCloud Drive</span><span>·</span>
+  <div class="wrap marquee-wrap" style="margin-top:88px">
+    <div class="marquee">
+      <span>Apple Maps</span><span>·</span><span>Numbers</span><span>·</span><span>Excel</span><span>·</span>
+      <span>Google Sheets</span><span>·</span><span>IRS Schedule C</span><span>·</span><span>HMRC self assessment</span><span>·</span>
+      <span>Your accountant</span><span>·</span><span>Files</span><span>·</span><span>iCloud Drive</span><span>·</span>
+      <span>Apple Maps</span><span>·</span><span>Numbers</span><span>·</span><span>Excel</span><span>·</span>
+      <span>Google Sheets</span><span>·</span><span>IRS Schedule C</span><span>·</span><span>HMRC self assessment</span><span>·</span>
+      <span>Your accountant</span><span>·</span><span>Files</span><span>·</span><span>iCloud Drive</span><span>·</span>
+    </div>
   </div>
-</div>
 
-<div class="wrap">
-
-  <section class="band reveal">
-    <div class="head-split">
-      <div>
-        <p class="kicker"><span class="rule"></span>Built for the actual job</p>
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">Built for the actual job</span>
         <h2>Everything a tax log needs.<br>Nothing that phones home.</h2>
       </div>
-      <p class="sub" style="margin:0;max-width:38ch">Three things do the work. The rest of the app stays out of the way.</p>
-    </div>
-    <div class="features">
-      <div class="feat wide">
-        <img src="../assets/drivesnap-1.png" alt="DriveSnap home screen" loading="lazy">
-        <div>
-          <p class="ico kicker">01 · Automatic</p>
-          <h3>Drives log themselves</h3>
-          <p>No timer to start, no trip to forget. DriveSnap notices movement, measures the distance, draws the route, and files the trip while your phone is in your pocket.</p>
+      <div class="features">
+        <div class="card feat wide reveal">
+          <img src="../assets/drivesnap-1.png" alt="DriveSnap home screen" loading="lazy">
+          <div>
+            <p class="tag">01 · Automatic</p>
+            <h3>Drives log themselves</h3>
+            <p>No timer to start, no trip to forget. DriveSnap notices movement, measures the distance, draws the route, and files the trip while your phone is in your pocket.</p>
+          </div>
+        </div>
+        <div class="card feat reveal">
+          <p class="tag">02 · One swipe</p>
+          <h3>Business or personal</h3>
+          <p>Each drive becomes a card with the money already worked out. Swipe right or left. Ten seconds a week.</p>
+        </div>
+        <div class="card feat reveal">
+          <p class="tag">03 · Work hours</p>
+          <h3>Or don't swipe at all</h3>
+          <p>Set your working hours and drives inside them classify themselves. Each one is marked so you can check it before filing.</p>
+        </div>
+        <div class="card feat wide reveal">
+          <img src="../assets/drivesnap-3.png" alt="Tax report screen" loading="lazy">
+          <div>
+            <p class="tag">04 · Tax time</p>
+            <h3>A report your accountant accepts</h3>
+            <p>Every drive dated, categorised, rated and totalled, exported as a CSV. The rate is stamped onto each drive when recorded, so changing it next year never rewrites a year you already filed.</p>
+          </div>
         </div>
       </div>
-      <div class="feat">
-        <p class="ico kicker">02 · One swipe</p>
-        <h3>Business or personal</h3>
-        <p>Each drive becomes a card with the money already worked out. Swipe right or left. Ten seconds a week.</p>
+    </div>
+  </section>
+
+  <section class="section" id="how" style="background:var(--bg-2);border-block:1px solid var(--line)">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">From install to filed</span>
+        <h2>Four steps, then it runs itself</h2>
       </div>
-      <div class="feat">
-        <p class="ico kicker">03 · Work hours</p>
-        <h3>Or don't swipe at all</h3>
-        <p>Set your working hours and drives inside them classify themselves. Each one is marked so you can check it before filing.</p>
-      </div>
-      <div class="feat wide">
-        <img src="../assets/drivesnap-3.png" alt="Tax report screen" loading="lazy">
-        <div>
-          <p class="ico kicker">04 · Tax time</p>
-          <h3>A report your accountant accepts</h3>
-          <p>Every drive dated, categorised, rated and totalled, exported as a CSV. The rate is stamped onto each drive when recorded, so changing it next year never rewrites a year you already filed.</p>
-        </div>
+      <div style="margin-top:34px">
+        <div class="stepline reveal"><div class="n">01</div><div><h3>Drive normally</h3><p>Turn on auto-detection once. DriveSnap uses the same background location and motion services your phone already runs, rather than holding GPS open.</p></div></div>
+        <div class="stepline reveal"><div class="n">02</div><div><h3>Swipe once a week</h3><p>Open the Classify tab and clear the queue. The deduction for each drive is shown before you decide, so you are never guessing what a trip was worth.</p></div></div>
+        <div class="stepline reveal"><div class="n">03</div><div><h3>Let the clock help</h3><p>Turn on work hours and most of the queue disappears. Anything decided by a rule is flagged, and the report tells you how many there were.</p></div></div>
+        <div class="stepline reveal"><div class="n">04</div><div><h3>Export at year end</h3><p>One CSV, one summary. Send it to your accountant or attach it to your return. Keep a backup file so a lost phone is never a lost year.</p></div></div>
       </div>
     </div>
   </section>
 
-  <section class="band reveal" id="how">
-    <p class="kicker"><span class="rule"></span>From install to filed</p>
-    <h2>Four steps, then it runs itself</h2>
-    <div class="steps">
-      <div class="stepline"><div class="n">01</div><div><h3>Drive normally</h3><p>Turn on auto-detection once. DriveSnap uses the same background location and motion services your phone already runs, rather than holding GPS open.</p></div></div>
-      <div class="stepline"><div class="n">02</div><div><h3>Swipe once a week</h3><p>Open the Classify tab and clear the queue. The deduction for each drive is shown before you decide, so you are never guessing what a trip was worth.</p></div></div>
-      <div class="stepline"><div class="n">03</div><div><h3>Let the clock help</h3><p>Turn on work hours and most of the queue disappears. Anything decided by a rule is flagged, and the report tells you how many there were.</p></div></div>
-      <div class="stepline"><div class="n">04</div><div><h3>Export at year end</h3><p>One CSV, one summary. Send it to your accountant or attach it to your return. Keep a backup file so a lost phone is never a lost year.</p></div></div>
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head center reveal">
+        <span class="eyebrow">The numbers that matter</span>
+        <h2>What it does, precisely</h2>
+      </div>
+      <div class="grid g-4" style="margin-top:46px">
+        <div class="card reveal"><div style="font-size:2.5rem;font-weight:600;color:var(--accent);letter-spacing:-.03em;line-height:1">0</div><p style="margin-top:12px">Servers. There is no backend to receive your drives, so there is nothing to breach.</p></div>
+        <div class="card reveal"><div style="font-size:2.5rem;font-weight:600;color:var(--accent);letter-spacing:-.03em;line-height:1">∞</div><p style="margin-top:12px">Free drives. Others stop logging at around 40 a month.</p></div>
+        <div class="card reveal"><div style="font-size:2.5rem;font-weight:600;color:var(--accent);letter-spacing:-.03em;line-height:1">$0.70</div><p style="margin-top:12px">Default US rate per business mile — editable, in your own currency and unit.</p></div>
+        <div class="card reveal"><div style="font-size:2.5rem;font-weight:600;color:var(--accent);letter-spacing:-.03em;line-height:1">30 days</div><p style="margin-top:12px">A deleted drive stays recoverable, in case you swipe the wrong way.</p></div>
+      </div>
     </div>
   </section>
 
-  <section class="band reveal">
-    <p class="kicker"><span class="rule"></span>The numbers that matter</p>
-    <h2>What it does, precisely</h2>
-    <div class="metrics">
-      <div class="metric"><div class="big">0</div><p class="cap">Servers. There is no backend to receive your drives, so there is nothing to breach.</p></div>
-      <div class="metric"><div class="big">∞</div><p class="cap">Free drives. Others stop logging at around 40 a month.</p></div>
-      <div class="metric"><div class="big">$0.70</div><p class="cap">Default US rate per business mile — editable, in your own currency and unit.</p></div>
-      <div class="metric"><div class="big">30 days</div><p class="cap">A deleted drive stays recoverable, in case you swipe the wrong way.</p></div>
+  <section class="section" id="why" style="background:var(--bg-2);border-block:1px solid var(--line)">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">Why people switch</span>
+        <h2>No drive caps. Ever.</h2>
+        <p>Most mileage apps stop logging free users at around 40 drives a month. Hit that mid-month and your log has a hole in it — which makes it useless for tax at exactly the moment it matters.</p>
+      </div>
+      <table class="cmp reveal">
+        <thead><tr><th>&nbsp;</th><th style="color:var(--accent)">DriveSnap</th><th>Typical mileage app</th></tr></thead>
+        <tbody>
+          <tr><td>Free drives</td><td class="ours">Unlimited</td><td class="them">~40 a month</td></tr>
+          <tr><td>Where your location history lives</td><td class="ours">Only on your iPhone</td><td class="them">Their servers</td></tr>
+          <tr><td>Account required</td><td class="ours">Never</td><td class="them">Yes</td></tr>
+          <tr><td>Yearly price</td><td class="ours">$29.99</td><td class="them">$59.99 – $119.99</td></tr>
+        </tbody>
+      </table>
+      <p class="note">Competitor figures are US list prices published on the App Store, September 2026.</p>
     </div>
   </section>
 
-  <section class="band reveal" id="why">
-    <p class="kicker"><span class="rule"></span>Why people switch</p>
-    <h2>No drive caps. Ever.</h2>
-    <p class="sub">Most mileage apps stop logging free users at around 40 drives a month. Hit that mid-month and your log has a hole in it — which makes it useless for tax at exactly the moment it matters.</p>
-    <table class="cmp">
-      <thead><tr><th>&nbsp;</th><th>DriveSnap</th><th>Typical mileage app</th></tr></thead>
-      <tbody>
-        <tr><td>Free drives</td><td class="ours">Unlimited</td><td class="them">~40 a month</td></tr>
-        <tr><td>Where your location history lives</td><td class="ours">Only on your iPhone</td><td class="them">Their servers</td></tr>
-        <tr><td>Account required</td><td class="ours">Never</td><td class="them">Yes</td></tr>
-        <tr><td>Yearly price</td><td class="ours">$29.99</td><td class="them">$59.99 – $119.99</td></tr>
-      </tbody>
-    </table>
-    <p class="note">Competitor figures are US list prices published on the App Store, September 2026.</p>
-  </section>
-
-  <section class="band reveal">
-    <div class="showcase">
+  <section class="section">
+    <div class="wrap showcase reveal">
       <div>
-        <p class="kicker"><span class="rule"></span>Privacy, stated plainly</p>
-        <h2>It never leaves your phone</h2>
-        <p class="sub">A mileage tracker knows everywhere you go. Most of them send that somewhere. DriveSnap has no account to create and no backend to receive anything — not as a promise, but as a fact about how it is built.</p>
-        <p class="sub">The one exception is honest: drawing a route asks Apple for map tiles, which tells Apple roughly where a drive was. Your drives are still never uploaded, and turning maps off in Settings means the app makes no network requests at all.</p>
+        <span class="eyebrow">Privacy, stated plainly</span>
+        <h2 style="font-size:clamp(1.9rem,3.6vw,2.7rem);margin:18px 0 0">It never leaves your phone</h2>
+        <p style="margin-top:16px">A mileage tracker knows everywhere you go. Most of them send that somewhere. DriveSnap has no account to create and no backend to receive anything — not as a promise, but as a fact about how it is built.</p>
+        <p style="margin-top:14px">The one exception is honest: drawing a route asks Apple for map tiles, which tells Apple roughly where a drive was. Your drives are still never uploaded, and turning maps off in Settings means the app makes no network requests at all.</p>
       </div>
       <img src="../assets/drivesnap-2.png" alt="A drive with its route drawn on the map" loading="lazy">
     </div>
   </section>
 
-  <section class="band reveal" id="pricing">
-    <p class="kicker"><span class="rule"></span>Pricing</p>
-    <h2>Pay when the data is worth money</h2>
-    <p class="sub">Recording drives is the part you need every day, so it is free and uncapped. Pro unlocks the export — the moment a year of driving turns into a number on a tax return.</p>
-    <div class="toggle" role="group" aria-label="Billing period">
-      <button id="btn-year" class="on" aria-pressed="true">Yearly</button>
-      <button id="btn-life" aria-pressed="false">Lifetime</button>
-    </div>
-    <div class="tiers">
-      <div class="tier">
-        <p class="name">Free</p><p class="amt">$0</p><p class="per">forever</p>
-        <ul><li>Unlimited automatic drive tracking</li><li>One-swipe classifying</li><li>Work-hours auto-classification</li><li>Route maps on every drive</li><li>Full history and monthly totals</li></ul>
-      </div>
-      <div class="tier best">
-        <span class="badge">Most people</span>
-        <p class="name">Pro</p>
-        <p class="amt" id="pro-amt">$29.99</p><p class="per" id="pro-per">a year · first month free</p>
-        <ul><li>Everything in Free</li><li>CSV export for your accountant</li><li>Year-end tax report</li><li>Backup and restore</li></ul>
-      </div>
-      <div class="tier">
-        <p class="name">What you never pay for</p><p class="amt">$0</p><p class="per">and never will</p>
-        <ul><li>No per-drive fees</li><li>No charge to see your own history</li><li>No upsell to unlock last year</li><li>No ads, ever</li></ul>
-      </div>
-    </div>
-    <p class="note">Prices are shown in your own currency on the purchase screen. A subscription renews unless cancelled at least 24 hours before the period ends, and is managed in your Apple Account.</p>
-  </section>
-
-  <section class="band reveal" id="faq">
-    <p class="kicker"><span class="rule"></span>Questions</p>
-    <h2>Straight answers</h2>
-
-    <details class="faq"><summary>Does DriveSnap upload my location?</summary>
-      <p>No. Drives are detected, measured and stored on your iPhone. There is no account and no DriveSnap server. The only network request the app can make is to Apple's Maps, for the tiles behind a route thumbnail — and that can be switched off in Settings, after which the app makes no network requests at all.</p></details>
-
-    <details class="faq"><summary>Is there a limit on free drives?</summary>
-      <p>No. Tracking, classifying and browsing your full history are free and unlimited, permanently. Pro unlocks the CSV export and the year-end tax report.</p></details>
-
-    <details class="faq"><summary>What mileage rate does it use?</summary>
-      <p>You set the rate yourself, in your own currency, in miles or kilometres. It defaults to the US standard business rate of $0.70 per mile. The rate in force is stamped onto each drive when it is recorded, so changing it next year never rewrites a tax year you have already filed.</p></details>
-
-    <details class="faq"><summary>Can I use it for a CRA logbook in Canada?</summary>
-      <p>Only if you are an employee claiming a per-kilometre reimbursement. Self-employed Canadians must use the actual-expense method — business kilometres divided by total kilometres, applied to real vehicle costs — which needs odometer readings at the start and end of the year. DriveSnap does not do that. We would rather tell you than take the download.</p></details>
-
-    <details class="faq"><summary>What happens to my drives if I lose my phone?</summary>
-      <p>DriveSnap saves a complete backup file with every drive, its route, and the rate it was costed at. Restoring only ever adds drives — it never replaces what is already there. There is no cloud sync, so keeping that backup somewhere safe is worth doing.</p></details>
-
-    <details class="faq"><summary>Does it drain the battery?</summary>
-      <p>It uses the significant-location and motion services the system already runs for other apps, rather than holding GPS open continuously. With auto-detection off, DriveSnap uses no location services at all and you add drives by hand.</p></details>
-  </section>
-</div>
-
-  <section class="close reveal">
+  <section class="section" id="pricing" style="background:var(--bg-2);border-block:1px solid var(--line)">
     <div class="wrap">
-      <h2>Stop guessing what your driving was worth.</h2>
-      <div class="cta-row">
-        <a class="btn btn-solid" href="#pricing">See pricing</a>
+      <div class="section-head center reveal">
+        <span class="eyebrow">Pricing</span>
+        <h2>Pay when the data is worth money</h2>
+        <p>Recording drives is the part you need every day, so it is free and uncapped. Pro unlocks the export — the moment a year of driving turns into a number on a tax return.</p>
+        <div class="toggle" role="group" aria-label="Billing period">
+          <button id="btn-year" class="on" aria-pressed="true">Yearly</button>
+          <button id="btn-life" aria-pressed="false">Lifetime</button>
+        </div>
+      </div>
+      <div class="grid g-3" style="margin-top:34px">
+        <div class="card tier reveal">
+          <p class="name">Free</p><p class="amt">$0</p><p class="per">forever</p>
+          <ul><li>Unlimited automatic drive tracking</li><li>One-swipe classifying</li><li>Work-hours auto-classification</li><li>Route maps on every drive</li><li>Full history and monthly totals</li></ul>
+        </div>
+        <div class="card tier best reveal">
+          <span class="badge">Most people</span>
+          <p class="name">Pro</p>
+          <p class="amt" id="pro-amt">$29.99</p><p class="per" id="pro-per">a year · first month free</p>
+          <ul><li>Everything in Free</li><li>CSV export for your accountant</li><li>Year-end tax report</li><li>Backup and restore</li></ul>
+        </div>
+        <div class="card tier reveal">
+          <p class="name">What you never pay for</p><p class="amt">$0</p><p class="per">and never will</p>
+          <ul><li>No per-drive fees</li><li>No charge to see your own history</li><li>No upsell to unlock last year</li><li>No ads, ever</li></ul>
+        </div>
+      </div>
+      <p class="note">Prices are shown in your own currency on the purchase screen. A subscription renews unless cancelled at least 24 hours before the period ends, and is managed in your Apple Account.</p>
+    </div>
+  </section>
+
+  <section class="section" id="faq">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">Questions</span>
+        <h2>Straight answers</h2>
+      </div>
+      <div style="margin-top:30px">
+        <details class="faq"><summary>Does DriveSnap upload my location?</summary>
+          <p>No. Drives are detected, measured and stored on your iPhone. There is no account and no DriveSnap server. The only network request the app can make is to Apple's Maps, for the tiles behind a route thumbnail — and that can be switched off in Settings, after which the app makes no network requests at all.</p></details>
+        <details class="faq"><summary>Is there a limit on free drives?</summary>
+          <p>No. Tracking, classifying and browsing your full history are free and unlimited, permanently. Pro unlocks the CSV export and the year-end tax report.</p></details>
+        <details class="faq"><summary>What mileage rate does it use?</summary>
+          <p>You set the rate yourself, in your own currency, in miles or kilometres. It defaults to the US standard business rate of $0.70 per mile. The rate in force is stamped onto each drive when it is recorded, so changing it next year never rewrites a tax year you have already filed.</p></details>
+        <details class="faq"><summary>Can I use it for a CRA logbook in Canada?</summary>
+          <p>Only if you are an employee claiming a per-kilometre reimbursement. Self-employed Canadians must use the actual-expense method — business kilometres divided by total kilometres, applied to real vehicle costs — which needs odometer readings at the start and end of the year. DriveSnap does not do that. We would rather tell you than take the download.</p></details>
+        <details class="faq"><summary>What happens to my drives if I lose my phone?</summary>
+          <p>DriveSnap saves a complete backup file with every drive, its route, and the rate it was costed at. Restoring only ever adds drives — it never replaces what is already there. There is no cloud sync, so keeping that backup somewhere safe is worth doing.</p></details>
+        <details class="faq"><summary>Does it drain the battery?</summary>
+          <p>It uses the significant-location and motion services the system already runs for other apps, rather than holding GPS open continuously. With auto-detection off, DriveSnap uses no location services at all and you add drives by hand.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="text-align:center;position:relative;overflow:hidden">
+    <div class="glow glow-a" style="width:660px;height:380px;top:10px;left:50%;transform:translateX(-50%)"></div>
+    <div class="wrap reveal" style="position:relative;z-index:1">
+      <h2 style="font-size:clamp(2rem,5vw,3.2rem)">Stop guessing what your<br>driving was worth.</h2>
+      <div class="actions">
+        <a class="btn btn-accent" href="#pricing">See pricing</a>
         <a class="btn btn-ghost" href="../">More from Dune Apps</a>
       </div>
-      <p class="fineprint">Free to track, forever · No account · Your drives stay on your phone</p>
+      <p class="assure">Free to track, forever · No account · Your drives stay on your phone</p>
     </div>
   </section>
 </main>
 
-<footer class="fat">
-  <div class="wrap cols">
-    <div>
-      <a class="brand" href="../" style="margin-bottom:14px"><span class="mark" aria-hidden="true"></span><span>Dune Apps</span></a>
-      <p class="blurb">Small, careful iPhone tools that run entirely on your device — no servers, no accounts, nothing collected.</p>
+<footer>
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <a class="brand" href="../"><span class="mark"></span><span>Dune Apps</span></a>
+        <p style="margin-top:16px;max-width:34ch">Small, careful iPhone tools that run entirely on your device — no servers, no accounts, nothing collected.</p>
+      </div>
+      <div><h4>Apps</h4><a href="/drivesnap/">DriveSnap</a><a href="../#apps">Receipt Snap</a></div>
+      <div><h4>Writing</h4>
+        <a href="../posts/the-bug-that-would-have-shipped.html">The bug that would have shipped</a>
+        <a href="../posts/receipt-apps-pay-you-pennies.html">Why receipt apps pay you pennies</a></div>
+      <div><h4>DriveSnap</h4>
+        <a href="https://github.com/influencermetric-cloud/drivesnap-support">Support</a>
+        <a href="https://github.com/influencermetric-cloud/drivesnap-support/blob/main/PRIVACY.md">Privacy policy</a>
+        <a href="#faq">FAQ</a></div>
     </div>
-    <div><h4>Apps</h4>
-      <a href="/drivesnap/">DriveSnap</a><a href="../#apps">Receipt Snap</a></div>
-    <div><h4>Writing</h4>
-      <a href="../#writing">All essays</a>
-      <a href="../posts/the-bug-that-would-have-shipped.html">The bug that would have shipped</a>
-      <a href="../posts/receipt-apps-pay-you-pennies.html">Why receipt apps pay you pennies</a></div>
-    <div><h4>DriveSnap</h4>
-      <a href="https://github.com/influencermetric-cloud/drivesnap-support">Support</a>
-      <a href="https://github.com/influencermetric-cloud/drivesnap-support/blob/main/PRIVACY.md">Privacy policy</a>
-      <a href="#faq">FAQ</a></div>
-  </div>
-  <div class="wrap" style="margin-top:34px">
-    <p class="disclosure">This website uses Google Analytics to see which pages help people. The apps themselves collect nothing at all.</p>
+    <p class="disclosure">Dune Apps · built in Dubai. This website uses Google Analytics to see which pages help people. The apps themselves collect nothing at all.</p>
   </div>
 </footer>
 
 <script>
-  // Nav gains a rule once you leave the hero.
-  const nav = document.getElementById('navwrap');
-  addEventListener('scroll', () => nav.classList.toggle('stuck', scrollY > 12), { passive: true });
+  const hdr = document.getElementById('hdr');
+  addEventListener('scroll', () => hdr.classList.toggle('stuck', scrollY > 8), { passive: true });
 
-  // Pricing toggle.
   const amt = document.getElementById('pro-amt'), per = document.getElementById('pro-per');
   const yr = document.getElementById('btn-year'), lf = document.getElementById('btn-life');
-  function pick(which) {
-    const yearly = which === 'year';
+  function pick(yearly) {
     amt.textContent = yearly ? '$29.99' : '$79.99';
     per.textContent = yearly ? 'a year · first month free' : 'once · nothing renews';
     yr.classList.toggle('on', yearly);  yr.setAttribute('aria-pressed', yearly);
     lf.classList.toggle('on', !yearly); lf.setAttribute('aria-pressed', !yearly);
   }
-  yr.onclick = () => pick('year');
-  lf.onclick = () => pick('life');
+  yr.onclick = () => pick(true);
+  lf.onclick = () => pick(false);
 
-  // Fade-up reveals, reduced-motion guarded.
   if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    const io = new IntersectionObserver((es) => {
-      es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
-    }, { rootMargin: '0px 0px -8% 0px' });
+    const io = new IntersectionObserver(es => es.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    }), { rootMargin: '0px 0px -8% 0px' });
     document.querySelectorAll('.reveal').forEach(el => io.observe(el));
-  } else {
-    document.querySelectorAll('.reveal').forEach(el => el.classList.add('in'));
-  }
+  } else document.querySelectorAll('.reveal').forEach(el => el.classList.add('in'));
 </script>
 </body>
 </html>
