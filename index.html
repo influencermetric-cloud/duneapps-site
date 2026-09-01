@@ -10,121 +10,216 @@
   gtag('js', new Date());
   gtag('config', 'G-BTY3LVJMBB', { anonymize_ip: true });
 </script>
+<script>document.documentElement.classList.add('js')</script>
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
 <title>Dune Apps — private software, built quietly</title>
-<meta name="description" content="Guides on receipts, expenses, VAT and private software — plus the tools that come out of them. No servers, no accounts, no data collection.">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%234D7DFE'/><path d='M20 62c10-14 18-14 28 0s18 14 28 0' stroke='white' stroke-width='7' fill='none' stroke-linecap='round'/></svg>">
+<meta name="description" content="Small, careful iPhone tools that run entirely on your device — no servers, no accounts, nothing collected. Plus essays on receipts, expenses, VAT and building private software.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Cdefs%3E%3CclipPath id='d'%3E%3Ccircle cx='20' cy='20' r='17'/%3E%3C/clipPath%3E%3C/defs%3E%3Ccircle cx='20' cy='20' r='17' fill='%23F7F3EB' stroke='%23221E15' stroke-width='2.4'/%3E%3Cg clip-path='url(%23d)'%3E%3Ccircle cx='13.5' cy='12.5' r='4.6' fill='%23C05B2B'/%3E%3Cpath d='M14 39 L39 39 L39 24.5 C 32.5 25.2 26.5 28 21.5 32.5 L14 39 Z' fill='%23BFB197'/%3E%3Cpath d='M1 39 L1 28.6 C 9.2 27.9 15.8 25.3 20.6 20.9 C 21.7 19.9 22.9 19.9 23.9 21 C 27.6 24.9 32.6 28.3 39 29.9 L39 39 Z' fill='%23221E15'/%3E%3C/g%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..620;1,9..144,300..620&family=Newsreader:ital,opsz,wght@0,6..72,400..600;1,6..72,400..600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="canonical" href="https://duneapps.com/">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://duneapps.com/">
 <meta property="og:site_name" content="Dune Apps">
-<meta property="og:title" content="Dune Apps — private software and how it's built">
-<meta property="og:description" content="Guides on receipts, expenses, VAT and private software — plus the tools that come out of them. No servers, no accounts, no data collection.">
+<meta property="og:title" content="Dune Apps — private software, built quietly">
+<meta property="og:description" content="Small, careful iPhone tools that run entirely on your device — no servers, no accounts, nothing collected.">
 <meta property="og:image" content="https://duneapps.com/og.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Dune Apps — private software and how it's built">
-<meta name="twitter:description" content="Guides on receipts, expenses, VAT and private software. No servers, no accounts, nothing collected.">
+<meta name="twitter:title" content="Dune Apps — private software, built quietly">
+<meta name="twitter:description" content="Small, careful iPhone tools that run entirely on your device. No servers, no accounts, nothing collected.">
 <meta name="twitter:image" content="https://duneapps.com/og.png">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Dune Apps","url":"https://duneapps.com/","logo":"https://duneapps.com/og.png","description":"Private software for iPhone and Mac. No servers, no accounts, no data collection.","foundingLocation":{"@type":"Place","name":"Dubai, United Arab Emirates"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Dune Apps","url":"https://duneapps.com/","logo":"https://duneapps.com/og.png","description":"Private software for iPhone. No servers, no accounts, no data collection.","foundingLocation":{"@type":"Place","name":"Dubai, United Arab Emirates"}}</script>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<header>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site">
   <div class="wrap bar">
-    <a class="brand" href="/">
-      <span class="mark" aria-hidden="true"></span>
-      <span>Dune Apps</span>
+    <a class="brand" href="/" aria-label="Dune Apps home">
+      <svg width="34" height="34" viewBox="0 0 40 40" aria-hidden="true">
+        <defs><clipPath id="dm-h"><circle cx="20" cy="20" r="17"/></clipPath></defs>
+        <circle cx="20" cy="20" r="17" fill="none" stroke="#221E15" stroke-width="1.8"/>
+        <g clip-path="url(#dm-h)">
+          <circle cx="13.5" cy="12.5" r="4.4" fill="#C05B2B"/>
+          <path d="M14 39 L39 39 L39 24.5 C 32.5 25.2 26.5 28 21.5 32.5 L14 39 Z" fill="#BFB197"/>
+          <path d="M1 39 L1 28.6 C 9.2 27.9 15.8 25.3 20.6 20.9 C 21.7 19.9 22.9 19.9 23.9 21 C 27.6 24.9 32.6 28.3 39 29.9 L39 39 Z" fill="#221E15"/>
+        </g>
+      </svg>
+      <span class="wordmark">Dune&nbsp;Apps</span>
     </a>
-    <nav>
-      <a href="#guides">Guides</a>
-      <a href="#tools">Tools</a>
+    <nav class="site-nav" aria-label="Main">
+      <a href="#apps">Apps</a>
+      <a href="#writing">Writing</a>
     </nav>
   </div>
 </header>
 
-<main>
-  <section class="wrap intro">
-    <h1>Answers about receipts, expenses and private software.</h1>
-    <p class="lede">Practical guides, written from building the tools. Everything here runs on your own device — no servers, no accounts, nothing collected.</p>
-  </section>
+<main id="main">
+  <section class="wrap hero">
+    <p class="kicker reveal">Independent software studio · Dubai</p>
+    <h1 class="reveal">Software that minds its own business.</h1>
+    <p class="lede reveal">Dune Apps makes small, careful iPhone tools that run entirely on your device — <strong>no servers, no accounts, nothing collected.</strong> The essays here are written from building them.</p>
 
-  <section class="wrap" id="guides">
-    <div class="row-head">
-      <h2>Latest guides</h2>
-    </div>
-
-    <div class="grid">
-      <a class="entry featured" href="posts/the-bug-that-would-have-shipped.html">
-        <span class="tag">Building</span>
-        <span class="entry-title">The bug that would have shipped</span>
-        <span class="entry-excerpt">A mileage tracker that silently recorded zero distance for city driving — and four separate ways the same app could have put a wrong number on someone's tax return.</span>
-        <span class="entry-meta">31 Aug 2026 · 7 min read</span>
-      </a>
-
-      <a class="entry" href="posts/receipt-apps-pay-you-pennies.html">
-        <span class="tag">Privacy</span>
-        <span class="entry-title">Receipt apps pay you pennies because your data is worth dollars</span>
-        <span class="entry-excerpt">The biggest receipt apps in the App Store are not expense trackers. They are purchase-data companies.</span>
-        <span class="entry-meta">30 Aug 2026 · 6 min read</span>
-      </a>
-
-      <div class="entry soon">
-        <span class="tag">VAT &amp; tax</span>
-        <span class="entry-title">How to keep VAT-ready receipt records in the UAE</span>
-        <span class="entry-excerpt">What the FTA expects you to hold, for how long, and the simplest way to keep it without a filing cabinet.</span>
-        <span class="entry-meta">In progress</span>
-      </div>
-
-      <div class="entry soon">
-        <span class="tag">How-to</span>
-        <span class="entry-title">Scanning receipts without sending them to anyone</span>
-        <span class="entry-excerpt">On-device text recognition explained plainly, and why it now works well enough to trust with your money.</span>
-        <span class="entry-meta">In progress</span>
-      </div>
-
-
+    <div class="horizon reveal" aria-hidden="true">
+      <svg viewBox="0 0 1008 140" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMax slice">
+        <circle cx="836" cy="40" r="17" stroke="#C05B2B" stroke-width="1.5"/>
+        <path d="M0 112 C 110 112 210 66 306 62 C 344 88 392 102 452 106 C 560 113 660 84 744 82 C 800 96 900 108 1008 108" stroke="#CFC5AE" stroke-width="1.25"/>
+        <path d="M0 133 C 140 133 268 96 376 86 C 412 108 470 122 556 126 C 680 131 800 108 886 106 C 930 118 970 126 1008 128" stroke="#221E15" stroke-width="1.5"/>
+      </svg>
     </div>
   </section>
 
-  <section class="wrap" id="tools">
-    <div class="row-head">
-      <h2>Tools</h2>
-      <p class="row-sub">Built from the problems in the guides above.</p>
+  <section id="apps" class="wrap section">
+    <div class="section-head reveal">
+      <h2 class="label">The apps</h2>
+      <p class="section-sub">Two so far. Each one earns its place.</p>
     </div>
 
-    <div class="tools">
-      <a class="tool" href="#">
-        <span class="tool-icon" aria-hidden="true">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4D7DFE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8V5a2 2 0 0 1 2-2h3"/><path d="M16 3h3a2 2 0 0 1 2 2v3"/><path d="M21 16v3a2 2 0 0 1-2 2h-3"/><path d="M8 21H5a2 2 0 0 1-2-2v-3"/><path d="M6 12h12"/></svg>
-        </span>
-        <span class="tool-body">
-          <span class="tool-name">Receipt Snap <span class="pill">iPhone</span></span>
-          <span class="tool-desc">Scan a receipt, get merchant, total and tax in about two seconds. All on the phone.</span>
-        </span>
+    <div class="apps">
+      <article class="app reveal">
+        <div class="app-top">
+          <span class="glyph" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#A0481A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8V5a2 2 0 0 1 2-2h3"/><path d="M16 3h3a2 2 0 0 1 2 2v3"/><path d="M21 16v3a2 2 0 0 1-2 2h-3"/><path d="M8 21H5a2 2 0 0 1-2-2v-3"/><path d="M6 12h12"/></svg>
+          </span>
+          <div>
+            <h3>Receipt Snap</h3>
+            <span class="status">App Store · arriving soon</span>
+          </div>
+        </div>
+        <p>Point the camera at a receipt. Merchant, total and tax are read on the phone in about two seconds — and they never leave it.</p>
+        <span class="meta">iPhone · On-device OCR · Free</span>
+      </article>
+
+      <article class="app reveal">
+        <div class="app-top">
+          <span class="glyph" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#A0481A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 17h14l-1.5-5a2 2 0 0 0-1.9-1.5H8.4A2 2 0 0 0 6.5 12z"/><circle cx="8" cy="17" r="2"/><circle cx="16" cy="17" r="2"/></svg>
+          </span>
+          <div>
+            <h3>DriveSnap</h3>
+            <span class="status">In TestFlight</span>
+          </div>
+        </div>
+        <p>Detects your drives, sorts work from personal, and adds up what you can claim. Your location history stays on the phone.</p>
+        <span class="meta">iPhone · Auto drive detection · Free</span>
+      </article>
+    </div>
+  </section>
+
+  <section id="writing" class="wrap section">
+    <div class="section-head reveal">
+      <h2 class="label">Writing</h2>
+      <p class="section-sub">Notes from the workbench — what building private software actually looks like.</p>
+    </div>
+
+    <div class="index">
+      <a class="essay featured reveal" href="posts/the-bug-that-would-have-shipped.html">
+        <span class="meta">31 Aug 2026 · 7 min<span class="tag">Building</span></span>
+        <div>
+          <h3>The bug that would have shipped</h3>
+          <p class="excerpt">A mileage tracker that silently recorded zero distance for city driving — and four separate ways the same app could have put a wrong number on someone's tax return.</p>
+          <span class="more">Read the essay</span>
+        </div>
       </a>
 
-      <a class="tool" href="posts/the-bug-that-would-have-shipped.html">
-        <span class="tool-icon" aria-hidden="true">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4D7DFE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 17h14l-1.5-5a2 2 0 0 0-1.9-1.5H8.4A2 2 0 0 0 6.5 12z"/><circle cx="8" cy="17" r="2"/><circle cx="16" cy="17" r="2"/></svg>
-        </span>
-        <span class="tool-body">
-          <span class="tool-name">MileSnap <span class="pill">iPhone</span></span>
-          <span class="tool-desc">Logs the miles you drive for work, so you can claim them. Your location history never leaves the phone.</span>
-        </span>
+      <a class="essay reveal" href="posts/receipt-apps-pay-you-pennies.html">
+        <span class="meta">30 Aug 2026 · 6 min<span class="tag">Privacy</span></span>
+        <div>
+          <h3>Receipt apps pay you pennies because your data is worth dollars</h3>
+          <p class="excerpt">The biggest receipt apps in the App Store are not expense trackers. They are purchase-data companies.</p>
+          <span class="more">Read the essay</span>
+        </div>
       </a>
+
+      <div class="essay soon reveal">
+        <span class="meta">In progress<span class="tag">VAT &amp; tax</span></span>
+        <div>
+          <h3>How to keep VAT-ready receipt records in the UAE</h3>
+          <p class="excerpt">What the FTA expects you to hold, for how long, and the simplest way to keep it without a filing cabinet.</p>
+        </div>
+      </div>
+
+      <div class="essay soon reveal">
+        <span class="meta">In progress<span class="tag">How-to</span></span>
+        <div>
+          <h3>Scanning receipts without sending them to anyone</h3>
+          <p class="excerpt">On-device text recognition explained plainly, and why it now works well enough to trust with your money.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap section principles">
+    <div class="section-head reveal">
+      <h2 class="label">How these are built</h2>
+    </div>
+    <div class="principles-grid">
+      <div class="principle reveal">
+        <h3><span class="n">01</span>No servers</h3>
+        <p>There is no backend to breach and nowhere for your data to go. Everything is computed on the phone in your hand.</p>
+      </div>
+      <div class="principle reveal">
+        <h3><span class="n">02</span>No accounts</h3>
+        <p>Open the app and use it. Nothing to sign up for means nothing to leak, nothing to sell, and no password to forget.</p>
+      </div>
+      <div class="principle reveal">
+        <h3><span class="n">03</span>Nothing collected</h3>
+        <p>The App Store privacy label reads “Data Not Collected” — not as a promise, but because no code exists that could.</p>
+      </div>
     </div>
   </section>
 </main>
 
-<footer>
-  <div class="wrap">
-    <p>Dune Apps · built in Dubai · <a href="https://github.com/influencermetric-cloud/receiptsnap-support">Support</a></p>
-    <p class="disclosure">This website uses Google Analytics to see which pages help people. The apps themselves collect nothing at all.</p>
+<footer class="site">
+  <div class="wrap foot">
+    <div>
+      <div class="foot-brand">
+        <svg width="26" height="26" viewBox="0 0 40 40" aria-hidden="true">
+          <defs><clipPath id="dm-f"><circle cx="20" cy="20" r="17"/></clipPath></defs>
+          <circle cx="20" cy="20" r="17" fill="none" stroke="#221E15" stroke-width="1.8"/>
+          <g clip-path="url(#dm-f)">
+            <circle cx="13.5" cy="12.5" r="4.4" fill="#C05B2B"/>
+            <path d="M14 39 L39 39 L39 24.5 C 32.5 25.2 26.5 28 21.5 32.5 L14 39 Z" fill="#BFB197"/>
+            <path d="M1 39 L1 28.6 C 9.2 27.9 15.8 25.3 20.6 20.9 C 21.7 19.9 22.9 19.9 23.9 21 C 27.6 24.9 32.6 28.3 39 29.9 L39 39 Z" fill="#221E15"/>
+          </g>
+        </svg>
+        <span class="wordmark">Dune&nbsp;Apps</div>
+      </div>
+      <p style="margin-top:12px">Built by one person in Dubai.</p>
+      <p class="disclosure">This website uses Google Analytics to see which pages help people. The apps themselves collect nothing at all.</p>
+    </div>
+    <div class="cols">
+      <div class="col">
+        <span class="label">Apps</span>
+        <a href="#apps">Receipt Snap</a>
+        <a href="#apps">DriveSnap</a>
+      </div>
+      <div class="col">
+        <span class="label">Studio</span>
+        <a href="#writing">Writing</a>
+        <a href="https://github.com/influencermetric-cloud/receiptsnap-support">Support</a>
+      </div>
+    </div>
   </div>
 </footer>
+
+<script>
+(function () {
+  if (!('IntersectionObserver' in window)) {
+    document.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('in'); });
+    return;
+  }
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, { rootMargin: '0px 0px -8% 0px' });
+  document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
+})();
+</script>
 </body>
 </html>
