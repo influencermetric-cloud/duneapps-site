@@ -92,8 +92,8 @@ RS_BODY = f'''<section class="hero"><div class="wrap split">
     <h1>Your receipts, read on your phone and kept there</h1>
     <p class="lede">Point the camera at a receipt. Receipt Snap reads the merchant, date, total and tax in about two seconds, files it, and never sends it anywhere.</p>
     <div class="actions">
-      <a class="btn btn-primary" href="#how">How it works</a>
-      <a class="btn btn-dark" href="/posts/how-long-to-keep-receipts.html">How long to keep receipts</a>
+      <a class="btn btn-primary" href="https://apps.apple.com/app/id6806519870">Download — free</a>
+      <a class="btn btn-dark" href="#how">How it works</a>
     </div>
     <div class="assurances"><span>No account</span><span>0 servers</span><span>12 currencies</span></div>
   </div>
@@ -162,7 +162,7 @@ RS_BODY = f'''<section class="hero"><div class="wrap split">
 <section class="section"><div class="wrap"><div class="final reveal">
   <h2>A receipt vault that has nowhere<br>to send your receipts.</h2>
   <div class="actions">
-    <a class="btn btn-primary" href="/posts/how-long-to-keep-receipts.html">How long to keep receipts</a>
+    <a class="btn btn-primary" href="https://apps.apple.com/app/id6806519870">Get Receipt Snap</a>
     <a class="btn btn-dark" href="/">More from Dune Apps</a></div>
   <div class="assurances" style="justify-content:center"><span>Free</span><span>No account</span><span>iOS 17 or later</span></div>
 </div></div></section>'''

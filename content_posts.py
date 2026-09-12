@@ -173,7 +173,7 @@ POSTS = [
   <h3>Where Receipt Snap fits</h3>
   <p>Receipt Snap reads a receipt on the phone itself — merchant, date, total and tax — using Apple's on-device text recognition. There is no account and no server, so nothing is uploaded and nothing is retained by anybody but you. The App Store privacy label reads "Data Not Collected".</p>
   <p>It recognises twelve currencies from the receipt itself, including from a tax registration number when no symbol is printed, which is how an Indian GSTIN or a UAE TRN gets the currency right without asking you.</p>
-  <p><a href="/receiptsnap/">See how Receipt Snap works →</a></p>
+  <p><a href="https://apps.apple.com/app/id6806519870"><strong>Get Receipt Snap on the App Store — free</strong></a> &nbsp;·&nbsp; <a href="/receiptsnap/">How it works</a></p>
 </div>
 
 <p class="disclaimer" style="color:var(--faint);font-size:.98rem">General information, not tax advice. Retention rules change and vary by circumstance — check with your tax authority or accountant.</p>
@@ -242,7 +242,7 @@ POSTS = [
   <h3>Where Receipt Snap fits</h3>
   <p>Receipt Snap reads UAE receipts on the device, recognises the TRN, and uses it to set the currency to dirhams even when no symbol is printed. Merchant, date, total and VAT are captured on the phone by Apple's text recognition — no account, no upload, nothing retained by anyone else.</p>
   <p>Given a fifteen-year retention rule for property records, the fact that the archive lives on hardware you own rather than a service that might not exist in 2041 is not a small detail.</p>
-  <p><a href="/receiptsnap/">See how Receipt Snap works →</a></p>
+  <p><a href="https://apps.apple.com/app/id6806519870"><strong>Get Receipt Snap on the App Store — free</strong></a> &nbsp;·&nbsp; <a href="/receiptsnap/">How it works</a></p>
 </div>
 
 <p class="disclaimer" style="color:var(--faint);font-size:.98rem">General information, not tax advice. Verify current requirements with the Federal Tax Authority or your accountant.</p>

@@ -9,6 +9,8 @@ import pathlib, re
 
 ROOT = pathlib.Path(__file__).resolve().parent
 GA = "G-BTY3LVJMBB"
+# Receipt Snap, live since 12 Sep 2026. The site had no App Store link at all.
+APP_STORE = "https://apps.apple.com/app/id6806519870"
 FAVICON = ('data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20'
   'viewBox%3D%270%200%2040%2040%27%3E%3Cdefs%3E%3CclipPath%20id%3D%27d%27%3E%3Ccircle%20cx%3D%2720%27%20'
   'cy%3D%2720%27%20r%3D%2719%27%2F%3E%3C%2FclipPath%3E%3C%2Fdefs%3E%3Ccircle%20cx%3D%2720%27%20cy%3D%2720%27%20'
@@ -25,8 +27,8 @@ HEADER = '''<a class="skip" href="#main">Skip to content</a>
   <nav class="site-nav">
     <a href="/#apps">Apps</a>
     <a href="/writing/">Writing</a>
-    <a href="/drivesnap/">DriveSnap</a>
-    <a class="btn btn-primary btn-sm" href="/drivesnap/">Get Started</a>
+    <a href="/receiptsnap/">Receipt Snap</a>
+    <a class="btn btn-primary btn-sm" href="https://apps.apple.com/app/id6806519870">Get the app</a>
   </nav>
 </div></header>'''
 
