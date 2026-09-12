@@ -170,7 +170,7 @@ RS_BODY = f'''<section class="hero"><div class="wrap split">
 render(out="receiptsnap/index.html",
   title="Receipt Snap — receipts read on your phone and kept there",
   description="Receipt Snap reads the merchant, date, total and tax from a receipt on your iPhone in about two seconds. No account, no servers, nothing uploaded. Twelve currencies, recognised from the receipt.",
-  canonical="https://duneapps.com/receiptsnap/",
+  canonical="https://duneapps.com/receiptsnap/", og_type="product",
   body=RS_BODY, style=PAGE_CSS + FAQ_CSS, og_image="og-receiptsnap.png",
   head=faq_ld(RS_FAQ) + '<script type="application/ld+json">' + json.dumps({
     "@context":"https://schema.org","@type":"SoftwareApplication","name":"Receipt Snap",
@@ -183,7 +183,7 @@ print("receiptsnap page")
 CMP_FAQ = [
  ("Is DriveSnap a good MileIQ alternative?","If you want automatic drive detection without a monthly drive cap and without your location history leaving the phone, yes. If you need a web dashboard, team administration or multi-user reporting, MileIQ does those and DriveSnap does not."),
  ("Does MileIQ have a free drive limit?","MileIQ's free tier is limited to 40 drives per month. Once you pass it, drives stop being logged until the next month or until you subscribe. DriveSnap has no cap on the free tier."),
- ("How much does each cost?","MileIQ Unlimited is listed at $59.99 a year, with a premium tier at $119.99. DriveSnap Pro is $29.99 a year with the first month free, or $79.99 once for life. DriveSnap's tracking is free and uncapped either way."),
+ ("How much does each cost?","MileIQ Unlimited is listed at $59.99 a year, with a premium tier at $119.99. DriveSnap version 1.0 is free in full — tracking, classifying, history, the CSV export and the year-end tax report, with nothing to buy. A paid tier arrives in a later update; tracking stays free and uncapped either way."),
  ("Can I move my MileIQ history into DriveSnap?","Not automatically. DriveSnap can import its own backup file, but there is no MileIQ importer. Drives already filed for a past tax year are usually best left where they are, with an export kept for your records."),
  ("Which one should I choose?","Choose MileIQ if you need a team product with a web dashboard. Choose DriveSnap if you are self-employed or a sole trader, you want an uncapped free tier, and you would rather your location history stayed on your own device."),
 ]
@@ -196,7 +196,7 @@ CMP_BODY = f'''<section class="hero"><div class="wrap split">
       <a class="btn btn-primary" href="#table">See the comparison</a>
       <a class="btn btn-dark" href="/drivesnap/">About DriveSnap</a>
     </div>
-    <div class="assurances"><span>No drive caps</span><span>Nothing uploaded</span><span>$29.99/yr</span></div>
+    <div class="assurances"><span>No drive caps</span><span>Nothing uploaded</span><span>Free during launch</span></div>
   </div>
   <div class="visual"><div class="bubble"></div><div class="phones">
     <img src="/assets/drivesnap-2.png" alt="Classifying a drive" loading="lazy">
@@ -213,8 +213,8 @@ CMP_BODY = f'''<section class="hero"><div class="wrap split">
       <tr><td>Free drives per month</td><td class="ours">Unlimited</td><td class="them">40, then logging stops</td></tr>
       <tr><td>Where location history lives</td><td class="ours">Only on your iPhone</td><td class="them">Their servers</td></tr>
       <tr><td>Account required</td><td class="ours">No</td><td class="them">Yes</td></tr>
-      <tr><td>Yearly price</td><td class="ours">$29.99 · first month free</td><td class="them">$59.99 · $119.99 premium</td></tr>
-      <tr><td>Lifetime option</td><td class="ours">$79.99</td><td class="them">None</td></tr>
+      <tr><td>Yearly price</td><td class="ours">Free during launch</td><td class="them">$59.99 · $119.99 premium</td></tr>
+      <tr><td>Lifetime option</td><td class="ours">Planned</td><td class="them">None</td></tr>
       <tr><td>Automatic drive detection</td><td class="ours">Yes</td><td class="them">Yes</td></tr>
       <tr><td>Swipe to classify</td><td class="ours">Yes</td><td class="them">Yes</td></tr>
       <tr><td>Work-hours auto-classification</td><td class="ours">Yes</td><td class="them">Yes</td></tr>
@@ -249,7 +249,7 @@ CMP_BODY = f'''<section class="hero"><div class="wrap split">
   <div class="actions">
     <a class="btn btn-primary" href="/drivesnap/">See DriveSnap</a>
     <a class="btn btn-dark" href="/writing/">Read the guides</a></div>
-  <div class="assurances" style="justify-content:center"><span>Free to track</span><span>No account</span><span>$29.99/yr for export</span></div>
+  <div class="assurances" style="justify-content:center"><span>Free to track</span><span>No account</span><span>Export included</span></div>
 </div></div></section>'''
 
 render(out="compare/drivesnap-vs-mileiq/index.html",

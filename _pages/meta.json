@@ -1,0 +1,17 @@
+{
+  "index": {
+    "out": "index.html",
+    "title": "Dune Apps \u2014 iPhone tools that keep your data on your phone",
+    "description": "Small, careful iPhone tools that run entirely on your device \u2014 no servers, no accounts, nothing collected. Receipt Snap and DriveSnap, plus essays on building private software.",
+    "canonical": "https://duneapps.com/",
+    "og": "og.png"
+  },
+  "drivesnap": {
+    "out": "drivesnap/index.html",
+    "title": "DriveSnap \u2014 a mileage log that never leaves your phone",
+    "description": "DriveSnap records business drives automatically and keeps every one on your iPhone. No account, no servers, no drive caps. Free during launch, including the CSV export and tax report.",
+    "canonical": "https://duneapps.com/drivesnap/",
+    "og": "og-drivesnap.png",
+    "og_type": "product"
+  }
+}

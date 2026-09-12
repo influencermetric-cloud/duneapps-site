@@ -69,7 +69,8 @@ FOOTER = '''<footer>
 </script>'''
 
 
-def render(*, out, title, description, canonical, body, style="", head="", og_image="og.png"):
+def render(*, out, title, description, canonical, body, style="", head="",
+           og_image="og.png", og_type="website"):
     page = f'''<!doctype html>
 <html lang="en">
 <head>
@@ -92,7 +93,7 @@ def render(*, out, title, description, canonical, body, style="", head="", og_im
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="canonical" href="{canonical}">
-<meta property="og:type" content="website">
+<meta property="og:type" content="{og_type}">
 <meta property="og:url" content="{canonical}">
 <meta property="og:site_name" content="Dune Apps">
 <meta property="og:title" content="{title}">

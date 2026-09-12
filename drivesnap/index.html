@@ -13,7 +13,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="light">
 <title>DriveSnap — a mileage log that never leaves your phone</title>
-<meta name="description" content="DriveSnap records business drives automatically and keeps every one on your iPhone. No account, no servers, no drive caps. Free to track; $29.99/yr to export a tax report.">
+<meta name="description" content="DriveSnap records business drives automatically and keeps every one on your iPhone. No account, no servers, no drive caps. Free during launch, including the CSV export and tax report.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%2040%2040%27%3E%3Cdefs%3E%3CclipPath%20id%3D%27d%27%3E%3Ccircle%20cx%3D%2720%27%20cy%3D%2720%27%20r%3D%2719%27%2F%3E%3C%2FclipPath%3E%3C%2Fdefs%3E%3Ccircle%20cx%3D%2720%27%20cy%3D%2720%27%20r%3D%2719%27%20fill%3D%27%23EFF3F1%27%2F%3E%3Cg%20clip-path%3D%27url%28%23d%29%27%3E%3Ccircle%20cx%3D%2713%27%20cy%3D%2713%27%20r%3D%275%27%20fill%3D%27%23C3F04C%27%2F%3E%3Cpath%20d%3D%27M13%2041%20L41%2041%20L41%2025%20C%2034%2025.8%2027.5%2028.8%2022%2033.8%20L13%2041%20Z%27%20fill%3D%27%239DB8B2%27%2F%3E%3Cpath%20d%3D%27M-1%2041%20L-1%2029.4%20C%208%2028.6%2015.2%2025.8%2020.4%2021%20C%2021.6%2019.9%2022.9%2019.9%2024%2021.1%20C%2028%2025.4%2033.4%2029%2041%2030.8%20L41%2041%20Z%27%20fill%3D%27%231A4B44%27%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E">
 <link rel="apple-touch-icon" href="/brand/dune-mark-180.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -24,31 +24,28 @@
 <meta property="og:url" content="https://duneapps.com/drivesnap/">
 <meta property="og:site_name" content="Dune Apps">
 <meta property="og:title" content="DriveSnap — a mileage log that never leaves your phone">
-<meta property="og:description" content="Records business drives automatically. No account, no servers, no drive caps.">
+<meta property="og:description" content="DriveSnap records business drives automatically and keeps every one on your iPhone. No account, no servers, no drive caps. Free during launch, including the CSV export and tax report.">
 <meta property="og:image" content="https://duneapps.com/og-drivesnap.png">
 <meta name="twitter:card" content="summary_large_image">
-
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"SoftwareApplication","name":"DriveSnap",
  "applicationCategory":"FinanceApplication","operatingSystem":"iOS 17.0 or later",
  "description":"Automatic mileage tracker for business drives. All data stays on the device: no account, no servers, no drive caps.",
- "offers":[{"@type":"Offer","name":"Free","price":"0","priceCurrency":"USD","description":"Unlimited automatic drive tracking, classification and history."},
-           {"@type":"Offer","name":"Pro yearly","price":"29.99","priceCurrency":"USD","description":"CSV export and year-end tax report. First month free."},
-           {"@type":"Offer","name":"Pro lifetime","price":"79.99","priceCurrency":"USD","description":"One payment, no subscription."}]}
+ "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD", "description": "Free during launch: unlimited tracking, classifying, history, CSV export and the year-end tax report."}}
 </script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
  {"@type":"Question","name":"Does DriveSnap upload my location?","acceptedAnswer":{"@type":"Answer","text":"No. Drives are detected, measured and stored on your iPhone. There is no account and no DriveSnap server. The only network request the app can make is to Apple's Maps for the tiles behind a route thumbnail, and that can be switched off in Settings, after which the app makes no network requests at all."}},
  {"@type":"Question","name":"Is there a limit on free drives?","acceptedAnswer":{"@type":"Answer","text":"No. Tracking, classifying and browsing your full history are free and unlimited, permanently. Many mileage apps cap free users at around 40 drives a month. DriveSnap Pro unlocks the CSV export and the year-end tax report."}},
- {"@type":"Question","name":"How much does DriveSnap cost?","acceptedAnswer":{"@type":"Answer","text":"Tracking is free forever. DriveSnap Pro is $29.99 a year with the first month free, or $79.99 once for life. Prices are shown in your own currency on the purchase screen."}},
+ {"@type":"Question","name":"How much does DriveSnap cost?","acceptedAnswer":{"@type":"Answer","text":"Version 1.0 is free in full — tracking, classifying, history, the CSV export and the year-end tax report, with no account and nothing to buy. A paid tier arrives in a later update; tracking stays free either way."}},
  {"@type":"Question","name":"What mileage rate does DriveSnap use?","acceptedAnswer":{"@type":"Answer","text":"You set the rate yourself, in your own currency and in miles or kilometres. It defaults to the US standard business rate of $0.70 per mile. The rate in force is stamped onto each drive when it is recorded, so updating it next year never changes a tax year you have already filed."}},
  {"@type":"Question","name":"Can I use DriveSnap for a CRA logbook in Canada?","acceptedAnswer":{"@type":"Answer","text":"Only if you are an employee claiming a per-kilometre reimbursement. Self-employed Canadians must use the actual-expense method, which requires odometer readings at the start and end of the year. DriveSnap does not do that, and we would rather say so than take the download."}},
  {"@type":"Question","name":"What happens to my drives if I lose my phone?","acceptedAnswer":{"@type":"Answer","text":"DriveSnap can save a complete backup file containing every drive, its route and the rate it was costed at. Restoring only ever adds drives; it never replaces what is already there. There is no cloud sync, so keeping that backup somewhere safe is worth doing."}},
  {"@type":"Question","name":"Does DriveSnap drain the battery?","acceptedAnswer":{"@type":"Answer","text":"It uses the significant-location and motion services the system already runs, rather than holding GPS open continuously. With auto-detection off it uses no location services at all and you add drives by hand."}}]}
 </script>
-<link rel="stylesheet" href="../style.css">
-<style>
-  .hero { position: relative; padding: 56px 0 92px; overflow: hidden; }
+
+<link rel="stylesheet" href="/style.css">
+<style>.hero { position: relative; padding: 56px 0 92px; overflow: hidden; }
   .hero .split { display: grid; grid-template-columns: 1.05fr .95fr; gap: 48px; align-items: center; }
   .badge { display: inline-flex; align-items: center; gap: 9px; background: var(--card);
     border-radius: 999px; padding: 8px 16px; font-size: .9rem; color: var(--muted);
@@ -147,7 +144,6 @@
 </style>
 </head>
 <body>
-
 <a class="skip" href="#main">Skip to content</a>
 
 <header id="hdr"><div class="wrap bar">
@@ -159,10 +155,8 @@
     <a class="btn btn-primary btn-sm" href="https://apps.apple.com/app/id6806519870">Get the app</a>
   </nav>
 </div></header>
-
-<main>
-
-  <section class="hero">
+<main id="main">
+<section class="hero">
     <div class="wrap split">
       <div>
         <span class="badge">Free to track, forever · <b>No drive caps</b></span>
@@ -278,7 +272,7 @@
           <tr><td>Free drives</td><td class="ours">Unlimited</td><td class="them">~40 a month</td></tr>
           <tr><td>Who else can see where you drove</td><td class="ours">Nobody</td><td class="them">Their servers</td></tr>
           <tr><td>Account required</td><td class="ours">Never</td><td class="them">Yes</td></tr>
-          <tr><td>Yearly price</td><td class="ours">$29.99</td><td class="them">$59.99 – $119.99</td></tr>
+          <tr><td>Yearly price</td><td class="ours">Free during launch</td><td class="them">$59.99 – $119.99</td></tr>
         </tbody>
       </table>
       <p class="note">Competitor figures are US list prices published on the App Store, September 2026.</p>
@@ -301,12 +295,8 @@
     <div class="wrap">
       <div class="section-head center reveal">
         <span class="eyebrow">Pricing</span>
-        <h2>Pay when the data is worth money</h2>
-        <p>Recording drives is the part you need every day, so it is free and uncapped. Pro unlocks the export — the moment a year of driving turns into a number on a tax return.</p>
-        <div class="toggle" role="group" aria-label="Billing period">
-          <button id="btn-year" class="on" aria-pressed="true">Yearly</button>
-          <button id="btn-life" aria-pressed="false">Lifetime</button>
-        </div>
+        <h2>Everything, free during launch</h2>
+        <p>Version 1.0 is free in full, export included. Recording drives is the part you need every day and it stays free and uncapped whatever happens later.</p>
       </div>
       <div class="grid g-3" style="margin-top:34px">
         <div class="card tier reveal">
@@ -314,9 +304,9 @@
           <ul><li>Unlimited automatic drive tracking</li><li>One-swipe classifying</li><li>Work-hours auto-classification</li><li>Route maps on every drive</li><li>Full history and monthly totals</li></ul>
         </div>
         <div class="card tier best reveal">
-          <span class="badge-pop">Most people</span>
-          <p class="name">Pro</p>
-          <p class="amt" id="pro-amt">$29.99</p><p class="per" id="pro-per">a year · first month free</p>
+          <span class="badge-pop">Included</span>
+          <p class="name">Export &amp; reports</p>
+          <p class="amt" id="pro-amt">$0</p><p class="per" id="pro-per">included in v1.0</p>
           <ul><li>Everything in Free</li><li>CSV export for your accountant</li><li>Year-end tax report</li><li>Backup and restore</li></ul>
         </div>
         <div class="card tier reveal">
@@ -324,7 +314,7 @@
           <ul><li>No per-drive fees</li><li>No charge to see your own history</li><li>No upsell to unlock last year</li><li>No ads, ever</li></ul>
         </div>
       </div>
-      <p class="note">Prices are shown in your own currency on the purchase screen. A subscription renews unless cancelled at least 24 hours before the period ends, and is managed in your Apple Account.</p>
+      <p class="note">Version 1.0 has no in-app purchase. A paid tier is planned for a later update, and the free tracking tier is not going away.</p>
     </div>
   </section>
 
@@ -365,8 +355,8 @@
       </div>
     </div>
   </section>
-</main>
 
+</main>
 <footer>
   <div class="wrap">
     <div class="cols">
