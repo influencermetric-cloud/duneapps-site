@@ -14,11 +14,30 @@
       </div>
       <div class="visual">
         <div class="bubble"></div>
-        <div class="phones">
-          <img src="assets/drivesnap-2.png" alt="Classifying a drive with one swipe" loading="lazy">
-          <img src="assets/drivesnap-1.png" alt="DriveSnap home screen" loading="lazy">
-          <img src="assets/drivesnap-3.png" alt="Tax report and CSV export" loading="lazy">
-        </div>
+        <div class="stage" id="stage" aria-roledescription="carousel">
+          <div class="stage-meta">
+            <p class="stage-app"><span class="pip ds" id="sPip"></span><span id="sApp">DriveSnap</span></p>
+            <p class="stage-cap" id="sCap">Every business drive, logged automatically</p>
+            <div class="dots" role="tablist" aria-label="Product screens">
+              <button class="dot is-on" role="tab" aria-label="Every business drive, logged automatically" aria-selected="true" data-i="0"><i></i></button>
+              <button class="dot" role="tab" aria-label="One swipe says business or personal" aria-selected="false" data-i="1"><i></i></button>
+              <button class="dot" role="tab" aria-label="A tax report your accountant accepts" aria-selected="false" data-i="2"><i></i></button>
+              <button class="dot" role="tab" aria-label="Every receipt, the moment you snap it" aria-selected="false" data-i="3"><i></i></button>
+              <button class="dot" role="tab" aria-label="Find any receipt in one search" aria-selected="false" data-i="4"><i></i></button>
+              <button class="dot" role="tab" aria-label="Where the money went, every month" aria-selected="false" data-i="5"><i></i></button>
+            </div>
+          </div>
+          <div class="device">
+            <div class="screens">
+              <img class="screen is-on" src="assets/drivesnap-1.png" alt="DriveSnap home screen showing the month's deduction" width="414" height="900" fetchpriority="high">
+              <img class="screen" src="assets/drivesnap-2.png" alt="Classifying a drive with one swipe" width="414" height="900" loading="lazy">
+              <img class="screen" src="assets/drivesnap-3.png" alt="Year-end tax report with CSV export" width="414" height="900" loading="lazy">
+              <img class="screen" src="assets/receiptsnap-1.png" alt="Receipt Snap home screen with the month's total" width="414" height="900" loading="lazy">
+              <img class="screen" src="assets/receiptsnap-2.png" alt="Searching receipts by merchant" width="414" height="900" loading="lazy">
+              <img class="screen" src="assets/receiptsnap-3.png" alt="Monthly spending story card" width="414" height="900" loading="lazy">
+            </div>
+          </div>
+                  </div>
       </div>
     </div>
   </section>
@@ -122,3 +141,50 @@
       </div>
     </div>
   </section>
+
+<script>
+(() => {
+  const stage = document.getElementById('stage');
+  if (!stage) return;
+  const screens = [...stage.querySelectorAll('.screen')];
+  const dots    = [...stage.querySelectorAll('.dot')];
+  const sApp = document.getElementById('sApp');
+  const sCap = document.getElementById('sCap');
+  const sPip = document.getElementById('sPip');
+  const meta = [{"app": "DriveSnap", "cap": "Every business drive, logged automatically", "kind": "ds"}, {"app": "DriveSnap", "cap": "One swipe says business or personal", "kind": "ds"}, {"app": "DriveSnap", "cap": "A tax report your accountant accepts", "kind": "ds"}, {"app": "Receipt Snap", "cap": "Every receipt, the moment you snap it", "kind": "rs"}, {"app": "Receipt Snap", "cap": "Find any receipt in one search", "kind": "rs"}, {"app": "Receipt Snap", "cap": "Where the money went, every month", "kind": "rs"}];
+  const calm = matchMedia('(prefers-reduced-motion: reduce)');
+  let i = 0, timer = null, held = false;
+
+  function show(n) {
+    i = (n + screens.length) % screens.length;
+    screens.forEach((el, k) => el.classList.toggle('is-on', k === i));
+    dots.forEach((el, k) => {
+      el.classList.toggle('is-on', k === i);
+      el.setAttribute('aria-selected', k === i ? 'true' : 'false');
+    });
+    const m = meta[i];
+    // Retrigger the caption fade without a reflow-heavy rebuild.
+    sCap.classList.remove('swap'); void sCap.offsetWidth; sCap.classList.add('swap');
+    sApp.textContent = m.app;
+    sCap.textContent = m.cap;
+    sPip.className = 'pip ' + m.kind;
+  }
+  function play() {
+    if (calm.matches || held) return;
+    stop();
+    timer = setTimeout(() => { show(i + 1); play(); }, 4200);
+  }
+  function stop() { if (timer) { clearTimeout(timer); timer = null; } }
+
+  dots.forEach(d => d.addEventListener('click', () => { show(+d.dataset.i); play(); }));
+  stage.addEventListener('pointerenter', () => { held = true; stop(); });
+  stage.addEventListener('pointerleave', () => { held = false; play(); });
+  stage.addEventListener('focusin',  () => { held = true; stop(); });
+  stage.addEventListener('focusout', () => { held = false; play(); });
+  // Nothing should animate while the hero is off screen.
+  new IntersectionObserver(es => es.forEach(e => e.isIntersecting ? play() : stop()),
+                           { threshold: 0.15 }).observe(stage);
+  calm.addEventListener?.('change', () => calm.matches ? stop() : play());
+  show(0);
+})();
+</script>

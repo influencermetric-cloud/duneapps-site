@@ -210,10 +210,13 @@ footer .disclosure { color: rgba(255,255,255,.5); font-size: .88rem; margin-top:
 @media (max-width: 700px) {
   .hero .visual { min-height: 0; }
   .hero .phones { gap: 0; padding: 14px 0; min-width: 0; }
-  /* One phone reads at this size; three become thumbnails. */
+  /* One phone reads at this size; three become thumbnails. Applies to the
+     product pages, which still use the three-phone row; the homepage hero is
+     a single device carousel and sizes itself. */
   .hero .phones img { width: min(62vw, 250px); }
   .hero .phones img:first-child,
   .hero .phones img:last-child { display: none; }
+  .hero .stage { min-width: 0; }
   .hero .bubble { width: 430px; height: 430px; right: -36%; }
 }
 

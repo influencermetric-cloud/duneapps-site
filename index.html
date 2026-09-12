@@ -92,6 +92,68 @@
     box-shadow: 0 4px 30px rgba(14,19,21,.06); }
   .final h2 { font-size: clamp(2rem, 4.4vw, 3rem); }
   .final .actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-top: 32px; }
+
+  /* ---------- Hero stage ----------
+     One device that changes what is on its screen, rather than three static
+     phones. The device never moves: only the screen cross-fades and lifts a
+     few pixels, so the eye stays on the product instead of tracking motion.
+     Everything animated is transform or opacity, so it stays on the compositor. */
+  /* Caption first, device second: the phone is 414x900, far taller than a
+     laptop viewport can spare, so it bleeds off the bottom of the hero and is
+     clipped by .hero{overflow:hidden}. Same composition as the store panels. */
+  .stage { position: relative; z-index: 2; display: flex; flex-direction: column;
+           align-items: center; gap: 20px; padding: 4px 0 0; }
+
+  .device { position: relative; width: 292px; aspect-ratio: 414 / 900;
+            margin-bottom: -120px;
+            border-radius: 34px; padding: 7px; background: #0E1315;
+            box-shadow: 0 30px 70px rgba(14,19,21,.28), 0 2px 6px rgba(14,19,21,.18); }
+  .screens { position: relative; width: 100%; height: 100%;
+             border-radius: 27px; overflow: hidden; background: var(--card); }
+  .screen { position: absolute; inset: 0; width: 100%; height: 100%;
+            object-fit: cover; opacity: 0; transform: translateY(10px) scale(1.015);
+            transition: opacity .62s cubic-bezier(.22,.61,.36,1),
+                        transform .62s cubic-bezier(.22,.61,.36,1);
+            will-change: opacity, transform; }
+  .screen.is-on { opacity: 1; transform: none; }
+
+  .stage-meta { text-align: center; max-width: 22rem; order: -1; }
+  .stage-app { display: inline-flex; align-items: center; gap: 8px; margin: 0;
+               font-size: .78rem; font-weight: 600; letter-spacing: .08em;
+               text-transform: uppercase; color: var(--faint); }
+  .pip { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+  .pip.ds { background: #2F5FE0; }
+  .pip.rs { background: var(--lime); box-shadow: 0 0 0 1px rgba(14,19,21,.16) inset; }
+
+  .stage-cap { margin: 8px 0 0; font-size: 1.02rem; font-weight: 550;
+               color: var(--text); line-height: 1.3; min-height: 2.4em; }
+  .stage-cap.swap { animation: capIn .5s cubic-bezier(.22,.61,.36,1) both; }
+  @keyframes capIn { from { opacity: 0; transform: translateY(6px); } }
+
+  .dots { display: flex; gap: 8px; justify-content: center; margin-top: 10px; }
+  .dots .dot { width: 26px; height: 5px; padding: 0; border: 0; cursor: pointer;
+               border-radius: 99px; background: rgba(14,19,21,.14);
+               overflow: hidden; transition: background .3s; }
+  .dots .dot i { display: block; height: 100%; width: 0; border-radius: 99px;
+                 background: var(--teal); }
+  /* The active dot fills over the same 4.2s the slide is held, so the bar is
+     the timer rather than a decoration that happens to look like one. */
+  .dots .dot.is-on i { animation: fill 4.2s linear both; }
+  @keyframes fill { to { width: 100%; } }
+  .dots .dot:hover { background: rgba(14,19,21,.24); }
+  .dots .dot:focus-visible { outline: 2px solid var(--teal); outline-offset: 3px; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .screen { transition: none; }
+    .stage-cap.swap { animation: none; }
+    .dots .dot.is-on i { animation: none; width: 100%; }
+  }
+
+  @media (max-width: 700px) {
+    .stage { padding: 6px 0 0; gap: 16px; }
+    .device { width: min(62vw, 250px); }
+    .stage-cap { font-size: .96rem; min-height: 0; }
+  }
 </style>
 </head>
 <body>
@@ -123,11 +185,30 @@
       </div>
       <div class="visual">
         <div class="bubble"></div>
-        <div class="phones">
-          <img src="assets/drivesnap-2.png" alt="Classifying a drive with one swipe" loading="lazy">
-          <img src="assets/drivesnap-1.png" alt="DriveSnap home screen" loading="lazy">
-          <img src="assets/drivesnap-3.png" alt="Tax report and CSV export" loading="lazy">
-        </div>
+        <div class="stage" id="stage" aria-roledescription="carousel">
+          <div class="stage-meta">
+            <p class="stage-app"><span class="pip ds" id="sPip"></span><span id="sApp">DriveSnap</span></p>
+            <p class="stage-cap" id="sCap">Every business drive, logged automatically</p>
+            <div class="dots" role="tablist" aria-label="Product screens">
+              <button class="dot is-on" role="tab" aria-label="Every business drive, logged automatically" aria-selected="true" data-i="0"><i></i></button>
+              <button class="dot" role="tab" aria-label="One swipe says business or personal" aria-selected="false" data-i="1"><i></i></button>
+              <button class="dot" role="tab" aria-label="A tax report your accountant accepts" aria-selected="false" data-i="2"><i></i></button>
+              <button class="dot" role="tab" aria-label="Every receipt, the moment you snap it" aria-selected="false" data-i="3"><i></i></button>
+              <button class="dot" role="tab" aria-label="Find any receipt in one search" aria-selected="false" data-i="4"><i></i></button>
+              <button class="dot" role="tab" aria-label="Where the money went, every month" aria-selected="false" data-i="5"><i></i></button>
+            </div>
+          </div>
+          <div class="device">
+            <div class="screens">
+              <img class="screen is-on" src="assets/drivesnap-1.png" alt="DriveSnap home screen showing the month's deduction" width="414" height="900" fetchpriority="high">
+              <img class="screen" src="assets/drivesnap-2.png" alt="Classifying a drive with one swipe" width="414" height="900" loading="lazy">
+              <img class="screen" src="assets/drivesnap-3.png" alt="Year-end tax report with CSV export" width="414" height="900" loading="lazy">
+              <img class="screen" src="assets/receiptsnap-1.png" alt="Receipt Snap home screen with the month's total" width="414" height="900" loading="lazy">
+              <img class="screen" src="assets/receiptsnap-2.png" alt="Searching receipts by merchant" width="414" height="900" loading="lazy">
+              <img class="screen" src="assets/receiptsnap-3.png" alt="Monthly spending story card" width="414" height="900" loading="lazy">
+            </div>
+          </div>
+                  </div>
       </div>
     </div>
   </section>
@@ -231,6 +312,53 @@
       </div>
     </div>
   </section>
+
+<script>
+(() => {
+  const stage = document.getElementById('stage');
+  if (!stage) return;
+  const screens = [...stage.querySelectorAll('.screen')];
+  const dots    = [...stage.querySelectorAll('.dot')];
+  const sApp = document.getElementById('sApp');
+  const sCap = document.getElementById('sCap');
+  const sPip = document.getElementById('sPip');
+  const meta = [{"app": "DriveSnap", "cap": "Every business drive, logged automatically", "kind": "ds"}, {"app": "DriveSnap", "cap": "One swipe says business or personal", "kind": "ds"}, {"app": "DriveSnap", "cap": "A tax report your accountant accepts", "kind": "ds"}, {"app": "Receipt Snap", "cap": "Every receipt, the moment you snap it", "kind": "rs"}, {"app": "Receipt Snap", "cap": "Find any receipt in one search", "kind": "rs"}, {"app": "Receipt Snap", "cap": "Where the money went, every month", "kind": "rs"}];
+  const calm = matchMedia('(prefers-reduced-motion: reduce)');
+  let i = 0, timer = null, held = false;
+
+  function show(n) {
+    i = (n + screens.length) % screens.length;
+    screens.forEach((el, k) => el.classList.toggle('is-on', k === i));
+    dots.forEach((el, k) => {
+      el.classList.toggle('is-on', k === i);
+      el.setAttribute('aria-selected', k === i ? 'true' : 'false');
+    });
+    const m = meta[i];
+    // Retrigger the caption fade without a reflow-heavy rebuild.
+    sCap.classList.remove('swap'); void sCap.offsetWidth; sCap.classList.add('swap');
+    sApp.textContent = m.app;
+    sCap.textContent = m.cap;
+    sPip.className = 'pip ' + m.kind;
+  }
+  function play() {
+    if (calm.matches || held) return;
+    stop();
+    timer = setTimeout(() => { show(i + 1); play(); }, 4200);
+  }
+  function stop() { if (timer) { clearTimeout(timer); timer = null; } }
+
+  dots.forEach(d => d.addEventListener('click', () => { show(+d.dataset.i); play(); }));
+  stage.addEventListener('pointerenter', () => { held = true; stop(); });
+  stage.addEventListener('pointerleave', () => { held = false; play(); });
+  stage.addEventListener('focusin',  () => { held = true; stop(); });
+  stage.addEventListener('focusout', () => { held = false; play(); });
+  // Nothing should animate while the hero is off screen.
+  new IntersectionObserver(es => es.forEach(e => e.isIntersecting ? play() : stop()),
+                           { threshold: 0.15 }).observe(stage);
+  calm.addEventListener?.('change', () => calm.matches ? stop() : play());
+  show(0);
+})();
+</script>
 
 </main>
 <footer>
