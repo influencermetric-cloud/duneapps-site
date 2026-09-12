@@ -192,3 +192,38 @@ footer .disclosure { color: rgba(255,255,255,.5); font-size: .88rem; margin-top:
   .bar { gap: 12px; }
   .brand span:last-child { white-space: nowrap; }
 }
+
+/* ---- Mobile hero: the reason the site was cut off on a phone ----
+   .phones is a flex row of three 205px images: 3*205 + 2*18 = 651px of hard
+   minimum width. Neither flex nor grid items shrink below their content, so
+   that minimum propagated up through the 1fr hero column and pinned the whole
+   layout at 702px on a 390px screen. body{overflow-x:hidden} then clipped the
+   headline mid-word rather than letting anything reflow — and because it also
+   makes scrollWidth equal clientWidth, no overflow check could find it. It had
+   to be measured inside a real 390px viewport.
+
+   Specificity is raised one step on purpose: every page's inline <style> is
+   emitted after this file, so an equal-specificity rule here would lose. */
+@media (max-width: 980px) {
+  .hero .split > * { min-width: 0; }
+}
+@media (max-width: 700px) {
+  .hero .visual { min-height: 0; }
+  .hero .phones { gap: 0; padding: 14px 0; min-width: 0; }
+  /* One phone reads at this size; three become thumbnails. */
+  .hero .phones img { width: min(62vw, 250px); }
+  .hero .phones img:first-child,
+  .hero .phones img:last-child { display: none; }
+  .hero .bubble { width: 430px; height: 430px; right: -36%; }
+}
+
+/* The comparison table ran 429px wide on a 390px phone: 20px/24px cell padding
+   across three columns is ~144px of the width spent on air. Trimming it fits
+   the table without making it scroll sideways, which is worse to read on the
+   one page whose whole job is a side-by-side. `body` prefix only to outrank
+   the page's own inline <style>, which loads after this file. */
+@media (max-width: 700px) {
+  body table.cmp th,
+  body table.cmp td { padding: 12px 10px; font-size: .93rem; }
+  body table.cmp thead th { font-size: .68rem; letter-spacing: .04em; }
+}
