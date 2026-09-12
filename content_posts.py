@@ -42,7 +42,7 @@ POSTS = [
    ("What must an IRS mileage log contain?",
     "For each business trip: the date, the destination, the business purpose, and the miles driven. You also need your total mileage for the year, so the business-use share can be worked out. Records should be kept contemporaneously — written at or near the time of the trip."),
    ("What is the IRS standard mileage rate?",
-    "For 2026 the standard business mileage rate is 70 cents per mile. Multiply your business miles by that rate instead of tracking actual vehicle costs. You choose one method or the other."),
+    "2026 has two rates, because the IRS raised it mid-year: 72.5 cents a mile for 1 January to 30 June, and 76 cents for 1 July to 31 December. Multiply the business miles driven in each half by the rate for that half. The 70 cents figure still quoted in a lot of places is the 2025 rate. You choose the standard rate or actual expenses, not both."),
    ("How long should I keep a mileage log?",
     "Three years from the date you filed the return, which is the normal period the IRS has to assess additional tax. Keep it six years if the return understated income by more than 25%."),
    ("Does a spreadsheet count as a mileage log?",
@@ -79,7 +79,7 @@ POSTS = [
 <table class="facts">
   <thead><tr><th>Method</th><th>What you track</th><th>Best when</th></tr></thead>
   <tbody>
-    <tr><td><strong>Standard mileage</strong></td><td>Business miles × the published rate — <strong>70¢ per mile for 2026</strong></td><td>Your car is inexpensive to run, or you want the simplest defensible record</td></tr>
+    <tr><td><strong>Standard mileage</strong></td><td>Business miles × the published rate — <strong>72.5¢ before 1 July 2026, 76¢ after</strong></td><td>Your car is inexpensive to run, or you want the simplest defensible record</td></tr>
     <tr><td><strong>Actual expenses</strong></td><td>Fuel, insurance, repairs, depreciation — multiplied by your business-use percentage</td><td>The vehicle is expensive, heavily used for business, or recently bought</td></tr>
   </tbody>
 </table>

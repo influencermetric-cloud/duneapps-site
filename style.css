@@ -230,3 +230,89 @@ footer .disclosure { color: rgba(255,255,255,.5); font-size: .88rem; margin-top:
   body table.cmp td { padding: 12px 10px; font-size: .93rem; }
   body table.cmp thead th { font-size: .68rem; letter-spacing: .04em; }
 }
+
+
+/* ==========================================================================
+   Craft layer — motion, depth, focus. Added 12 Sep 2026.
+   Tokens live here so every page inherits one rhythm instead of each page
+   inventing its own durations. Guidance from ui-ux-pro-max: reveal offsets
+   stay 8-16px so the motion reads as a fade rather than a slide, per-item
+   stagger stays 30-60ms, and exits are shorter than entrances.
+   ========================================================================== */
+:root {
+  /* Deceleration on arrival, which is what almost every entrance wants. */
+  --ease-out:    cubic-bezier(.22,.61,.36,1);
+  --ease-spring: cubic-bezier(.34,1.32,.64,1);
+  --t-fast: .16s;
+  --t-mid:  .28s;
+  --t-slow: .42s;
+  /* One elevation ladder, so a card and a header cannot disagree about depth. */
+  --e1: 0 1px 2px rgba(14,19,21,.04), 0 2px 8px rgba(14,19,21,.05);
+  --e2: 0 2px 6px rgba(14,19,21,.05), 0 12px 28px rgba(14,19,21,.07);
+  --e3: 0 10px 22px rgba(14,19,21,.08), 0 30px 64px rgba(14,19,21,.10);
+}
+
+/* Anchor links landed under the floating header; reserve its height. */
+:where(section, h2, h3)[id] { scroll-margin-top: 104px; }
+
+/* Short headings look broken when one word drops alone onto the last line.
+   Progressive: browsers without it just wrap normally. */
+h1, h2, .stage-cap { text-wrap: balance; }
+
+/* --- Reveal ---------------------------------------------------------------
+   18px read as a slide. 12px reads as the content settling. */
+.js .reveal {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity var(--t-slow) var(--ease-out),
+              transform var(--t-slow) var(--ease-out);
+}
+.js .reveal.in { opacity: 1; transform: none; }
+
+/* Row stagger with no markup change: cards are already individually .reveal,
+   so a sibling delay inside a grid turns a simultaneous pop into a sweep. */
+.js .grid > .reveal:nth-child(2),
+.js .cols > .reveal:nth-child(2) { transition-delay: 60ms; }
+.js .grid > .reveal:nth-child(3),
+.js .cols > .reveal:nth-child(3) { transition-delay: 120ms; }
+.js .grid > .reveal:nth-child(4) { transition-delay: 180ms; }
+.js .grid > .reveal:nth-child(5) { transition-delay: 220ms; }
+.js .grid > .reveal:nth-child(6) { transition-delay: 260ms; }
+
+/* --- Interaction ---------------------------------------------------------- */
+.btn {
+  transition: transform var(--t-fast) var(--ease-spring),
+              background var(--t-fast) ease,
+              box-shadow var(--t-fast) ease;
+}
+/* nav.site-nav a (0,1,2) outranks .btn (0,1,0), so the header's own button
+   was the one control on the page with no press feedback. */
+nav.site-nav a.btn {
+  transition: transform var(--t-fast) var(--ease-spring),
+              background var(--t-fast) ease,
+              box-shadow var(--t-fast) ease;
+}
+.btn:hover { transform: translateY(-2px); box-shadow: var(--e2); }
+/* Press must return to rest, not overshoot — it is a confirmation, not a bounce. */
+.btn:active { transform: translateY(0) scale(.985); transition-duration: 80ms; }
+
+.card { transition: transform var(--t-mid) var(--ease-out),
+                    box-shadow var(--t-mid) var(--ease-out); }
+.card:hover { transform: translateY(-4px); box-shadow: var(--e3); }
+
+/* --- Focus ----------------------------------------------------------------
+   There were no focus styles on anything but the skip link, so a keyboard
+   user had no idea where they were. :focus-visible keeps it off mouse clicks. */
+:where(a, button, summary, [tabindex]):focus-visible {
+  outline: 2px solid var(--teal);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+.btn:focus-visible { outline-offset: 4px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .js .reveal,
+  .js .grid > .reveal,
+  .js .cols > .reveal { opacity: 1; transform: none; transition: none; transition-delay: 0s; }
+  .btn:hover, .btn:active, .card:hover { transform: none; }
+}
