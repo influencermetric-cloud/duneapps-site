@@ -62,11 +62,7 @@
   .final h2 { font-size: clamp(2rem, 4.4vw, 3rem); }
   .final .actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-top: 32px; }
 
-  /* ---------- Hero stage ----------
-     One device that changes what is on its screen, rather than three static
-     phones. The device never moves: only the screen cross-fades and lifts a
-     few pixels, so the eye stays on the product instead of tracking motion.
-     Everything animated is transform or opacity, so it stays on the compositor. */
+
   /* Caption first, device second: the phone is 414x900, far taller than a
      laptop viewport can spare, so it bleeds off the bottom of the hero and is
      clipped by .hero{overflow:hidden}. Same composition as the store panels. */
@@ -122,4 +118,67 @@
     .stage { padding: 6px 0 0; gap: 16px; }
     .device { width: min(62vw, 250px); }
     .stage-cap { font-size: .96rem; min-height: 0; }
+  }
+
+  /* ---------- Hero deck ----------
+     Real pieces of the apps, lifted straight out of the screenshots and floated
+     at different depths. The rainbow bubble that used to sit here was the
+     loudest thing on the page and said nothing; a tight glow behind the stack
+     does the same job without competing with the product.
+     Each card is a real crop — nothing here is drawn to look like the app. */
+  .visual { position: relative; min-height: 470px; display: grid; place-items: center; }
+
+  .glow {
+    position: absolute; left: 50%; top: 48%; width: 620px; height: 520px;
+    transform: translate(-50%,-50%); pointer-events: none;
+    background:
+      radial-gradient(48% 52% at 38% 32%, rgba(195,240,76,.38) 0%, transparent 70%),
+      radial-gradient(52% 56% at 70% 62%, rgba(26,75,68,.20) 0%, transparent 72%);
+    filter: blur(26px); opacity: .9;
+  }
+
+  .deck { position: relative; width: min(460px, 100%); height: 440px; }
+  .set  { position: absolute; inset: 0; opacity: 0; transition: opacity .7s var(--ease-out);
+          pointer-events: none; }
+  .set.is-on { opacity: 1; pointer-events: auto; }
+
+  .el { position: absolute; margin: 0; border-radius: 20px; overflow: hidden;
+        box-shadow: var(--e3); }
+  .el img { display: block; width: 100%; height: auto; }
+
+  /* Three depths, so the stack reads as space rather than a list. The largest
+     card sits back, the smallest comes forward and overlaps it. */
+  .set .a { width: 86%; left: 0;    top: 4%;   z-index: 1; }
+  .set .b { width: 74%; right: 0;   top: 52%;  z-index: 3; }
+  .set .c { width: 62%; left: 4%;   top: 76%;  z-index: 2; }
+  /* Receipt Snap leads on the number rather than the category strip, so both
+     sets open with one bold statement instead of one bold and one busy. */
+  .set[data-app="Receipt Snap"] .a { width: 72%; top: 2%; }
+  .set[data-app="Receipt Snap"] .b { width: 78%; top: 44%; }
+  .set[data-app="Receipt Snap"] .c { width: 88%; left: 0; top: 70%; }
+
+  /* Drift, not bounce: a few pixels over several seconds, offset per card so
+     the group never moves as one block. */
+  .set.is-on .el { animation: drift 7s var(--ease-out) infinite alternate; }
+  .set.is-on .b  { animation-duration: 8.4s; animation-delay: -1.2s; }
+  .set.is-on .c  { animation-duration: 9.6s; animation-delay: -2.4s; }
+  @keyframes drift { from { transform: translateY(-5px); } to { transform: translateY(5px); } }
+
+  .deck:hover .el { animation-play-state: paused; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .set { transition: none; }
+    .set.is-on .el, .set.is-on .b, .set.is-on .c { animation: none; }
+  }
+
+  @media (max-width: 980px) {
+    .visual { min-height: 400px; }
+    .deck { width: min(400px, 92vw); height: 380px; }
+    .glow { width: 420px; height: 380px; }
+  }
+  @media (max-width: 700px) {
+    .visual { min-height: 330px; }
+    .glow { width: 88vw; height: 320px; }
+    .deck { width: min(360px, 90vw); height: 320px; }
+    .el { border-radius: 16px; }
   }

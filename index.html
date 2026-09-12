@@ -93,11 +93,7 @@
   .final h2 { font-size: clamp(2rem, 4.4vw, 3rem); }
   .final .actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-top: 32px; }
 
-  /* ---------- Hero stage ----------
-     One device that changes what is on its screen, rather than three static
-     phones. The device never moves: only the screen cross-fades and lifts a
-     few pixels, so the eye stays on the product instead of tracking motion.
-     Everything animated is transform or opacity, so it stays on the compositor. */
+
   /* Caption first, device second: the phone is 414x900, far taller than a
      laptop viewport can spare, so it bleeds off the bottom of the hero and is
      clipped by .hero{overflow:hidden}. Same composition as the store panels. */
@@ -154,6 +150,69 @@
     .device { width: min(62vw, 250px); }
     .stage-cap { font-size: .96rem; min-height: 0; }
   }
+
+  /* ---------- Hero deck ----------
+     Real pieces of the apps, lifted straight out of the screenshots and floated
+     at different depths. The rainbow bubble that used to sit here was the
+     loudest thing on the page and said nothing; a tight glow behind the stack
+     does the same job without competing with the product.
+     Each card is a real crop — nothing here is drawn to look like the app. */
+  .visual { position: relative; min-height: 470px; display: grid; place-items: center; }
+
+  .glow {
+    position: absolute; left: 50%; top: 48%; width: 620px; height: 520px;
+    transform: translate(-50%,-50%); pointer-events: none;
+    background:
+      radial-gradient(48% 52% at 38% 32%, rgba(195,240,76,.38) 0%, transparent 70%),
+      radial-gradient(52% 56% at 70% 62%, rgba(26,75,68,.20) 0%, transparent 72%);
+    filter: blur(26px); opacity: .9;
+  }
+
+  .deck { position: relative; width: min(460px, 100%); height: 440px; }
+  .set  { position: absolute; inset: 0; opacity: 0; transition: opacity .7s var(--ease-out);
+          pointer-events: none; }
+  .set.is-on { opacity: 1; pointer-events: auto; }
+
+  .el { position: absolute; margin: 0; border-radius: 20px; overflow: hidden;
+        box-shadow: var(--e3); }
+  .el img { display: block; width: 100%; height: auto; }
+
+  /* Three depths, so the stack reads as space rather than a list. The largest
+     card sits back, the smallest comes forward and overlaps it. */
+  .set .a { width: 86%; left: 0;    top: 4%;   z-index: 1; }
+  .set .b { width: 74%; right: 0;   top: 52%;  z-index: 3; }
+  .set .c { width: 62%; left: 4%;   top: 76%;  z-index: 2; }
+  /* Receipt Snap leads on the number rather than the category strip, so both
+     sets open with one bold statement instead of one bold and one busy. */
+  .set[data-app="Receipt Snap"] .a { width: 72%; top: 2%; }
+  .set[data-app="Receipt Snap"] .b { width: 78%; top: 44%; }
+  .set[data-app="Receipt Snap"] .c { width: 88%; left: 0; top: 70%; }
+
+  /* Drift, not bounce: a few pixels over several seconds, offset per card so
+     the group never moves as one block. */
+  .set.is-on .el { animation: drift 7s var(--ease-out) infinite alternate; }
+  .set.is-on .b  { animation-duration: 8.4s; animation-delay: -1.2s; }
+  .set.is-on .c  { animation-duration: 9.6s; animation-delay: -2.4s; }
+  @keyframes drift { from { transform: translateY(-5px); } to { transform: translateY(5px); } }
+
+  .deck:hover .el { animation-play-state: paused; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .set { transition: none; }
+    .set.is-on .el, .set.is-on .b, .set.is-on .c { animation: none; }
+  }
+
+  @media (max-width: 980px) {
+    .visual { min-height: 400px; }
+    .deck { width: min(400px, 92vw); height: 380px; }
+    .glow { width: 420px; height: 380px; }
+  }
+  @media (max-width: 700px) {
+    .visual { min-height: 330px; }
+    .glow { width: 88vw; height: 320px; }
+    .deck { width: min(360px, 90vw); height: 320px; }
+    .el { border-radius: 16px; }
+  }
 </style>
 </head>
 <body>
@@ -184,31 +243,19 @@
         </div>
       </div>
       <div class="visual">
-        <div class="bubble"></div>
-        <div class="stage" id="stage" aria-roledescription="carousel">
-          <div class="stage-meta">
-            <p class="stage-app"><span class="pip ds" id="sPip"></span><span id="sApp">DriveSnap</span></p>
-            <p class="stage-cap" id="sCap">Every business drive, logged automatically</p>
-            <div class="dots" role="tablist" aria-label="Product screens">
-              <button class="dot is-on" role="tab" aria-label="Every business drive, logged automatically" aria-selected="true" data-i="0"><i></i></button>
-              <button class="dot" role="tab" aria-label="One swipe says business or personal" aria-selected="false" data-i="1"><i></i></button>
-              <button class="dot" role="tab" aria-label="A tax report your accountant accepts" aria-selected="false" data-i="2"><i></i></button>
-              <button class="dot" role="tab" aria-label="Every receipt, the moment you snap it" aria-selected="false" data-i="3"><i></i></button>
-              <button class="dot" role="tab" aria-label="Find any receipt in one search" aria-selected="false" data-i="4"><i></i></button>
-              <button class="dot" role="tab" aria-label="Where the money went, every month" aria-selected="false" data-i="5"><i></i></button>
-            </div>
+        <div class="glow"></div>
+        <div class="deck" id="deck" aria-label="Pieces of the apps">
+          <div class="set is-on" data-app="DriveSnap">
+            <figure class="el a"><img src="assets/el/ds-total.png" alt="This month's deductible total: $235.97 from 8 drives" width="600" height="400" fetchpriority="high"></figure>
+            <figure class="el b"><img src="assets/el/ds-drive.png" alt="A logged drive to Midtown office, 62.4 miles, worth $43.68" width="600" height="137" loading="lazy"></figure>
+            <figure class="el c"><img src="assets/el/ds-classify.png" alt="Three drives waiting to be classified" width="600" height="112" loading="lazy"></figure>
           </div>
-          <div class="device">
-            <div class="screens">
-              <img class="screen is-on" src="assets/drivesnap-1.png" alt="DriveSnap home screen showing the month's deduction" width="414" height="900" fetchpriority="high">
-              <img class="screen" src="assets/drivesnap-2.png" alt="Classifying a drive with one swipe" width="414" height="900" loading="lazy">
-              <img class="screen" src="assets/drivesnap-3.png" alt="Year-end tax report with CSV export" width="414" height="900" loading="lazy">
-              <img class="screen" src="assets/receiptsnap-1.png" alt="Receipt Snap home screen with the month's total" width="414" height="900" loading="lazy">
-              <img class="screen" src="assets/receiptsnap-2.png" alt="Searching receipts by merchant" width="414" height="900" loading="lazy">
-              <img class="screen" src="assets/receiptsnap-3.png" alt="Monthly spending story card" width="414" height="900" loading="lazy">
-            </div>
+          <div class="set" data-app="Receipt Snap">
+            <figure class="el c"><img src="assets/el/rs-tiles.png" alt="Spending split by category: shopping, groceries, fuel, dining" width="600" height="146" loading="lazy"></figure>
+            <figure class="el b"><img src="assets/el/rs-row.png" alt="A scanned receipt from Whole Foods Market for 84.12" width="600" height="104" loading="lazy"></figure>
+            <figure class="el a"><img src="assets/el/rs-total.png" alt="Total spent this month: USD 504.07, up 45.2% on August" width="480" height="183" loading="lazy"></figure>
           </div>
-                  </div>
+        </div>
       </div>
     </div>
   </section>
@@ -315,48 +362,25 @@
 
 <script>
 (() => {
-  const stage = document.getElementById('stage');
-  if (!stage) return;
-  const screens = [...stage.querySelectorAll('.screen')];
-  const dots    = [...stage.querySelectorAll('.dot')];
-  const sApp = document.getElementById('sApp');
-  const sCap = document.getElementById('sCap');
-  const sPip = document.getElementById('sPip');
-  const meta = [{"app": "DriveSnap", "cap": "Every business drive, logged automatically", "kind": "ds"}, {"app": "DriveSnap", "cap": "One swipe says business or personal", "kind": "ds"}, {"app": "DriveSnap", "cap": "A tax report your accountant accepts", "kind": "ds"}, {"app": "Receipt Snap", "cap": "Every receipt, the moment you snap it", "kind": "rs"}, {"app": "Receipt Snap", "cap": "Find any receipt in one search", "kind": "rs"}, {"app": "Receipt Snap", "cap": "Where the money went, every month", "kind": "rs"}];
+  const deck = document.getElementById('deck');
+  if (!deck) return;
+  const sets = [...deck.querySelectorAll('.set')];
   const calm = matchMedia('(prefers-reduced-motion: reduce)');
   let i = 0, timer = null, held = false;
-
-  function show(n) {
-    i = (n + screens.length) % screens.length;
-    screens.forEach((el, k) => el.classList.toggle('is-on', k === i));
-    dots.forEach((el, k) => {
-      el.classList.toggle('is-on', k === i);
-      el.setAttribute('aria-selected', k === i ? 'true' : 'false');
-    });
-    const m = meta[i];
-    // Retrigger the caption fade without a reflow-heavy rebuild.
-    sCap.classList.remove('swap'); void sCap.offsetWidth; sCap.classList.add('swap');
-    sApp.textContent = m.app;
-    sCap.textContent = m.cap;
-    sPip.className = 'pip ' + m.kind;
-  }
-  function play() {
-    if (calm.matches || held) return;
-    stop();
-    timer = setTimeout(() => { show(i + 1); play(); }, 4200);
-  }
-  function stop() { if (timer) { clearTimeout(timer); timer = null; } }
-
-  dots.forEach(d => d.addEventListener('click', () => { show(+d.dataset.i); play(); }));
-  stage.addEventListener('pointerenter', () => { held = true; stop(); });
-  stage.addEventListener('pointerleave', () => { held = false; play(); });
-  stage.addEventListener('focusin',  () => { held = true; stop(); });
-  stage.addEventListener('focusout', () => { held = false; play(); });
-  // Nothing should animate while the hero is off screen.
+  const show = n => {
+    i = (n + sets.length) % sets.length;
+    sets.forEach((s, k) => s.classList.toggle('is-on', k === i));
+  };
+  const stop = () => { if (timer) { clearTimeout(timer); timer = null; } };
+  const play = () => {
+    if (calm.matches || held || sets.length < 2) return;
+    stop(); timer = setTimeout(() => { show(i + 1); play(); }, 5200);
+  };
+  deck.addEventListener('pointerenter', () => { held = true; stop(); });
+  deck.addEventListener('pointerleave', () => { held = false; play(); });
   new IntersectionObserver(es => es.forEach(e => e.isIntersecting ? play() : stop()),
-                           { threshold: 0.15 }).observe(stage);
+                           { threshold: .2 }).observe(deck);
   calm.addEventListener?.('change', () => calm.matches ? stop() : play());
-  show(0);
 })();
 </script>
 
