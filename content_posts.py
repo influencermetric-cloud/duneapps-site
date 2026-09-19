@@ -248,4 +248,125 @@ POSTS = [
 <p class="disclaimer" style="color:var(--faint);font-size:.98rem">General information, not tax advice. Verify current requirements with the Federal Tax Authority or your accountant.</p>
 """
 },
+{
+ "out": "posts/forgot-to-track-doordash-miles.html",
+ "slug": "forgot-to-track-doordash-miles",
+ "title": "You forgot to track your DoorDash miles. Now what?",
+ "description": "What the IRS allows when months of gig driving went unlogged: the incomplete-records rule, sampling, and why DoorDash's own number is not your deduction.",
+ "kicker": "Guide \u00b7 Mileage",
+ "date": "19 September 2026",
+ "iso": "2026-09-19",
+ "faq": [
+   ("Can I estimate my DoorDash miles for taxes?",
+    "No. Publication 463 says plainly that you can't deduct amounts you approximate or estimate. What you can do is different: where records are incomplete, the IRS lets you prove the deduction with your own written statement plus other supporting evidence. For delivery work that evidence already exists \u2014 your order history, with a date, a pickup and a drop-off for every trip."),
+   ("Does DoorDash track my miles for taxes?",
+    "Not in the way you need. DoorDash gives an estimate of distance on active deliveries. It does not count the driving between finishing one order and being sent the next, or the repositioning you do while online and waiting. Those miles are deductible and the platform's figure leaves them out, so treat the number as corroboration, not as your log."),
+   ("What is the IRS mileage rate for 2026?",
+    "Two rates, because it changed mid-year: 72.5 cents a mile from 1 January to 30 June 2026, and 76 cents from 1 July. Split your miles at the date and apply each rate to its own half. The 70 cents figure still quoted in plenty of places is the 2025 rate."),
+   ("Can I reconstruct a mileage log after the fact?",
+    "Partly, and the distinction matters. The IRS allows reconstruction where records were lost for reasons beyond your control \u2014 fire, flood, casualty. Forgetting is not one of those. What is available to you is the incomplete-records rule and sampling: keep an adequate record from today, then show the logged period is representative of the rest of the year."),
+ ],
+ "body": """
+<p>You are four months in. The deliveries happened, the fuel was real, and there is no log. The question is not whether that was a mistake \u2014 it is what the rules actually allow you to do about it now.</p>
+
+<p>The answer is narrower than most advice on this admits, and wider than the panic suggests.</p>
+
+<h2>What you cannot do</h2>
+
+<p>You cannot pick a number. IRS <a href="https://www.irs.gov/pub/irs-pdf/p463.pdf">Publication 463</a> puts it in one line, under How To Prove Expenses:</p>
+
+<blockquote><p>You can't deduct amounts that you approximate or estimate.</p></blockquote>
+
+<p>"About 12,000 miles" is an estimate. So is a round 200 miles every week for 26 weeks. Even numbers repeating down a spreadsheet are the first thing that reads as invented, and vehicle expenses are held to a stricter standard than most deductions.</p>
+
+<p>The other thing people reach for \u2014 rebuilding the whole year from memory and calling it a log \u2014 has a specific place in the rules, and it is not this one. Reconstruction is for records lost <em>because of reasons beyond your control</em>: the publication names fire, flood and other casualties. Forgetting to log is not a casualty.</p>
+
+<h2>What you can do</h2>
+
+<p>Publication 463 has a section headed <strong>What if I Have Incomplete Records?</strong>, and it is the one that applies to you. Where you lack complete records for an element of an expense, you prove it with:</p>
+
+<ul>
+  <li><strong>your own written or oral statement</strong> containing specific information about that element, and</li>
+  <li><strong>other supporting evidence</strong> sufficient to establish it.</li>
+</ul>
+
+<p>Then comes the sentence that matters for anyone who drives for a delivery app. On whether supporting evidence has to be direct:</p>
+
+<blockquote><p>For example, the nature of your work, such as making deliveries, provides circumstantial evidence of the use of your car for business purposes. Invoices of deliveries establish when you used the car for business.</p></blockquote>
+
+<p>Read that again with your own year in mind. Every completed order in your app history is dated, timed, and has a pickup and a drop-off attached to it. That is not memory. It is a record of when the car was used for business, and the IRS names your line of work as the example.</p>
+
+<h2>The evidence a Dasher already has</h2>
+
+<table class="facts">
+  <thead><tr><th>Source</th><th>What it establishes</th></tr></thead>
+  <tbody>
+    <tr><td>Delivery history export from the app</td><td>The date and time of every trip, with pickup and drop-off addresses</td></tr>
+    <tr><td>Weekly earnings statements and bank deposits</td><td>Which weeks you actually worked, and how hard</td></tr>
+    <tr><td>Oil-change and service invoices, inspection reports</td><td>Odometer readings on real dates \u2014 the bookends for total miles</td></tr>
+    <tr><td>Phone location history, if you have it switched on</td><td>Routes on specific days, including the miles between orders</td></tr>
+    <tr><td>Your own written statement</td><td>The business purpose, which no device can supply for you</td></tr>
+  </tbody>
+</table>
+
+<p>Distance still has to be worked out trip by trip from the addresses, not waved at. It is tedious. It is also the difference between a deduction that stands up and one that does not.</p>
+
+<h2>Sampling: the part almost nobody uses</h2>
+
+<p>There is a legitimate shortcut in the rules, and it is worth more to you than any app:</p>
+
+<blockquote><p>You can keep an adequate record for parts of a tax year and use that record to prove the amount of business or investment use for the entire year. You must demonstrate by other evidence that the periods for which an adequate record is kept are representative of the use throughout the tax year.</p></blockquote>
+
+<p>The publication's own example is someone who keeps proper records for the first week of each month, shows 75% business use, and uses invoices and bills to demonstrate the other weeks ran at the same rate.</p>
+
+<p>For a delivery driver that translates cleanly. Start an honest log today. Keep it for a full, ordinary month. Then use your platform statements \u2014 orders completed and hours online, week by week \u2014 to show the logged month was typical of the months before it. The stronger the match between the sampled weeks and the unlogged ones, the stronger the claim.</p>
+
+<p>Two cautions. A sample taken in a freak week proves the wrong thing, in both directions. And a weekly log counts as timely: Publication 463 says a log maintained weekly that accounts for use during the week is a timely kept record, so you do not have to write it up at every red light.</p>
+
+<h2>DoorDash's number is not your log</h2>
+
+<p>DoorDash provides an annual mileage estimate. It is an estimate of distance on <em>active deliveries</em> \u2014 broadly, from accepting an order to completing it.</p>
+
+<p>What it leaves out is the rest of the working day: driving back out of a suburb after a drop-off, repositioning to a busier area, waiting somewhere hot with the app on. Those miles are business miles. The platform's figure does not know about them.</p>
+
+<p>The other direction matters too. The drive from your home to the zone where you start, and home again at the end, is commuting, and commuting is not deductible. Use the platform number as a sanity check against your own figure. If yours is lower, you have missed something.</p>
+
+<h2>What the miles are worth this year</h2>
+
+<p>2026 has two rates, because the IRS raised it mid-year.</p>
+
+<table class="facts">
+  <thead><tr><th>Period</th><th>Business rate per mile</th></tr></thead>
+  <tbody>
+    <tr><td>1 January \u2013 30 June 2026</td><td>72.5&cent;</td></tr>
+    <tr><td>1 July \u2013 31 December 2026</td><td>76&cent;</td></tr>
+  </tbody>
+</table>
+
+<p>So a driver with 8,000 business miles in the first half and 6,000 in the second has 8,000 \u00d7 72.5&cent; = $5,800, plus 6,000 \u00d7 76&cent; = $4,560. A $10,360 deduction, from a spreadsheet nobody wanted to keep.</p>
+
+<p>Split your year at 30 June. One rate applied across the whole year is wrong twice over, and it is wrong on the page an examiner reads first. (Rates verified against IRS Notice 2026-10 as revised, checked 19 September 2026.)</p>
+
+<h2>What to do this week</h2>
+
+<ol>
+  <li><strong>Export your delivery history</strong> for the whole period, before the app ages it out.</li>
+  <li><strong>Find two odometer readings</strong> with dates on them \u2014 a service invoice, an inspection, a photo of the dash. They bracket your total miles, and the total is what the business share is measured against.</li>
+  <li><strong>Start a real log today.</strong> Date, destination, purpose, miles. Keep it for a full month without editing it to look tidy.</li>
+  <li><strong>Reconstruct trip by trip</strong> for the unlogged months from the order history, and write the statement that goes with it: what the work was, which days you drove, why the car was in use.</li>
+  <li><strong>Keep it all together</strong> \u2014 export, statements, invoices, log \u2014 in one place you control, not inside an app subscription you might cancel.</li>
+</ol>
+
+<p>Then never do this again, which is the only part that is easy.</p>
+
+<div class="callout">
+  <h3>Where DriveSnap fits</h3>
+  <p>DriveSnap exists because the record has to be created on the day, not in April. It detects drives and logs the date, distance and route automatically, and asks for the purpose with one swipe \u2014 the field that has to come from a human.</p>
+  <p>Tracking is free and uncapped, deliberately: a log with a hole in it is worth nothing for tax, so capping drives would break the one thing the tool is for. It runs entirely on your iPhone, with no account and no servers, and the rate is stamped onto each drive as it is recorded \u2014 so a year you have already filed never quietly changes when the rate does.</p>
+  <p><a href="/drivesnap/">See how DriveSnap works \u2192</a> &nbsp;\u00b7&nbsp; <a href="/posts/irs-mileage-log-requirements.html">What the IRS requires in a mileage log \u2192</a></p>
+</div>
+
+<p class="disclaimer" style="color:var(--faint);font-size:.98rem">General information, not tax advice, and rates change. Publication 463 is the source for the record-keeping rules quoted here; check your own position with the IRS or an accountant before filing.</p>
+"""
+},
 ]

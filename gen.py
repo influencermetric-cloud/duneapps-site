@@ -41,7 +41,7 @@ for post in POSTS:
     ld = ('<script type="application/ld+json">' + json.dumps({
         "@context": "https://schema.org", "@type": "Article",
         "headline": post["title"], "description": post["description"],
-        "datePublished": "2026-09-01",
+        "datePublished": post.get("iso", "2026-09-01"),
         "author": {"@type": "Organization", "name": "Dune Apps"},
         "publisher": {"@type": "Organization", "name": "Dune Apps"},
         "mainEntityOfPage": f'https://duneapps.com/{post["out"]}'}) + "</script>") + faq_ld(post["faq"])
@@ -53,6 +53,9 @@ for post in POSTS:
 
 # ---------- 2. Writing index ----------
 ENTRIES = [
+    ("19 Sep 2026", "Guide", "You forgot to track your DoorDash miles. Now what?",
+     "What the IRS allows when months of gig driving went unlogged \u2014 incomplete records, sampling, and why the platform's own number is not your deduction.",
+     "/posts/forgot-to-track-doordash-miles.html"),
     ("1 Sep 2026", "Guide", "What the IRS actually requires in a mileage log",
      "The four things every trip record must contain, the 2026 rate, and why a reconstructed log fails.",
      "/posts/irs-mileage-log-requirements.html"),
