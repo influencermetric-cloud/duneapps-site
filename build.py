@@ -405,7 +405,11 @@ def render_article(post, index):
     head = '<script type="application/ld+json">' + json.dumps(ld, ensure_ascii=False) + "</script>"
     head += f'<meta property="article:published_time" content="{published}"><meta property="article:modified_time" content="{updated}">'
 
-    return render(out=post["out"], title=f'{post["title"]} — Dune Apps', description=post["description"],
+    # <title> stays inside Google's ~60-character display; the suffix is added
+    # only when it fits. The long, descriptive title remains the on-page h1.
+    seo_t = post.get("seo_title") or post["title"]
+    page_title = f"{seo_t} — Dune Apps" if len(seo_t) + 12 <= 62 else seo_t
+    return render(out=post["out"], title=page_title, description=post.get("meta") or post["description"],
                   canonical=url, body=article, style=FAQ_CSS + post.get("style", ""), head=head,
                   og_image=post.get("og", "og-writing.png"), og_type="article", lastmod=updated, priority="0.8")
 

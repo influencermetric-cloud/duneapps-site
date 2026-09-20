@@ -98,6 +98,8 @@ POSTS = [
 {
  "out": "posts/irs-mileage-rate-2026.html",
  "slug": "irs-mileage-rate-2026",
+ "seo_title": 'IRS Mileage Rate 2026: 72.5¢ Then 76¢ From July',
+ "meta": 'IRS mileage rate 2026: 72.5¢ a mile to 30 June, 76¢ from 1 July. How to split your miles, what the rate covers, and a calculator that does the maths.',
  "title": "IRS mileage rate 2026: 72.5¢, then 76¢ from 1 July",
  "description": "The IRS raised the standard mileage rate mid-year. 72.5 cents a mile applies from January to June 2026 and 76 cents from July. How to split your miles, what the rate includes, and a calculator.",
  "dek": "Two rates in one year is unusual, and getting it wrong is the first thing an examiner sees. Here is the 2026 rate, the mid-year change, what the rate actually covers, and a calculator that does the split.",
@@ -208,6 +210,8 @@ POSTS = [
 {
  "out": "posts/hmrc-mileage-rates-2026.html",
  "slug": "hmrc-mileage-rates-2026",
+ "seo_title": 'HMRC Mileage Rates 2026/27: 55p a Mile From 6 April',
+ "meta": "HMRC's approved mileage rate rose from 45p to 55p for the first 10,000 business miles from 6 April 2026. Full 2026/27 rates, who can claim, and a calculator.",
  "title": "HMRC mileage rates 2026/27: 55p a mile, and what changed on 6 April",
  "description": "HMRC's approved mileage rate rose from 45p to 55p per mile for the first 10,000 business miles from 6 April 2026. The full 2026/27 rates for cars, motorcycles and bicycles, who can claim, and a calculator.",
  "dek": "The first rise in the approved rate in well over a decade. Here are the 2026/27 figures for employees and the self-employed, what to do if your employer pays less than the approved amount, and the records HMRC expects behind the claim.",
@@ -312,6 +316,8 @@ POSTS = [
 {
  "out": "posts/do-you-need-receipts-for-tax-deductions.html",
  "slug": "do-you-need-receipts-for-tax-deductions",
+ "seo_title": 'Do You Need Receipts for Tax Deductions? The $75 Rule',
+ "meta": "The IRS doesn't require a receipt for most expenses under $75 — but always requires a record. What counts as proof in the US, UK, Australia and Canada.",
  "title": "Do you need receipts for tax deductions? The $75 rule and what actually counts as proof",
  "description": "The IRS does not require a receipt for most expenses under $75 — but it always requires a record of the amount, date, place and business purpose. What counts as proof in the US, UK, Australia and Canada, and what to do when a receipt is lost.",
  "dek": "The honest answer is 'not always a receipt, but always a record'. Here is the actual threshold, the one expense that always needs documentation, what a bank statement does and does not prove, and the rules in the UK, Australia and Canada.",
@@ -433,6 +439,8 @@ POSTS = [
 {
  "out": "posts/expense-tracker-apps-that-dont-sell-your-data.html",
  "slug": "expense-tracker-apps-that-dont-sell-your-data",
+ "seo_title": "Expense Tracker Apps That Don't Sell Your Data",
+ "meta": "Most receipt apps make money from your purchase data. A 30-second App Store check shows which don't, plus five questions to ask before you trust one.",
  "title": "How to find an expense tracker that doesn't sell your data",
  "description": "Most receipt and budgeting apps make money from your purchase data. A 30-second check on the App Store tells you which ones don't, plus five questions to ask before you trust an app with a year of receipts.",
  "dek": "The App Store already tells you whether an app collects your data — most people never look. Here is where the label is, what 'Data Linked to You' actually means for a receipt app, and the five questions that separate a tool from a data business.",
@@ -524,6 +532,8 @@ POSTS = [
 {
  "out": "posts/mileage-log-template.html",
  "slug": "mileage-log-template",
+ "seo_title": 'Free Mileage Log Template (Excel, Sheets, Printable)',
+ "meta": 'Free mileage log template with the columns the IRS and HMRC expect — date, destination, purpose, miles, odometer. CSV for Excel or Sheets, or print it.',
  "title": "Free mileage log template — Excel, Google Sheets and printable, with the columns the IRS and HMRC expect",
  "description": "A free mileage log template with the four columns every tax authority requires — date, destination, purpose, miles — plus odometer readings and monthly totals. Download as CSV for Excel or Google Sheets, or print it.",
  "dek": "The template is simple because the rule is simple: four facts per trip, written down on the day. Download it, or print the one-page version and keep it in the glovebox.",
@@ -619,6 +629,8 @@ POSTS = [
 {
  "out": "posts/irs-mileage-log-requirements.html",
  "slug": "irs-mileage-log-requirements",
+ "seo_title": 'What the IRS Requires in a Mileage Log (2026)',
+ "meta": 'The four things every business trip record must show, the 2026 rate, why a reconstructed log fails an audit, and how long to keep it.',
  "title": "What the IRS actually requires in a mileage log",
  "description": "The four things every business trip record must contain, what the 2026 standard rate is, why a reconstructed log fails an audit, and how long to keep it.",
  "dek": "Most people lose this deduction twice — first by not recording trips, then by trying to rebuild them in April. The requirements are short. They are worth reading once, properly.",
@@ -713,6 +725,8 @@ POSTS = [
 {
  "out": "posts/how-long-to-keep-receipts.html",
  "slug": "how-long-to-keep-receipts",
+ "seo_title": 'How Long to Keep Receipts for Taxes (US, UK, UAE, CA, AU)',
+ "meta": '3 years in the US, 5 for the UK self-employed, 6 in Canada, 5 in Australia and the UAE (15 for property). What a valid record shows and whether photos count.',
  "title": "How long do you have to keep receipts for taxes?",
  "description": "Three years in the US, five for the UK self-employed, six for UK companies and Canada, five in Australia and the UAE (fifteen for UAE property). What a valid record must show, whether photos count, and what happens when the app holding them shuts down.",
  "dek": "It depends where you file, and the range is wider than most people assume — three years in one place, fifteen in another for the same shoebox. The retention periods for six jurisdictions, with the rule each comes from.",
@@ -808,6 +822,8 @@ POSTS = [
 {
  "out": "posts/uae-vat-record-keeping.html",
  "slug": "uae-vat-record-keeping",
+ "seo_title": 'UAE VAT Record Keeping: 5 Years, 15 for Real Estate',
+ "meta": 'What the UAE FTA requires you to keep and for how long, what a valid tax invoice shows, when a simplified invoice is allowed, and what a TRN is.',
  "title": "What records UAE VAT actually requires you to keep",
  "description": "Five years, fifteen for real estate, and what has to appear on a valid tax invoice — including when a simplified invoice is allowed and what a TRN is for.",
  "dek": "VAT arrived in the UAE in 2018 at 5%, with a record-keeping regime stricter than most small businesses were used to. The rules are not complicated. The retention periods are longer than people expect.",
@@ -894,6 +910,8 @@ POSTS = [
 {
  "out": "posts/forgot-to-track-doordash-miles.html",
  "slug": "forgot-to-track-doordash-miles",
+ "seo_title": 'Forgot to Track DoorDash Miles? What the IRS Allows',
+ "meta": "Months of gig driving with no log: the IRS incomplete-records rule, sampling, the 2026 rates, and why DoorDash's own mileage number is not your deduction.",
  "title": "You forgot to track your DoorDash miles. Now what?",
  "description": "What the IRS allows when months of gig driving went unlogged: the incomplete-records rule, sampling, and why DoorDash's own number is not your deduction.",
  "dek": "You are four months in. The deliveries happened, the fuel was real, and there is no log. The rules allow less than most advice admits, and more than the panic suggests.",
@@ -1025,6 +1043,8 @@ POSTS = [
 {
  "out": "posts/the-bug-that-would-have-shipped.html",
  "slug": "the-bug-that-would-have-shipped",
+ "seo_title": 'The Bug That Would Have Shipped',
+ "meta": 'A mileage tracker that silently recorded zero distance for city driving, and four ways the same app could have put a wrong number on a tax return.',
  "title": "The bug that would have shipped",
  "description": "A mileage tracker that silently recorded zero distance for city driving — and four separate ways the same app could have put a wrong number on someone's tax return.",
  "dek": "I spent a week building a mileage tracker. It is the kind of app that looks finished long before it works.",
@@ -1049,6 +1069,8 @@ POSTS = [
 {
  "out": "posts/receipt-apps-pay-you-pennies.html",
  "slug": "receipt-apps-pay-you-pennies",
+ "seo_title": 'Why Receipt Apps Pay You Pennies for Your Data',
+ "meta": 'The biggest receipt apps in the App Store are purchase-data companies. What they actually sell, what it costs you, and what I built instead.',
  "title": "Receipt apps pay you pennies because your data is worth dollars",
  "description": "The biggest receipt apps in the App Store are not expense trackers. They are purchase-data companies. What they actually sell, what it costs you, and what I built instead.",
  "dek": "Search the App Store for \"receipt\" and the top results look like games. I spent a week working out why an app that helps you organise paper would need a leaderboard.",

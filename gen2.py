@@ -178,7 +178,7 @@ RS_BODY = f'''<section class="hero"><div class="wrap split">
 
 render(out="receiptsnap/index.html",
   title="Receipt Snap — receipts read on your phone and kept there",
-  description="Receipt Snap reads the merchant, date, total and tax from a receipt on your iPhone in about two seconds. No account, no servers, nothing uploaded. Twelve currencies, recognised from the receipt.",
+  description="Receipt Snap reads the merchant, date, total and tax from a receipt on your iPhone in two seconds. No account, no servers, nothing uploaded. 12 currencies.",
   canonical="https://duneapps.com/receiptsnap/", og_type="product",
   body=RS_BODY, style=PAGE_CSS + FAQ_CSS, og_image="og-receiptsnap.png",
   head=faq_ld(RS_FAQ) + '<script type="application/ld+json">' + json.dumps({
@@ -272,7 +272,7 @@ CMP_BODY = f'''<section class="hero"><div class="wrap split">
 
 render(out="compare/drivesnap-vs-mileiq/index.html",
   title="DriveSnap vs MileIQ — an honest comparison (2026)",
-  description="MileIQ caps free users at 40 drives a month and stores your location history on its servers. DriveSnap has no cap and keeps drives on your phone. Full side-by-side, including where MileIQ is better.",
+  description="MileIQ caps free users at 40 drives a month and keeps your location history on its servers. DriveSnap has no cap and keeps drives on your phone. Side by side.",
   canonical="https://duneapps.com/compare/drivesnap-vs-mileiq/",
   body=CMP_BODY, style=PAGE_CSS + FAQ_CSS, og_image="og-compare.png", head=faq_ld(CMP_FAQ))
 print("comparison page")
