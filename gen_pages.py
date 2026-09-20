@@ -25,14 +25,29 @@ def read(name):
     return path.read_text() if path.exists() else ""
 
 
+HOME_GUIDES = ["irs-mileage-rate-2026", "do-you-need-receipts-for-tax-deductions", "hmrc-mileage-rates-2026",
+               "how-long-to-keep-receipts", "expense-tracker-apps-that-dont-sell-your-data", "mileage-log-template"]
+
+
+def guide_cards():
+    from build import nice_date, reading_minutes
+    from content_posts import INDEX
+    return "".join(
+        f'<a class="post-card reveal" href="/{p["out"]}"><span class="topic">{p["topic"]}</span><h3>{p["title"]}</h3>'
+        f'<p>{p["description"]}</p><span class="when">Updated {nice_date(p["updated"])} · {reading_minutes(p["body"])} min</span></a>'
+        for p in (INDEX[s] for s in HOME_GUIDES if s in INDEX))
+
+
 def main():
     spec = json.loads((PAGES / "meta.json").read_text())
     for key, page in spec.items():
+        body = read(f"{key}.body.html").replace("<!--guides-->", guide_cards())
         render(out=page["out"],
                title=page["title"],
                description=page["description"],
                canonical=page["canonical"],
-               body=read(f"{key}.body.html"),
+               body=body,
+               priority="1.0" if key == "index" else "0.9",
                style=read(f"{key}.css"),
                head=read(f"{key}.head.html"),
                og_image=page.get("og", "og.png"),

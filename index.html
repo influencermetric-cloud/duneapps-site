@@ -14,6 +14,7 @@
 <meta name="color-scheme" content="light">
 <title>Dune Apps — iPhone tools that keep your data on your phone</title>
 <meta name="description" content="Small, careful iPhone tools that run entirely on your device — no servers, no accounts, nothing collected. Receipt Snap and DriveSnap, plus essays on building private software.">
+
 <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%2040%2040%27%3E%3Cdefs%3E%3CclipPath%20id%3D%27d%27%3E%3Ccircle%20cx%3D%2720%27%20cy%3D%2720%27%20r%3D%2719%27%2F%3E%3C%2FclipPath%3E%3C%2Fdefs%3E%3Ccircle%20cx%3D%2720%27%20cy%3D%2720%27%20r%3D%2719%27%20fill%3D%27%23EFF3F1%27%2F%3E%3Cg%20clip-path%3D%27url%28%23d%29%27%3E%3Ccircle%20cx%3D%2713%27%20cy%3D%2713%27%20r%3D%275%27%20fill%3D%27%23C3F04C%27%2F%3E%3Cpath%20d%3D%27M13%2041%20L41%2041%20L41%2025%20C%2034%2025.8%2027.5%2028.8%2022%2033.8%20L13%2041%20Z%27%20fill%3D%27%239DB8B2%27%2F%3E%3Cpath%20d%3D%27M-1%2041%20L-1%2029.4%20C%208%2028.6%2015.2%2025.8%2020.4%2021%20C%2021.6%2019.9%2022.9%2019.9%2024%2021.1%20C%2028%2025.4%2033.4%2029%2041%2030.8%20L41%2041%20Z%27%20fill%3D%27%231A4B44%27%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E">
 <link rel="apple-touch-icon" href="/brand/dune-mark-180.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -27,6 +28,7 @@
 <meta property="og:description" content="Small, careful iPhone tools that run entirely on your device — no servers, no accounts, nothing collected. Receipt Snap and DriveSnap, plus essays on building private software.">
 <meta property="og:image" content="https://duneapps.com/og.png">
 <meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Organization", "@id": "https://duneapps.com/#org", "name": "Dune Apps", "url": "https://duneapps.com/", "logo": {"@type": "ImageObject", "url": "https://duneapps.com/brand/dune-mark-512.png"}, "sameAs": ["https://github.com/influencermetric-cloud", "https://apps.apple.com/us/developer/nahid-saleem/id6792166765"]}, {"@type": "WebSite", "@id": "https://duneapps.com/#site", "url": "https://duneapps.com/", "name": "Dune Apps", "publisher": {"@id": "https://duneapps.com/#org"}}, {"@type": "Person", "@id": "https://duneapps.com/#nahid", "name": "Nahid Saleem", "jobTitle": "Founder, Dune Apps", "description": "Builds Receipt Snap and DriveSnap \u2014 iPhone tools that keep tax records on the device. Writes the guides from the research done to build them.", "url": "https://duneapps.com/"}]}</script>
 
 <link rel="stylesheet" href="/style.css">
 <style>/* Hero: text left, product visual right and bleeding off the edge. */
@@ -217,14 +219,14 @@
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
-
+<div class="progress" id="progress" aria-hidden="true"></div>
 <header id="hdr"><div class="wrap bar">
   <a class="brand" href="/"><span class="mark" aria-hidden="true"></span><span>Dune Apps</span></a>
   <nav class="site-nav">
-    <a href="/#apps">Apps</a>
-    <a href="/writing/">Writing</a>
+    <a href="/writing/">Guides</a>
     <a href="/receiptsnap/">Receipt Snap</a>
-    <a class="btn btn-primary btn-sm" href="https://apps.apple.com/app/id6806519870">Get the app</a>
+    <a href="/drivesnap/">DriveSnap</a>
+    <a class="btn btn-primary btn-sm" href="https://apps.apple.com/app/id6806519870" data-app="receiptsnap" data-place="header">Get the app</a>
   </nav>
 </div></header>
 <main id="main">
@@ -312,36 +314,23 @@
         <p>A business mile is worth 76 cents. A year of receipts is worth thousands. Both are easy to lose track of — and most apps that help you keep them are quietly keeping a copy for themselves.</p>
       </div>
       <div class="grid g-4" style="margin-top:52px">
-        <div class="card stat reveal"><div class="n">70&cent;</div><p>What every business mile is worth on your 2026 US return. A thousand miles is $700 you can claim.</p></div>
+        <div class="card stat reveal"><div class="n">76&cent;</div><p>What every business mile is worth on a US return from 1 July 2026 (72.5¢ before). A thousand miles is $760 you can claim.</p></div>
         <div class="card stat reveal"><div class="n">10 sec</div><p>A week is all the upkeep. Swipe each drive left or right and you are done.</p></div>
-        <div class="card stat reveal"><div class="n">3 yrs</div><p>How long the IRS expects you to be able to produce the record. Five in the UAE, six in the UK.</p></div>
+        <div class="card stat reveal"><div class="n">3 yrs</div><p>How long the IRS expects you to be able to produce the record. Five for the UK self-employed and the UAE, six in Canada.</p></div>
         <div class="card stat reveal"><div class="n">Free</div><p>Tracking and scanning never stop and never cost anything. No monthly cap to hit mid-month.</p></div>
       </div>
     </div>
   </section>
 
-  <section class="section" id="writing">
+  <section class="section guides-strip" id="guides">
     <div class="wrap">
       <div class="section-head reveal">
-        <span class="eyebrow">Writing</span>
-        <h2>Notes from the workbench</h2>
-        <p>What building private software actually looks like — including the parts that went wrong.</p>
+        <span class="eyebrow">Guides</span>
+        <h2>What the tax authority actually requires — with the rule quoted</h2>
+        <p>Answers to the questions people search before they file: this year's rates, what counts as a receipt, how long to keep it. Every figure checked against the primary source and dated.</p>
       </div>
-      <div style="margin-top:34px">
-        <a class="row reveal" href="/posts/irs-mileage-log-requirements.html">
-          <span class="date">1 Sep 2026</span>
-          <span><h3>What the IRS actually requires in a mileage log</h3><p>The four things every trip record must contain, the 2026 rate, and why a reconstructed log fails.</p></span>
-          <span class="arrow">→</span></a>
-        <a class="row reveal" href="/posts/how-long-to-keep-receipts.html">
-          <span class="date">1 Sep 2026</span>
-          <span><h3>How long do you have to keep receipts for taxes?</h3><p>Three years in the US, six in the UK, five in the UAE — and what happens when the app holding them shuts down.</p></span>
-          <span class="arrow">→</span></a>
-        <a class="row reveal" href="/posts/uae-vat-record-keeping.html">
-          <span class="date">1 Sep 2026</span>
-          <span><h3>What records UAE VAT actually requires you to keep</h3><p>Five years, fifteen for real estate, and what has to appear on a valid tax invoice.</p></span>
-          <span class="arrow">→</span></a>
-        <p style="margin-top:26px"><a href="/writing/" style="color:var(--teal);font-weight:600;text-decoration:none">All writing →</a></p>
-      </div>
+      <div class="grid" style="margin-top:44px"><a class="post-card reveal" href="/posts/irs-mileage-rate-2026.html"><span class="topic">Mileage</span><h3>IRS mileage rate 2026: 72.5¢, then 76¢ from 1 July</h3><p>The IRS raised the standard mileage rate mid-year. 72.5 cents a mile applies from January to June 2026 and 76 cents from July. How to split your miles, what the rate includes, and a calculator.</p><span class="when">Updated 20 September 2026 · 4 min</span></a><a class="post-card reveal" href="/posts/do-you-need-receipts-for-tax-deductions.html"><span class="topic">Receipts</span><h3>Do you need receipts for tax deductions? The $75 rule and what actually counts as proof</h3><p>The IRS does not require a receipt for most expenses under $75 — but it always requires a record of the amount, date, place and business purpose. What counts as proof in the US, UK, Australia and Canada, and what to do when a receipt is lost.</p><span class="when">Updated 20 September 2026 · 5 min</span></a><a class="post-card reveal" href="/posts/hmrc-mileage-rates-2026.html"><span class="topic">Mileage</span><h3>HMRC mileage rates 2026/27: 55p a mile, and what changed on 6 April</h3><p>HMRC's approved mileage rate rose from 45p to 55p per mile for the first 10,000 business miles from 6 April 2026. The full 2026/27 rates for cars, motorcycles and bicycles, who can claim, and a calculator.</p><span class="when">Updated 20 September 2026 · 3 min</span></a><a class="post-card reveal" href="/posts/how-long-to-keep-receipts.html"><span class="topic">Records</span><h3>How long do you have to keep receipts for taxes?</h3><p>Three years in the US, five for the UK self-employed, six for UK companies and Canada, five in Australia and the UAE (fifteen for UAE property). What a valid record must show, whether photos count, and what happens when the app holding them shuts down.</p><span class="when">Updated 20 September 2026 · 2 min</span></a><a class="post-card reveal" href="/posts/expense-tracker-apps-that-dont-sell-your-data.html"><span class="topic">Privacy</span><h3>How to find an expense tracker that doesn't sell your data</h3><p>Most receipt and budgeting apps make money from your purchase data. A 30-second check on the App Store tells you which ones don't, plus five questions to ask before you trust an app with a year of receipts.</p><span class="when">Updated 20 September 2026 · 4 min</span></a><a class="post-card reveal" href="/posts/mileage-log-template.html"><span class="topic">Mileage</span><h3>Free mileage log template — Excel, Google Sheets and printable, with the columns the IRS and HMRC expect</h3><p>A free mileage log template with the four columns every tax authority requires — date, destination, purpose, miles — plus odometer readings and monthly totals. Download as CSV for Excel or Google Sheets, or print it.</p><span class="when">Updated 20 September 2026 · 3 min</span></a></div>
+      <p style="margin-top:28px"><a href="/writing/" style="color:var(--teal);font-weight:600;text-decoration:none">All guides →</a> &nbsp;&nbsp;·&nbsp;&nbsp; <a href="/posts/mileage-log-template.html" style="color:var(--teal);font-weight:600;text-decoration:none">Free mileage log template →</a></p>
     </div>
   </section>
 
@@ -390,26 +379,30 @@
     <div class="cols">
       <div>
         <a class="brand" href="/"><span class="mark" aria-hidden="true"></span><span>Dune Apps</span></a>
-        <p style="margin-top:18px;max-width:34ch;color:rgba(255,255,255,.72)">Small, careful iPhone tools that run entirely on your device — no servers, no accounts, nothing collected.</p>
+        <p style="margin-top:18px;max-width:34ch;color:rgba(255,255,255,.72)">iPhone tools for the money you can claim back — your receipts and your business miles — that keep every record on your own phone.</p>
       </div>
       <div><h4>Apps</h4>
-        <a href="/drivesnap/">DriveSnap</a>
         <a href="/receiptsnap/">Receipt Snap</a>
-        <a href="/compare/drivesnap-vs-mileiq/">DriveSnap vs MileIQ</a></div>
+        <a href="/drivesnap/">DriveSnap</a>
+        <a href="/compare/drivesnap-vs-mileiq/">DriveSnap vs MileIQ</a>
+        <a href="https://apps.apple.com/app/id6806519870" data-app="receiptsnap" data-place="footer">Receipt Snap on the App Store</a></div>
       <div><h4>Guides</h4>
-        <a href="/writing/">All writing</a>
-        <a href="/posts/irs-mileage-log-requirements.html">IRS mileage log rules</a>
+        <a href="/posts/irs-mileage-rate-2026.html">IRS mileage rate 2026</a>
+        <a href="/posts/hmrc-mileage-rates-2026.html">HMRC mileage rates 2026/27</a>
+        <a href="/posts/do-you-need-receipts-for-tax-deductions.html">Do you need receipts for deductions?</a>
         <a href="/posts/how-long-to-keep-receipts.html">How long to keep receipts</a>
-        <a href="/posts/uae-vat-record-keeping.html">UAE VAT records</a></div>
-      <div><h4>Support</h4>
-        <a href="https://github.com/influencermetric-cloud/drivesnap-support">DriveSnap support</a>
+        <a href="/posts/irs-mileage-log-requirements.html">IRS mileage log rules</a>
+        <a href="/writing/">All guides</a></div>
+      <div><h4>Tools &amp; help</h4>
+        <a href="/posts/mileage-log-template.html">Free mileage log template</a>
+        <a href="/templates/mileage-log/">Printable mileage log</a>
         <a href="https://github.com/influencermetric-cloud/receiptsnap-support">Receipt Snap support</a>
-        <a href="https://github.com/influencermetric-cloud/drivesnap-support/blob/main/PRIVACY.md">Privacy policy</a></div>
+        <a href="https://github.com/influencermetric-cloud/drivesnap-support">DriveSnap support</a>
+        <a href="https://github.com/influencermetric-cloud/receiptsnap-support/blob/main/PRIVACY.md">Privacy policy</a></div>
     </div>
-    <p class="disclosure">Dune Apps · built in Dubai. This website uses Google Analytics to see which pages help people. The apps themselves collect nothing at all.</p>
+    <p class="disclosure">© Dune Apps. This website uses Google Analytics to see which pages help people. The apps themselves collect nothing at all.</p>
   </div>
 </footer>
-
 <script>
   const hdr = document.getElementById('hdr');
   addEventListener('scroll', () => hdr.classList.toggle('stuck', scrollY > 8), { passive: true });
@@ -419,6 +412,42 @@
     }), { rootMargin: '0px 0px -8% 0px' });
     document.querySelectorAll('.reveal').forEach(el => io.observe(el));
   } else document.querySelectorAll('.reveal').forEach(el => el.classList.add('in'));
+
+  // Every App Store click becomes a GA4 event with the app and where on the
+  // page it was clicked, so "which guide sends people to the store" is answerable.
+  document.addEventListener('click', e => {
+    const a = e.target.closest('a[href]'); if (!a || typeof gtag !== 'function') return;
+    const h = a.getAttribute('href') || '';
+    if (h.includes('apps.apple.com')) {
+      gtag('event', 'app_store_click', {
+        app: a.dataset.app || (h.includes('6806519870') ? 'receiptsnap' : 'other'),
+        placement: a.dataset.place || (a.closest('[id]') || {}).id || 'body',
+        page_path: location.pathname });
+    } else if (a.classList.contains('btn')) {
+      gtag('event', 'cta_click', { label: a.textContent.trim().slice(0, 40), page_path: location.pathname });
+    }
+  }, { capture: true });
+
+  // Reading progress + table-of-contents highlight, only where an article exists.
+  const art = document.querySelector('.art-main');
+  if (art) {
+    const bar = document.getElementById('progress');
+    const tick = () => {
+      const r = art.getBoundingClientRect(); const total = r.height - innerHeight;
+      bar.style.width = Math.max(0, Math.min(1, -r.top / Math.max(total, 1))) * 100 + '%';
+    };
+    addEventListener('scroll', tick, { passive: true }); tick();
+    const links = [...document.querySelectorAll('.toc a')];
+    const heads = links.map(l => document.getElementById(l.getAttribute('href').slice(1))).filter(Boolean);
+    if (heads.length) {
+      const spy = new IntersectionObserver(es => es.forEach(en => {
+        if (en.isIntersecting) {
+          links.forEach(l => l.classList.toggle('on', l.getAttribute('href') === '#' + en.target.id));
+        }
+      }), { rootMargin: '-100px 0px -70% 0px' });
+      heads.forEach(h => spy.observe(h));
+    }
+  }
 </script>
 </body>
 </html>

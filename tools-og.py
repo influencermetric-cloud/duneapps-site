@@ -11,6 +11,9 @@ CARDS = [
  ("og-compare.png", "DriveSnap vs MileIQ", "No drive caps. Nothing uploaded. $29.99 a year.", "An honest comparison · 2026"),
  ("og-writing.png", "Guides", "What tax authorities actually require from your records", "duneapps.com/writing"),
 ]
+from content_posts import POSTS
+for _p in POSTS:
+    CARDS.append((_p["og"], _p["title"], _p["topic"] + " · a Dune Apps guide", "duneapps.com/" + _p["out"]))
 
 TPL = '''<!doctype html><meta charset="utf-8">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -31,7 +34,7 @@ TPL = '''<!doctype html><meta charset="utf-8">
  .brand{{display:flex;align-items:center;gap:14px;margin-bottom:34px}}
  .brand img{{width:46px;height:46px}}
  .brand span{{font-size:24px;font-weight:600;color:#0E1315;letter-spacing:-.03em}}
- h1{{font-size:60px;font-weight:600;color:#0E1315;letter-spacing:-.035em;line-height:1.05}}
+ h1{{font-size:{size}px;font-weight:600;color:#0E1315;letter-spacing:-.035em;line-height:1.05}}
  p{{font-size:27px;color:#59666A;margin-top:20px;line-height:1.35}}
  .foot{{position:absolute;bottom:74px;left:74px;font-size:19px;color:#8B979B;z-index:2}}
 </style>
@@ -44,7 +47,8 @@ TPL = '''<!doctype html><meta charset="utf-8">
 
 mark = (ROOT / "brand" / "dune-mark.svg").as_uri()
 for name, title, sub, foot in CARDS:
-    html = TPL.format(mark=mark, title=title, sub=sub, foot=foot)
+    size = 60 if len(title) <= 44 else 50 if len(title) <= 64 else 42 if len(title) <= 90 else 36
+    html = TPL.format(mark=mark, title=title, sub=sub, foot=foot, size=size)
     with tempfile.NamedTemporaryFile("w", suffix=".html", delete=False) as f:
         f.write(html); page = f.name
     subprocess.run([CHROME, "--headless=new", "--disable-gpu", "--hide-scrollbars",

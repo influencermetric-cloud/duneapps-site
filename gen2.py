@@ -83,7 +83,7 @@ RS_FAQ = [
  ("Does Receipt Snap upload my receipts?","No. The photo is read on your iPhone using Apple's on-device text recognition, and the result is stored on the device. There is no account and no Receipt Snap server — the App Store privacy label reads Data Not Collected."),
  ("Which currencies does it recognise?","Twelve, detected from the receipt itself. Where no symbol is printed it reads the tax registration number instead — a UAE TRN means dirhams, an Indian GSTIN means rupees, a UK postcode means sterling."),
  ("Do photographs of receipts count as tax records?","Yes. The IRS, HMRC and the UAE Federal Tax Authority all accept electronic records provided they are legible, complete and producible on request. Photograph the whole receipt, including the tax line."),
- ("What does it cost?","Receipt Snap is free. A Pro tier is planned for a later version; scanning and searching your receipts will stay free."),
+ ("What does it cost?","Receipt Snap is free, with 15 scans a month. Pro removes the cap — $14.99 a year, or $39.99 once for life — and arrives with version 1.1. Searching, editing and exporting what you have already scanned stay free either way."),
  ("What happens if the scan gets something wrong?","Every field is editable before you save, and you can re-crop the photo by dragging the corners if the automatic crop misses. Nothing is filed without you seeing it."),
 ]
 RS_BODY = f'''<section class="hero"><div class="wrap split">
@@ -155,6 +155,15 @@ RS_BODY = f'''<section class="hero"><div class="wrap split">
     </tbody>
   </table>
   <p class="note"><a href="/posts/receipt-apps-pay-you-pennies.html">The long version, with the numbers →</a></p>
+</div></section>
+
+<section class="section" id="guides" style="padding-top:0"><div class="wrap">
+  <div class="section-head reveal"><span class="eyebrow">From the guides</span><h2>The rules a receipt has to satisfy</h2></div>
+  <div class="grid g-3" style="margin-top:34px">
+    <a class="post-card reveal" href="/posts/do-you-need-receipts-for-tax-deductions.html"><span class="topic">Receipts</span><h3>Do you need receipts for tax deductions?</h3><p>The $75 rule, what a bank statement proves, and what to do when one is lost.</p></a>
+    <a class="post-card reveal" href="/posts/how-long-to-keep-receipts.html"><span class="topic">Records</span><h3>How long do you have to keep receipts for taxes?</h3><p>Three years to fifteen, depending where you file.</p></a>
+    <a class="post-card reveal" href="/posts/expense-tracker-apps-that-dont-sell-your-data.html"><span class="topic">Privacy</span><h3>How to find an expense tracker that doesn't sell your data</h3><p>The 30-second check on any App Store page.</p></a>
+  </div>
 </div></section>
 
 {faq_block(RS_FAQ)}
@@ -240,6 +249,15 @@ CMP_BODY = f'''<section class="hero"><div class="wrap split">
   <div class="section-head reveal"><span class="eyebrow">The cap</span><h2>Why 40 drives a month is the real issue</h2>
     <p>It is not that the free tier ends. It is <em>where</em> it ends. Pass the cap on the 18th and the rest of the month is simply missing from your log — and a mileage record with a hole in it is not a partial record, it is an unusable one. That is the complaint that appears most often in reviews of capped trackers, and it is why DriveSnap gates the export instead of the logging.</p>
     <p style="margin-top:18px"><a href="/posts/irs-mileage-log-requirements.html">What the IRS actually requires in a mileage log →</a></p></div>
+</div></section>
+
+<section class="section" id="guides" style="padding-top:0"><div class="wrap">
+  <div class="section-head reveal"><span class="eyebrow">From the guides</span><h2>Before you pick either</h2></div>
+  <div class="grid g-3" style="margin-top:34px">
+    <a class="post-card reveal" href="/posts/irs-mileage-rate-2026.html"><span class="topic">Mileage</span><h3>IRS mileage rate 2026: 72.5¢, then 76¢ from 1 July</h3><p>Whichever app you use, the rate changed mid-year.</p></a>
+    <a class="post-card reveal" href="/posts/forgot-to-track-doordash-miles.html"><span class="topic">Mileage</span><h3>You forgot to track your miles. Now what?</h3><p>What the IRS allows when months went unlogged.</p></a>
+    <a class="post-card reveal" href="/posts/mileage-log-template.html"><span class="topic">Mileage</span><h3>Free mileage log template</h3><p>The columns every authority expects, as a spreadsheet or a printable page.</p></a>
+  </div>
 </div></section>
 
 {faq_block(CMP_FAQ)}
