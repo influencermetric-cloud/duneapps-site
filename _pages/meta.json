@@ -9,7 +9,7 @@
   "drivesnap": {
     "out": "drivesnap/index.html",
     "title": "DriveSnap \u2014 a mileage log that never leaves your phone",
-    "description": "DriveSnap records business drives automatically and keeps every one on your iPhone. No account, no servers, no drive caps. Free during launch, export included.",
+    "description": "DriveSnap records business drives automatically and keeps every one on your iPhone. No account, no servers, no drive caps. Free during launch.",
     "canonical": "https://duneapps.com/drivesnap/",
     "og": "og-drivesnap.png",
     "og_type": "product"
