@@ -331,12 +331,15 @@ nav.site-nav a.btn {
   background: var(--lime); transition: width .12s linear; }
 
 /* --- Article grid ----------------------------------------------------- */
-.article-page { display: grid; grid-template-columns: minmax(0, 720px) 264px;
-  gap: 64px; justify-content: center; padding: 34px 0 96px; }
+/* The article sits on the same edges as the header: title under the logo,
+   rail under the button. 800px at 20px is ~78 characters — the wide end of a
+   comfortable measure, chosen so tables and calculators have room. */
+.article-page { display: grid; grid-template-columns: minmax(0, 800px) 320px;
+  gap: 72px; justify-content: space-between; padding: 34px 0 96px; }
 .art-main { min-width: 0; }
 .art-rail { position: sticky; top: 104px; align-self: start; display: grid; gap: 22px; }
-@media (max-width: 1100px) {
-  .article-page { grid-template-columns: minmax(0, 720px); }
+@media (max-width: 1260px) {
+  .article-page { grid-template-columns: minmax(0, 800px); justify-content: center; }
   .art-rail { position: static; }
   .art-rail .toc { display: none; }
   .art-rail .rail-card { display: none; }
@@ -352,9 +355,9 @@ nav.site-nav a.btn {
 .art-head .topic { display: inline-flex; align-items: center; gap: 8px; font-size: .78rem;
   letter-spacing: .1em; text-transform: uppercase; font-weight: 600; color: var(--teal);
   background: rgba(195,240,76,.35); padding: 6px 12px; border-radius: 999px; }
-.art-head h1 { font-size: clamp(2.15rem, 4.8vw, 3.25rem); margin: 18px 0 0; line-height: 1.06; }
-.art-head .dek { font-size: 1.22rem; line-height: 1.55; color: var(--muted); margin-top: 18px;
-  max-width: 62ch; }
+.art-head h1 { font-size: clamp(2.2rem, 5vw, 3.6rem); margin: 18px 0 0; line-height: 1.06; }
+.art-head .dek { font-size: 1.3rem; line-height: 1.55; color: var(--muted); margin-top: 20px;
+  max-width: 64ch; }
 .art-head .meta { display: flex; flex-wrap: wrap; gap: 8px 18px; align-items: center;
   margin-top: 22px; padding-bottom: 26px; border-bottom: 1px solid var(--line);
   font-size: .9rem; color: var(--faint); }
@@ -400,15 +403,16 @@ details.toc-m .toc { margin-top: 12px; }
 @media (min-width: 1101px) { details.toc-m { display: none; } }
 
 /* --- Rail product card -------------------------------------------------- */
-.rail-card { background: var(--teal); color: #fff; border-radius: var(--radius-sm); padding: 22px; }
+.rail-card { background: var(--teal); color: #fff; border-radius: var(--radius-sm); padding: 26px; }
 .rail-card .k { font-size: .74rem; letter-spacing: .12em; text-transform: uppercase; opacity: .7; }
-.rail-card h4 { color: #fff; font-size: 1.12rem; margin: 10px 0 8px; letter-spacing: -.02em; }
-.rail-card p { font-size: .92rem; color: rgba(255,255,255,.78); line-height: 1.5; }
+.rail-card h4 { color: #fff; font-size: 1.25rem; margin: 10px 0 8px; letter-spacing: -.02em; }
+.rail-card p { font-size: .98rem; color: rgba(255,255,255,.8); line-height: 1.55; }
+.toc a { font-size: .94rem; }
 .rail-card .btn { margin-top: 16px; }
 
 /* --- Prose ------------------------------------------------------------- */
 .prose { margin-top: 32px; }
-.prose > p, .prose > ul, .prose > ol { font-size: 1.14rem; line-height: 1.74; }
+.prose > p, .prose > ul, .prose > ol { font-size: 1.2rem; line-height: 1.72; }
 .prose > p { margin-bottom: 24px; color: var(--muted); }
 .prose strong { color: var(--text); font-weight: 600; }
 .prose h2 { font-size: 1.7rem; margin: 54px 0 16px; scroll-margin-top: 104px; position: relative; }
