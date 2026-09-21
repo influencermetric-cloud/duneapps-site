@@ -40,14 +40,16 @@ h1, h2, h3, h4 { color: var(--text); font-weight: 600; letter-spacing: -.03em; l
 a { color: var(--text); }
 
 /* ---------- Floating pill navbar ---------- */
-header { position: sticky; top: 0; z-index: 60; padding: 18px 0; }
-header .bar {
+/* Scoped to the site bar by id: a bare `header` selector also caught each article's
+   <header class="art-head">, which then stuck to the top while the page scrolled under it. */
+#hdr { position: sticky; top: 0; z-index: 60; padding: 18px 0; }
+#hdr .bar {
   display: flex; align-items: center; justify-content: space-between;
   background: var(--card); border-radius: 999px; padding: 12px 12px 12px 26px;
   box-shadow: 0 2px 18px rgba(14,19,21,.06);
   transition: box-shadow .25s ease;
 }
-header.stuck .bar { box-shadow: 0 8px 30px rgba(14,19,21,.10); }
+#hdr.stuck .bar { box-shadow: 0 8px 30px rgba(14,19,21,.10); }
 
 .brand { display: inline-flex; align-items: center; gap: 12px; text-decoration: none;
   color: var(--text); font-weight: 600; font-size: 1.24rem; letter-spacing: -.03em; }
@@ -441,6 +443,12 @@ table.facts th { font-size: .76rem; letter-spacing: .1em; text-transform: upperc
   color: var(--faint); font-weight: 600; background: var(--bg-2); }
 table.facts td strong { white-space: nowrap; }
 @media (max-width: 640px) { table.facts th, table.facts td { padding: 11px 12px; font-size: .93rem; } }
+/* A four-column table cannot fit a phone: let it scroll sideways inside its own box instead of
+   widening the whole page. */
+@media (max-width: 760px) {
+  table.facts { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; max-width: 100%; }
+  table.facts th, table.facts td { min-width: 96px; }
+}
 
 .callout { background: var(--card); border-radius: var(--radius-sm); padding: 26px 28px;
   margin: 34px 0; box-shadow: var(--e1); }
@@ -528,7 +536,7 @@ table.facts td strong { white-space: nowrap; }
 .tpl th, .tpl td { border: 1px solid #999; padding: 10px 8px; font-size: .92rem; height: 34px; }
 .tpl th { background: #eee; font-weight: 600; text-align: left; }
 @media print {
-  header, footer, .progress, .no-print { display: none !important; }
+  #hdr, body > footer, .progress, .no-print { display: none !important; }
   body { background: #fff; font-size: 12px; }
   .wrap { width: 100%; }
   .tpl th, .tpl td { padding: 6px 6px; height: 30px; }
