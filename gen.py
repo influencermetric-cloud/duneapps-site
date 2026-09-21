@@ -69,7 +69,7 @@ hub_body = f'''<section class="hub-head"><div class="wrap">
 </div></div></section>'''
 
 render(out="writing/index.html",
-       title="Guides — receipts, mileage and tax records · Dune Apps",
+       title="Guides: receipts, mileage and tax records · Dune Apps",
        description="Sourced guides on what the IRS, HMRC, ATO, CRA and UAE FTA require from receipts and mileage logs — rates, retention periods, and what counts as proof.",
        canonical=f"{SITE}/writing/", body=hub_body, og_image="og-writing.png", priority="0.9")
 print("guides hub")
@@ -116,7 +116,7 @@ tpl_body = f'''<div class="wrap tpl" style="max-width:1000px;margin:36px auto 80
   <p style="font-size:.82rem;color:var(--faint);margin-top:14px">IRS 2026 rate: 72.5¢ per business mile to 30 June, 76¢ from 1 July. HMRC 2026/27: 55p for the first 10,000 business miles, then 25p. Rates checked against IRS.gov and GOV.UK on 21 September 2026. Free template and guide at duneapps.com</p>
 </div>'''
 render(out="templates/mileage-log/index.html", title="Printable mileage log (free) · Dune Apps",
-       description="A free printable one-page mileage log with the columns the IRS and HMRC require: date, from/to, purpose, odometer, miles, parking. 22 trips per page.",
+       description="A free printable one page mileage log with the columns the IRS and HMRC require: date, from and to, purpose, odometer, miles, parking. 24 trips a page.",
        canonical=f"{SITE}/templates/mileage-log/", body=tpl_body, priority="0.6")
 print("printable template")
 
