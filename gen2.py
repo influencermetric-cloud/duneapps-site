@@ -191,8 +191,8 @@ print("receiptsnap page")
 # ---------------- DriveSnap vs MileIQ ----------------
 CMP_FAQ = [
  ("Is DriveSnap a good MileIQ alternative?","If you want automatic drive detection without a monthly drive cap and without your location history leaving the phone, yes. If you need a web dashboard, team administration or multi-user reporting, MileIQ does those and DriveSnap does not."),
- ("Does MileIQ have a free drive limit?","MileIQ's free tier is limited to 40 drives per month. Once you pass it, drives stop being logged until the next month or until you subscribe. DriveSnap has no cap on the free tier."),
- ("How much does each cost?","MileIQ Unlimited is listed at $59.99 a year, with a premium tier at $119.99. DriveSnap version 1.0 is free in full — tracking, classifying, history, the CSV export and the year-end tax report, with nothing to buy. A paid tier arrives in a later update; tracking stays free and uncapped either way."),
+ ("Does MileIQ have a free drive limit?","Yes. MileIQ's free tier is limited to 40 drives per month, stated on its own pricing page and in its App Store listing. Once you pass it, drives stop being logged until the next month or until you subscribe. DriveSnap has no cap on the free tier."),
+ ("How much does each cost?","MileIQ Unlimited is listed at $11.66 a month billed annually, or $13.99 a month billed monthly, checked on mileiq.com/pricing on 21 September 2026. Twelve months at the annual rate is $139.92. DriveSnap version 1.0 is free in full: tracking, classifying, history, the CSV export and the tax report, with nothing to buy. A paid tier arrives in a later update; tracking stays free and uncapped either way."),
  ("Can I move my MileIQ history into DriveSnap?","Not automatically. DriveSnap can import its own backup file, but there is no MileIQ importer. Drives already filed for a past tax year are usually best left where they are, with an export kept for your records."),
  ("Which one should I choose?","Choose MileIQ if you need a team product with a web dashboard. Choose DriveSnap if you are self-employed or a sole trader, you want an uncapped free tier, and you would rather your location history stayed on your own device."),
 ]
@@ -222,7 +222,7 @@ CMP_BODY = f'''<section class="hero"><div class="wrap split">
       <tr><td>Free drives per month</td><td class="ours">Unlimited</td><td class="them">40, then logging stops</td></tr>
       <tr><td>Where location history lives</td><td class="ours">Only on your iPhone</td><td class="them">Their servers</td></tr>
       <tr><td>Account required</td><td class="ours">No</td><td class="them">Yes</td></tr>
-      <tr><td>Yearly price</td><td class="ours">Free during launch</td><td class="them">$59.99 · $119.99 premium</td></tr>
+      <tr><td>Price</td><td class="ours">Free during launch</td><td class="them">$11.66/mo billed annually · $13.99/mo monthly</td></tr>
       <tr><td>Lifetime option</td><td class="ours">Planned</td><td class="them">None</td></tr>
       <tr><td>Automatic drive detection</td><td class="ours">Yes</td><td class="them">Yes</td></tr>
       <tr><td>Swipe to classify</td><td class="ours">Yes</td><td class="them">Yes</td></tr>
@@ -232,7 +232,7 @@ CMP_BODY = f'''<section class="hero"><div class="wrap split">
       <tr><td>Platforms</td><td class="them">iPhone only</td><td class="ours" style="color:var(--faint);font-weight:400">iPhone, Android, web</td></tr>
     </tbody>
   </table>
-  <p class="note">MileIQ figures are US App Store list prices and published tier limits, September 2026. Rows where MileIQ is stronger are shown plainly rather than left out.</p>
+  <p class="note">MileIQ figures read from mileiq.com/pricing and its US App Store listing on 21 September 2026. Rows where MileIQ is stronger are shown plainly rather than left out. Free tiers and prices change without notice: <a href="/posts/is-mileiq-free.html">the free tier comparison</a> carries the price history and the sources.</p>
 </div></section>
 
 <section class="section" style="background:var(--bg-2)"><div class="wrap">

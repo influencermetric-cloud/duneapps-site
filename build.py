@@ -84,7 +84,7 @@ FOOTER = f'''<footer>
     <div class="cols">
       <div>
         <a class="brand" href="/"><span class="mark" aria-hidden="true"></span><span>Dune Apps</span></a>
-        <p style="margin-top:18px;max-width:34ch;color:rgba(255,255,255,.72)">iPhone tools for the money you can claim back — your receipts and your business miles — that keep every record on your own phone.</p>
+        <p style="margin-top:18px;max-width:34ch;color:rgba(255,255,255,.72)">iPhone tools for the money you can claim back: your receipts and your business miles, with every record kept on your own phone.</p>
       </div>
       <div><h4>Apps</h4>
         <a href="/receiptsnap/">Receipt Snap</a>
@@ -352,7 +352,7 @@ def render_article(post, index):
 
     author = '''<div class="author"><span class="mark" aria-hidden="true"></span><div>
   <h4>Written by Nahid Saleem</h4>
-  <p>Founder of Dune Apps. These guides come out of the research done to build Receipt Snap and DriveSnap — every rule quoted here is one the apps had to get right. Not tax advice; check your own position with your tax authority or accountant.</p></div></div>'''
+  <p>Founder of Dune Apps. These guides come out of the research done to build Receipt Snap and DriveSnap. Every rule quoted here is one the apps had to get right. Not tax advice; check your own position with your tax authority or accountant.</p></div></div>'''
 
     dek = post.get("dek") or post["description"]
     updated = post["updated"]
