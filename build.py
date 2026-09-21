@@ -13,6 +13,7 @@ This file also owns:
   - the sitemap, robots and llms.txt, generated from the pages actually rendered
 """
 import datetime
+from topic_art import topic_art
 import html
 import json
 import pathlib
@@ -364,9 +365,14 @@ def render_article(post, index):
 <article class="art-main">
   <nav class="crumbs" aria-label="Breadcrumb"><span><a href="/">Home</a></span><span><a href="/writing/">Guides</a></span><span>{post["topic"]}</span></nav>
   <header class="art-head">
-    <span class="topic">{post["topic"]}</span>
-    <h1>{post["title"]}</h1>
-    <p class="dek">{dek}</p>
+    <div class="art-head-top">
+      <div>
+        <span class="topic">{post["topic"]}</span>
+        <h1>{post["title"]}</h1>
+        <p class="dek">{dek}</p>
+      </div>
+      {topic_art(post["topic"])}
+    </div>
     {meta}
     {checked}
   </header>

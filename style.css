@@ -366,6 +366,24 @@ nav.site-nav a.btn {
 .art-head .meta b { color: var(--text); font-weight: 600; }
 .art-head .meta .dot::before { content: '·'; }
 
+/* Topic drawing beside the title: one large, quiet line illustration per topic. It tells a reader which
+   shelf of the library they are on before they have read a word. Hidden on phones, where the title
+   must stay at the top of the first screen. */
+.art-head-top { display: grid; grid-template-columns: minmax(0, 1fr) 250px; gap: 40px; align-items: center; }
+.topic-art { width: 250px; height: auto; display: block; }
+.topic-art .s { stroke: var(--teal); }
+.topic-art .f { stroke: var(--line-2); stroke-dasharray: 3 7; }
+.topic-art .a { fill: var(--lime); }
+.topic-art .g { fill: var(--bg); }
+.topic-art .road { stroke-width: 30; }
+.topic-art .road-in { stroke: var(--bg); stroke-width: 25; fill: none; }
+.topic-art .dash { stroke-dasharray: 9 11; }
+.art-head-top h1 { font-size: clamp(2.1rem, 4.2vw, 3.1rem); }
+@media (max-width: 860px) {
+  .art-head-top { grid-template-columns: minmax(0, 1fr); }
+  .topic-art { display: none; }
+}
+
 /* Verified-against strip: the sources are the credibility, so show them early. */
 .checked { position: relative; display: block; padding-left: 30px; margin-top: 22px;
   font-size: .9rem; color: var(--muted); line-height: 1.55; }
