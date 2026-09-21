@@ -220,6 +220,14 @@ POSTS = [
 
 <p>Whichever method you use, the mileage log is not optional. Actual expenses needs the business use percentage, and that comes from the same miles.</p>
 
+<h2>If you have already filed using one rate</h2>
+
+<p>This will be a common mistake for the 2026 year, because most software, most spreadsheets and most memories carry a single annual figure.</p>
+
+<p>The fix is an amended return, filed on Form 1040X. Whether it is worth filing depends on which way the error went. If you applied 72.5 cents to the whole year you underclaimed on every trip after 30 June, and the amendment puts money back. If you applied 76 cents to the whole year you overclaimed on the first half, and correcting it voluntarily is a great deal cheaper than having it found.</p>
+
+<p>Either way the arithmetic is the same: go back to the log, split the trips at 30 June, and apply each rate to its own half. If the log does not carry dates precise enough to split on, that is the real problem, and it is the one worth solving before next year.</p>
+
 <h2>The record that makes the number real</h2>
 
 <p>A rate is worthless without the miles behind it, and the IRS is specific about what the record must show for each trip: the <strong>date</strong>, the <strong>destination</strong>, the <strong>business purpose</strong>, and the <strong>miles</strong>, kept at or near the time of the trip rather than rebuilt in April. The full rules are in <a href="/posts/irs-mileage-log-requirements.html">what the IRS requires in a mileage log</a>, and there is a <a href="/posts/mileage-log-template.html">free template</a> with the right columns if you would rather keep it by hand.</p>
@@ -624,6 +632,37 @@ POSTS = [
     <tr><td><strong>Parking and tolls</strong></td><td>Deductible on top of the mileage rate, with the receipt.</td></tr>
   </tbody>
 </table>
+
+<h2>Which file to take, and how to open it</h2>
+
+<p><strong>Excel, Numbers or LibreOffice:</strong> take the xlsx. It is a real workbook, so the deduction column and the totals row already calculate. Open it, type into the first empty row, and the numbers at the bottom move on their own.</p>
+
+<p><strong>Google Sheets:</strong> take the xlsx too, then File, Import, Upload, and choose Replace spreadsheet. Sheets converts the formulas intact. The CSV also imports, but a CSV cannot carry formulas, so you would be retyping the sums yourself. If you want the log on your phone as well as your laptop, this is the version to use, because Sheets syncs and a downloaded workbook does not.</p>
+
+<p><strong>Paper:</strong> take the PDF. It is one landscape page, so it prints correctly from a phone, a library printer or anything else, and the example row is printed faintly enough not to be confused with your own entries. Keep it in the vehicle rather than on a desk, because the whole point is writing the trip down before you have driven somewhere else.</p>
+
+<p><strong>Something else entirely:</strong> take the CSV. Every accounting package, every spreadsheet and every import wizard in the world reads it. It carries the same columns in the same order as the workbook, so the two are interchangeable.</p>
+
+<p>None of them ask for an email address, and none of them expire.</p>
+
+<h2>What a filled in week looks like</h2>
+
+<p>This is the part most templates leave out, so here is a real week from a small trades business, written the way it should be written.</p>
+
+<table class="facts">
+  <thead><tr><th>Date</th><th>From and to</th><th>Business purpose</th><th>Odo start</th><th>Odo end</th><th>Miles</th></tr></thead>
+  <tbody>
+    <tr><td>2 Mar</td><td>Home office to 14 Bridge St</td><td>Boiler service, Mrs Okafor</td><td>41,230</td><td>41,241</td><td>11.4</td></tr>
+    <tr><td>2 Mar</td><td>14 Bridge St to Plumbase, Fenton</td><td>Collect parts for the Bridge St job</td><td>41,241</td><td>41,247</td><td>6.2</td></tr>
+    <tr><td>3 Mar</td><td>Home office to Acme Ltd, Reading</td><td>Site survey before quoting</td><td>41,251</td><td>41,289</td><td>38.1</td></tr>
+    <tr><td>5 Mar</td><td>Home office to 2 Larch Close and back</td><td>Leak callout, emergency</td><td>41,302</td><td>41,325</td><td>22.8</td></tr>
+    <tr><td>6 Mar</td><td>Home office to bank, then post office</td><td>Pay in cheques; ship warranty claim</td><td>41,330</td><td>41,338</td><td>7.9</td></tr>
+  </tbody>
+</table>
+
+<p>Look at what makes it credible. Every purpose names a person, a place or a job. Not one distance is a round number. The odometer runs continuously, so the second trip on 2 March starts where the first one ended. And the gap between 41,247 on the 2nd and 41,251 on the 3rd is four miles of personal driving, left visible rather than quietly absorbed into the business total. A log that shows its own personal miles reads as a record. A log where every mile is business reads as a claim.</p>
+
+<p>One trip is deliberately absent. The van also went to the supermarket on the 4th, and that is not in the log because it is not deductible. Neither is a trip from home to a single regular workplace, which is commuting whatever is in the back.</p>
 
 <h2>How to keep it so it stands up</h2>
 
