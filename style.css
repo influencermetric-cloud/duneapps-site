@@ -169,9 +169,8 @@ footer .disclosure { color: rgba(255,255,255,.5); font-size: .88rem; margin-top:
 .back { display: inline-block; margin-top: 40px; color: var(--muted); text-decoration: none; }
 .back:hover { color: var(--teal); }
 
-/* ---------- Reveals ---------- */
-.js .reveal { opacity: 0; transform: translateY(18px); transition: opacity .6s ease, transform .6s ease; }
-.js .reveal.in { opacity: 1; transform: none; }
+/* Reveals are defined once, further down under "Reveal". This used to be declared here too, at a
+   different distance and duration, and the later block silently won. */
 
 .skip { position: absolute; left: -9999px; top: 0; background: var(--lime); color: var(--teal);
   padding: 12px 18px; border-radius: 0 0 10px 0; z-index: 100; font-weight: 600; text-decoration: none; }

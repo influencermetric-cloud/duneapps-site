@@ -89,14 +89,26 @@
   </div>
 </footer>
 <script>
+  const showAll = () => document.querySelectorAll('.reveal').forEach(el => el.classList.add('in'));
+  // The `js` class in <head> sets every .reveal to opacity 0. If anything below throws, or the
+  // observer never runs, the page stays blank for good. This makes that impossible.
+  setTimeout(showAll, 1200);
+
   const hdr = document.getElementById('hdr');
-  addEventListener('scroll', () => hdr.classList.toggle('stuck', scrollY > 8), { passive: true });
+  if (hdr) addEventListener('scroll', () => hdr.classList.toggle('stuck', scrollY > 8), { passive: true });
+
   if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
     const io = new IntersectionObserver(es => es.forEach(e => {
       if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
     }), { rootMargin: '0px 0px -8% 0px' });
-    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
-  } else document.querySelectorAll('.reveal').forEach(el => el.classList.add('in'));
+    document.querySelectorAll('.reveal').forEach(el => {
+      // Anything already on screen is shown at once. Waiting for the observer made the top of
+      // every page flash from empty to content, which is the same defect as the chart flicker in
+      // the app: an animation running on something that was never meant to move.
+      const box = el.getBoundingClientRect();
+      if (box.top < innerHeight) el.classList.add('in'); else io.observe(el);
+    });
+  } else showAll();
 
   // Every App Store click becomes a GA4 event with the app and where on the
   // page it was clicked, so "which guide sends people to the store" is answerable.
