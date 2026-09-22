@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://duneapps.com/</loc><lastmod>2026-09-21</lastmod><priority>1.0</priority></url>
-  <url><loc>https://duneapps.com/drivesnap/</loc><lastmod>2026-09-21</lastmod><priority>0.9</priority></url>
-  <url><loc>https://duneapps.com/receiptsnap/</loc><lastmod>2026-09-21</lastmod><priority>0.7</priority></url>
-  <url><loc>https://duneapps.com/compare/drivesnap-vs-mileiq/</loc><lastmod>2026-09-21</lastmod><priority>0.7</priority></url>
+  <url><loc>https://duneapps.com/</loc><lastmod>2026-09-22</lastmod><priority>1.0</priority></url>
+  <url><loc>https://duneapps.com/drivesnap/</loc><lastmod>2026-09-22</lastmod><priority>0.9</priority></url>
+  <url><loc>https://duneapps.com/receiptsnap/</loc><lastmod>2026-09-22</lastmod><priority>0.7</priority></url>
+  <url><loc>https://duneapps.com/compare/drivesnap-vs-mileiq/</loc><lastmod>2026-09-22</lastmod><priority>0.7</priority></url>
+  <url><loc>https://duneapps.com/paidsnap/</loc><lastmod>2026-09-22</lastmod><priority>0.9</priority></url>
+  <url><loc>https://duneapps.com/paidsnap/privacy/</loc><lastmod>2026-09-22</lastmod><priority>0.4</priority></url>
   <url><loc>https://duneapps.com/posts/irs-mileage-rate-2026.html</loc><lastmod>2026-09-20</lastmod><priority>0.8</priority></url>
   <url><loc>https://duneapps.com/posts/hmrc-mileage-rates-2026.html</loc><lastmod>2026-09-20</lastmod><priority>0.8</priority></url>
   <url><loc>https://duneapps.com/posts/do-you-need-receipts-for-tax-deductions.html</loc><lastmod>2026-09-20</lastmod><priority>0.8</priority></url>
@@ -17,6 +19,6 @@
   <url><loc>https://duneapps.com/posts/receipt-apps-pay-you-pennies.html</loc><lastmod>2026-08-30</lastmod><priority>0.8</priority></url>
   <url><loc>https://duneapps.com/posts/is-mileiq-free.html</loc><lastmod>2026-09-21</lastmod><priority>0.8</priority></url>
   <url><loc>https://duneapps.com/posts/mileage-log-for-irs-audit.html</loc><lastmod>2026-09-21</lastmod><priority>0.8</priority></url>
-  <url><loc>https://duneapps.com/writing/</loc><lastmod>2026-09-21</lastmod><priority>0.9</priority></url>
-  <url><loc>https://duneapps.com/templates/mileage-log/</loc><lastmod>2026-09-21</lastmod><priority>0.6</priority></url>
+  <url><loc>https://duneapps.com/writing/</loc><lastmod>2026-09-22</lastmod><priority>0.9</priority></url>
+  <url><loc>https://duneapps.com/templates/mileage-log/</loc><lastmod>2026-09-22</lastmod><priority>0.6</priority></url>
 </urlset>

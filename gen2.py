@@ -38,6 +38,20 @@ PAGE_CSS = """
   .phones img:nth-child(2) { width: 228px; margin-bottom: 28px; }
   @media (max-width: 980px) { .hero .split { grid-template-columns: 1fr; }
     .bubble { right: -30%; width: 600px; height: 600px; } }
+  /* Phone sizing for the hero. style.css already stops the three-phone flex row from pinning
+     the layout wide; this keeps them readable rather than three thumbnails, and stacks the two
+     hero buttons so neither is half off the screen.
+     Note for anyone measuring this: headless Chrome with --window-size=430 does NOT give you a
+     430px layout viewport, so a screenshot at that size shows text cut off that a real phone
+     wraps correctly. Measure inside a real 430px viewport (an iframe works) before "fixing" it. */
+  @media (max-width: 760px) {
+    .visual { min-height: 0; }
+    .phones { gap: 10px; padding: 14px 0 0; }
+    .phones img { width: 30%; min-width: 0; }
+    .phones img:nth-child(2) { width: 34%; margin-bottom: 16px; }
+    .hero .lede { max-width: none; }
+    .hero .actions .btn { flex: 1 1 100%; justify-content: center; }
+  }
   .features { display: grid; gap: 22px; grid-template-columns: repeat(3, 1fr);
     align-items: start; margin-top: 48px; }
   .feat.wide { grid-column: span 2; display: flex; gap: 28px; align-items: center; }

@@ -8,6 +8,7 @@ CARDS = [
  ("og.png", "Dune Apps", "iPhone tools that keep your data on your phone", "duneapps.com"),
  ("og-drivesnap.png", "DriveSnap", "A mileage log that never leaves your phone", "No drive caps · Free to track"),
  ("og-receiptsnap.png", "Receipt Snap", "Receipts read on your phone and kept there", "Data Not Collected · Free"),
+ ("og-paidsnap.png", "PaidSnap", "Invoices that get you paid", "Real PDF \u00b7 No account \u00b7 3 free a month"),
  ("og-compare.png", "DriveSnap vs MileIQ", "No drive caps. Nothing uploaded. Free to track.", "An honest comparison · 2026"),
  ("og-writing.png", "Guides", "What tax authorities actually require from your records", "duneapps.com/writing"),
 ]
