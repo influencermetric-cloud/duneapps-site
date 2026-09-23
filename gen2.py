@@ -97,7 +97,7 @@ RS_FAQ = [
  ("Does Receipt Snap upload my receipts?","No. The photo is read on your iPhone using Apple's on-device text recognition, and the result is stored on the device. There is no account and no Receipt Snap server — the App Store privacy label reads Data Not Collected."),
  ("Which currencies does it recognise?","Twelve, detected from the receipt itself. Where no symbol is printed it reads the tax registration number instead — a UAE TRN means dirhams, an Indian GSTIN means rupees, a UK postcode means sterling."),
  ("Do photographs of receipts count as tax records?","Yes. The IRS, HMRC and the UAE Federal Tax Authority all accept electronic records provided they are legible, complete and producible on request. Photograph the whole receipt, including the tax line."),
- ("What does it cost?","Receipt Snap is free, with 15 scans a month. Pro removes the cap — $14.99 a year, or $39.99 once for life — and arrives with version 1.1. Searching, editing and exporting what you have already scanned stay free either way."),
+ ("What does it cost?","Receipt Snap is free, with 15 scans a month. Pro removes the cap — $14.99 a year, or $39.99 once for life — and is available now. Searching, editing and exporting what you have already scanned stay free either way."),
  ("What happens if the scan gets something wrong?","Every field is editable before you save, and you can re-crop the photo by dragging the corners if the automatic crop misses. Nothing is filed without you seeing it."),
 ]
 RS_BODY = f'''<section class="hero"><div class="wrap split">
