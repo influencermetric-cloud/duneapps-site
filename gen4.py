@@ -6,7 +6,7 @@ listing points both at https://duneapps.com/todo/ and /todo/privacy/. Neither ex
 until this file did.
 
 Every claim below was read out of the shipping code on 2 Oct 2026, not from the spec:
-  * no in-app purchase in 1.0        -> Shared/Logic/AppConfig.swift (syncAvailable = false)
+  * ToDo Pro, $29.99 once, family    -> tools/setup-iap.py, Shared/Logic/Pro.swift
   * home AND lock-screen widgets     -> Widgets/ToDoPlannerWidgets.swift (accessory* families)
   * Siri / shortcuts                 -> ToDoPlanner/App/AppShortcuts.swift, Shared/Intents/
   * share sheet                      -> ShareExtension/ShareViewController.swift
@@ -36,11 +36,12 @@ CTA = (f'<a class="btn btn-primary" href="{STORE}" data-app="todo" data-place="h
        '<span class="btn btn-primary is-soon" aria-disabled="true">Coming to the App Store</span>')
 
 FAQ = [
-    ("Is ToDo really free, or is there a catch later?",
-     "Free, all of it. Version 1.0 has no in-app purchase at all — there is nothing to buy, so "
-     "there is nothing to unlock. A one-time purchase may arrive later for syncing between an "
-     "iPhone and an iPad, and it will be a single payment rather than a subscription. Everything "
-     "on this page stays free either way."),
+    ("What is free and what costs money?",
+     "The list is free forever — unlimited tasks, lists, dates, repeats, widgets, Siri, the share "
+     "sheet, imports and backup. Not a trial and not capped. ToDo Pro is $29.99 once and adds the "
+     "four quick ways to get things in: talking instead of typing, pulling tasks off a photo, "
+     "Plan my day, and breaking a big task into steps. One payment, Family Sharing on, and no "
+     "subscription ever."),
     ("Do I need an account?",
      "No. There is no sign-up, no email, no password and no “continue with Apple”. You open the "
      "app and start typing. That also means nobody can lock you out of your own list."),
@@ -69,9 +70,9 @@ BODY = f'''<section class="hero"><div class="wrap split">
       nothing to buy at all.</p>
     <div class="actions">
       {CTA}
-      <a class="btn btn-dark" href="#free">What "free" means here</a>
+      <a class="btn btn-dark" href="#free">What is free, and what is not</a>
     </div>
-    <div class="assurances"><span>No account</span><span>No subscription</span><span>Nothing uploaded</span></div>
+    <div class="assurances"><span>No account</span><span>No subscription</span><span>Free list, forever</span></div>
   </div>
   <div class="visual"><div class="bubble"></div><div class="phones">
     <img src="/assets/todo-2.png" alt="Typing a task and watching the date become a chip" loading="lazy">
@@ -82,25 +83,26 @@ BODY = f'''<section class="hero"><div class="wrap split">
 
 <section class="section" id="free"><div class="wrap">
   <div class="section-head reveal"><span class="eyebrow">The part worth reading</span>
-    <h2>Free means free, and it is checkable</h2>
-    <p>Every other list app on this shelf is free until it isn't. Here is the whole commercial
-      arrangement for version 1.0: there is no in-app purchase in the binary. Not a locked one, not
-      a trial — none. The App Store page will show no In-App Purchases badge, and that is the
-      proof, because Apple puts it there, not us.</p></div>
+    <h2>Free list. One payment for the clever bits.</h2>
+    <p>Every other app on this shelf is free until it isn't, then bills you every year for ever.
+      Here the list is free with no cap and no trial clock, and the things that make it fast are
+      a single $29.99 payment that covers your whole family. Less than one year of any
+      subscription in this category, and then nothing, for good.</p></div>
   <table class="cmp reveal">
     <thead><tr><th>&nbsp;</th><th style="color:var(--teal)">ToDo</th><th>What usually happens</th></tr></thead>
     <tbody>
       <tr><td>Account required</td><td class="ours">No</td><td class="them">Email and password before you can type</td></tr>
-      <tr><td>Price</td><td class="ours">Free, in full</td><td class="them">$36&ndash;$60 a year</td></tr>
-      <tr><td>Task limit on the free tier</td><td class="ours">None</td><td class="them">Capped lists, capped reminders</td></tr>
+      <tr><td>The list itself</td><td class="ours">Free, uncapped, forever</td><td class="them">Free until a limit, then a subscription</td></tr>
+      <tr><td>How you pay</td><td class="ours">$29.99 once</td><td class="them">Every year, for as long as you use it</td></tr>
+      <tr><td>Your family</td><td class="ours">Family Sharing, up to 6 people</td><td class="them">Priced per person</td></tr>
       <tr><td>Where your tasks live</td><td class="ours">Your iPhone only</td><td class="them">Their servers</td></tr>
-      <tr><td>Ads or AI upsell</td><td class="ours">None</td><td class="them">Increasingly, both</td></tr>
       <tr><td>Undo after deleting</td><td class="ours">Yes, on everything</td><td class="them">Often nothing</td></tr>
     </tbody>
   </table>
-  <p class="note">The "usually" column is the published pricing of the three best-selling to-do
-    apps on the App Store at the time of writing, and the complaints that fill their one-star
-    reviews. Prices change; check theirs before you believe ours.</p>
+  <p class="note">The "usually" column describes the pricing model of the best-selling to-do apps
+    on the App Store, which are free downloads with a subscription behind them, and the complaints
+    that fill their one-star reviews. Prices change; check theirs before you believe ours. ToDo
+    shows your own currency at checkout, not dollars.</p>
 </div></section>
 
 <section class="section" style="background:var(--bg-2)"><div class="wrap">
@@ -249,9 +251,10 @@ PRIVACY = '''<section class="wrap"><div class="legal">
     backup is governed by your Apple Account settings, not by ToDo.</p>
 
   <h2>Purchases</h2>
-  <p>Version 1.0 has no in-app purchases. If a one-time purchase is added later it will go through
-    Apple's In-App Purchase, which tells the app only whether a valid purchase exists. We would
-    never receive your name, your card or your Apple Account.</p>
+  <p>ToDo Pro is bought through Apple's In-App Purchase. Apple handles the payment and tells the
+    app only whether a valid purchase exists. We never receive your name, your card, your address
+    or your Apple Account, and there is no account on our side to attach any of it to. Apple's own
+    privacy policy covers that transaction.</p>
 
   <h2>Children</h2>
   <p>ToDo collects no data from anyone, of any age.</p>
@@ -270,7 +273,7 @@ def main():
            title="ToDo — a list that doesn't want your email address",
            description="A to-do app for iPhone with no account, no subscription and nothing "
                        "uploaded. Type a sentence and it becomes a task with the date and repeat "
-                       "already set. Version 1.0 has no in-app purchases at all.",
+                       "already set. The list is free forever; Pro is one payment of $29.99.",
            canonical="https://duneapps.com/todo/", og_type="product",
            body=BODY, style=PAGE_CSS + FAQ_CSS + """
   .btn.is-soon { opacity: .96; cursor: default; }
@@ -285,8 +288,10 @@ def main():
                "description": "To-do list and daily planner for iPhone. No account, no "
                               "subscription, nothing uploaded. Quick add reads dates, times and "
                               "repeats out of plain English.",
-               "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD",
-                          "description": "Free, with no in-app purchases"}}) + "</script>")
+               "offers": [{"@type": "Offer", "price": "0", "priceCurrency": "USD",
+                           "description": "Free list, unlimited tasks, no account"},
+                          {"@type": "Offer", "price": "29.99", "priceCurrency": "USD",
+                           "description": "ToDo Pro, one payment, Family Sharing"}]}) + "</script>")
     print("page: todo/index.html")
 
     render(out="todo/privacy/index.html",
