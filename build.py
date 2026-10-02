@@ -77,6 +77,7 @@ HEADER = f'''<a class="skip" href="#main">Skip to content</a>
     <a href="/receiptsnap/">Receipt Snap</a>
     <a href="/drivesnap/">DriveSnap</a>
     <a href="/paidsnap/">PaidSnap</a>
+    <a href="/todo/">ToDo</a>
     <a class="btn btn-primary btn-sm" href="{APP_STORE}" data-app="receiptsnap" data-place="header">Get the app</a>
   </nav>
 </div></header>'''
@@ -92,6 +93,7 @@ FOOTER = f'''<footer>
         <a href="/receiptsnap/">Receipt Snap</a>
         <a href="/drivesnap/">DriveSnap</a>
         <a href="/paidsnap/">PaidSnap</a>
+        <a href="/todo/">ToDo</a>
         <a href="/compare/drivesnap-vs-mileiq/">DriveSnap vs MileIQ</a>
         <a href="{APP_STORE}" data-app="receiptsnap" data-place="footer">Receipt Snap on the App Store</a></div>
       <div><h4>Guides</h4>

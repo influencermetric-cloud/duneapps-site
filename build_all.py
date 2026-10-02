@@ -18,6 +18,7 @@ import build
 import gen_pages; gen_pages.main()   # home, DriveSnap
 import gen2                          # Receipt Snap, comparison (renders on import)
 import gen3; gen3.main()             # PaidSnap page + its privacy policy
+import gen4; gen4.main()             # ToDo page + its privacy policy
 import gen                           # guides, hub, template, csv (renders on import)
 from content_posts import POSTS
 
