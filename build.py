@@ -184,7 +184,7 @@ ORG_LD = json.dumps({
          "publisher": {"@id": SITE + "/#org"}},
         {"@type": "Person", "@id": SITE + "/#nahid", "name": "Nahid Saleem",
          "jobTitle": "Founder, Dune Apps",
-         "description": "Builds Receipt Snap and DriveSnap — iPhone tools that keep tax records on the device. Writes the guides from the research done to build them.",
+         "description": "Builds Receipt Snap and DriveSnap, iPhone tools that keep tax records on the device. Writes the guides from the research done to build them.",
          "url": SITE + "/"},
     ]})
 
@@ -283,10 +283,10 @@ def nice_date(iso):
 def cta_card(app, title=None, text=None, place="article"):
     a = APPS[app]
     href = app_link(app)
-    label = f"Get {a['name']} — free" if a["store"] else f"See {a['name']}"
+    label = f"Get {a['name']} free" if a["store"] else f"See {a['name']}"
     defaults = {
         "receiptsnap": ("Every receipt, read and filed in two seconds.",
-                        "Point the camera at it. Receipt Snap reads the merchant, date, total and tax on your iPhone and keeps the record there — nothing is uploaded, and there is no account to make."),
+                        "Point the camera at it. Receipt Snap reads the merchant, date, total and tax on your iPhone and keeps the record there. Nothing is uploaded, and there is no account to make."),
         "drivesnap":   ("Every business mile, logged on the day it happens.",
                         "DriveSnap detects drives automatically, asks for the purpose with one swipe, and exports a log an examiner can read. No drive caps; your location history never leaves the phone."),
     }
@@ -356,7 +356,7 @@ def render_article(post, index):
 
     sources = ""
     if post.get("sources"):
-        sources = ('<section class="sources"><div class="label">Sources</div><ol>'
+        sources = ('<section class="sources"><h2 class="label" id="sources">Sources</h2><ol>'
                    + "".join(f'<li><a href="{u}" rel="noopener">{html.escape(l)}</a></li>' for l, u in post["sources"])
                    + "</ol></section>")
 
@@ -369,7 +369,7 @@ def render_article(post, index):
         related = f'<section class="related"><div class="label">Keep reading</div><div class="grid">{cards}</div></section>'
 
     author = '''<div class="author"><span class="mark" aria-hidden="true"></span><div>
-  <h4>Written by Nahid Saleem</h4>
+  <p class="author-name">Written by Nahid Saleem</p>
   <p>Founder of Dune Apps. These guides come out of the research done to build Receipt Snap and DriveSnap. Every rule quoted here is one the apps had to get right. Not tax advice; check your own position with your tax authority or accountant.</p></div></div>'''
 
     dek = post.get("dek") or post["description"]
@@ -415,7 +415,12 @@ def render_article(post, index):
     ld = {"@context": "https://schema.org", "@graph": [
         {"@type": "Article", "@id": url + "#article", "headline": post["title"],
          "description": post["description"], "datePublished": published, "dateModified": updated,
-         "author": {"@id": SITE + "/#nahid"}, "publisher": {"@id": SITE + "/#org"},
+         # The Person is spelled out here, not only referenced: the node with
+         # this @id lives in the home page's graph, so on a post page the
+         # reference resolved to nothing and the byline carried no author.
+         "author": {"@type": "Person", "@id": SITE + "/#nahid", "name": "Nahid Saleem",
+                    "jobTitle": "Founder, Dune Apps", "url": SITE + "/"},
+         "publisher": {"@id": SITE + "/#org"},
          "mainEntityOfPage": url, "image": f"{SITE}/{post.get('og', 'og-writing.png')}",
          "articleSection": post["topic"], "inLanguage": "en"},
         {"@type": "BreadcrumbList", "itemListElement": [
@@ -455,7 +460,7 @@ def render_go_pages():
   try {{ gtag('event', 'creator_click', {{ creator: '{name}', app: '{app}', transport_type: 'beacon' }}); }} catch (e) {{}}
   setTimeout(function () {{ location.replace('{target}'); }}, 350);
 </script>'''
-            render(out=path, title=f"{APPS[app]['name']} — Dune Apps", description=f"Get {APPS[app]['name']}.",
+            render(out=path, title=f"{APPS[app]['name']} · Dune Apps", description=f"Get {APPS[app]['name']}.",
                    canonical=f"{SITE}/{path.rsplit('/index.html', 1)[0]}/", body=body, noindex=True,
                    head=f'<meta http-equiv="refresh" content="2;url={target}">')
 
@@ -480,7 +485,7 @@ def write_sitemap():
 
 def write_llms(posts):
     lines = ["# Dune Apps", "",
-             "> iPhone tools that keep tax records on the device — Receipt Snap (receipt scanner, on-device OCR, no account) and DriveSnap (automatic mileage log, no drive caps). Both run without servers; the App Store privacy label reads Data Not Collected. The guides answer what tax authorities actually require from receipts and mileage logs, with the rule quoted and the source linked.",
+             "> iPhone tools that keep tax records on the device: Receipt Snap (receipt scanner, on-device OCR, no account) and DriveSnap (automatic mileage log, no drive caps). Both run without servers; the App Store privacy label reads Data Not Collected. The guides answer what tax authorities actually require from receipts and mileage logs, with the rule quoted and the source linked.",
              "", "## Apps",
              f"- [Receipt Snap]({SITE}/receiptsnap/): reads merchant, date, total and tax from a receipt on the iPhone in about two seconds. Free; Pro removes the 15-scan monthly cap. App Store: {APP_STORE}",
              f"- [DriveSnap]({SITE}/drivesnap/): detects drives automatically, one-swipe classification, CSV export and year-end report. No drive caps on the free tier.",
@@ -489,7 +494,7 @@ def write_llms(posts):
     for p in posts:
         lines.append(f"- [{p['title']}]({SITE}/{p['out']}): {p['description']}")
     lines += ["", "## Tools",
-              f"- [Free mileage log template]({SITE}/posts/mileage-log-template.html) — CSV download and a printable sheet.",
+              f"- [Free mileage log template]({SITE}/posts/mileage-log-template.html): CSV download and a printable sheet.",
               f"- [Printable mileage log]({SITE}/templates/mileage-log/)",
               "", "## Facts the guides are built on (verified September 2026)",
               "- IRS standard mileage rate 2026: 72.5 cents/mile 1 Jan–30 Jun; 76 cents/mile 1 Jul–31 Dec. 2025 was 70 cents.",

@@ -52,7 +52,7 @@ for name, blurb, slugs in GROUPS:
 
 hub_body = f'''<section class="hub-head"><div class="wrap">
   <span class="eyebrow">Guides</span>
-  <h1>What the tax authority actually requires — with the rule quoted</h1>
+  <h1>What the tax authority actually requires, with the rule quoted</h1>
   <p>Practical answers on receipts, mileage and the records behind a deduction, for the US, UK, UAE, Canada and Australia. Every figure is checked against the primary source and dated. Written by the person building the apps.</p>
 </div></section>
 <section style="padding:0 0 10px"><div class="wrap">
@@ -63,7 +63,7 @@ hub_body = f'''<section class="hub-head"><div class="wrap">
   <h2 style="font-size:clamp(1.8rem,4vw,2.6rem)">The apps do the record-keeping these guides describe.</h2>
   <p style="max-width:56ch;margin:16px auto 0">Receipt Snap reads receipts on your iPhone. DriveSnap logs every business drive automatically. Neither has a server, an account, or anywhere to send your data.</p>
   <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:30px">
-    <a class="btn btn-primary" href="{APP_STORE}" data-app="receiptsnap" data-place="hub-footer">Get Receipt Snap — free</a>
+    <a class="btn btn-primary" href="{APP_STORE}" data-app="receiptsnap" data-place="hub-footer">Get Receipt Snap free</a>
     <a class="btn btn-dark" href="/drivesnap/">See DriveSnap</a>
   </div>
 </div></div></section>'''
