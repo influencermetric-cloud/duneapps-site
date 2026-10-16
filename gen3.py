@@ -25,7 +25,7 @@ STORE = f"https://apps.apple.com/app/id{APP_ID}"
 SUPPORT = "https://github.com/influencermetric-cloud/paidsnap-support"
 
 # Flip to True the day Apple approves it; the hero and the closing panel both read this.
-LIVE = False
+LIVE = True   # PaidSnap approved and on sale from 15 Oct 2026
 
 CTA = (f'<a class="btn btn-primary" href="{STORE}" data-app="paidsnap" data-place="hero">Get PaidSnap</a>'
        if LIVE else
