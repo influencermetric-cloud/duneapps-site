@@ -16,6 +16,10 @@ CARDS = [
 from content_posts import POSTS
 for _p in POSTS:
     CARDS.append((_p["og"], _p["title"], _p["topic"] + " · a Dune Apps guide", "duneapps.com/" + _p["out"]))
+from gen5 import PAGES as _INV
+CARDS.append(("og-invoice-templates.png", "Invoice templates by country", "The fields each tax authority requires, with the rule cited", "UAE · India · UK · US · Canada · Australia"))
+for _p in _INV:
+    CARDS.append((_p["og"], _p["title"], "Free PDF and fill in online · a Dune Apps template", "duneapps.com/" + _p["out"]))
 
 TPL = '''<!doctype html><meta charset="utf-8">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -47,8 +51,12 @@ TPL = '''<!doctype html><meta charset="utf-8">
 </div>
 <div class="foot">{foot}</div>'''
 
+import sys
+ONLY = set(sys.argv[1:])
 mark = (ROOT / "brand" / "dune-mark.svg").as_uri()
 for name, title, sub, foot in CARDS:
+    if ONLY and name not in ONLY:
+        continue
     size = 60 if len(title) <= 44 else 50 if len(title) <= 64 else 42 if len(title) <= 90 else 36
     html = TPL.format(mark=mark, title=title, sub=sub, foot=foot, size=size)
     with tempfile.NamedTemporaryFile("w", suffix=".html", delete=False) as f:

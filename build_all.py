@@ -20,6 +20,7 @@ import gen2                          # Receipt Snap, comparison (renders on impo
 import gen3; gen3.main()             # PaidSnap page + its privacy policy
 import gen4; gen4.main()             # ToDo page + its privacy policy
 import gen                           # guides, hub, template, csv (renders on import)
+import gen5; gen5.main()             # invoice templates by country + their PDFs
 from content_posts import POSTS
 
 build.render_go_pages()
@@ -28,7 +29,7 @@ build.write_llms(POSTS)
 
 # ---------- checks ----------
 ROOT = build.ROOT
-htmls = [p for p in ROOT.rglob("*.html") if ".git" not in p.parts and "_pages" not in p.parts
+htmls = [p for p in ROOT.rglob("*.html") if ".git" not in p.parts and ".venv" not in p.parts and "_pages" not in p.parts
          and "_ported" not in p.parts and "go" not in p.parts]
 problems = []
 

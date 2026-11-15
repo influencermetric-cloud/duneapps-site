@@ -38,6 +38,10 @@ APPS = {
                     "store": "https://apps.apple.com/app/id6806519870", "page": "/receiptsnap/"},
     # DriveSnap is not on the App Store yet; its link goes to the product page.
     "drivesnap":   {"name": "DriveSnap", "id": "6807116273", "store": None, "page": "/drivesnap/"},
+    # On sale since 15 Oct 2026. Free plan = three documents a month (Core/FreePlan.swift).
+    "paidsnap":    {"name": "PaidSnap", "id": "6814346014",
+                    "store": "https://apps.apple.com/app/id6814346014", "page": "/paidsnap/",
+                    "label": "Get PaidSnap", "fine": "App Store · Free plan: three documents a month"},
 }
 APP_STORE = APPS["receiptsnap"]["store"]
 
@@ -106,6 +110,7 @@ FOOTER = f'''<footer>
       <div><h4>Tools &amp; help</h4>
         <a href="/posts/mileage-log-template.html">Free mileage log template</a>
         <a href="/templates/mileage-log/">Printable mileage log</a>
+        <a href="/invoice-templates/">Invoice templates</a>
         <a href="https://github.com/influencermetric-cloud/receiptsnap-support">Receipt Snap support</a>
         <a href="https://github.com/influencermetric-cloud/drivesnap-support">DriveSnap support</a>
         <a href="https://github.com/influencermetric-cloud/paidsnap-support">PaidSnap support</a>
@@ -283,17 +288,19 @@ def nice_date(iso):
 def cta_card(app, title=None, text=None, place="article"):
     a = APPS[app]
     href = app_link(app)
-    label = f"Get {a['name']} free" if a["store"] else f"See {a['name']}"
+    label = a.get("label") or (f"Get {a['name']} free" if a["store"] else f"See {a['name']}")
     defaults = {
         "receiptsnap": ("Every receipt, read and filed in two seconds.",
                         "Point the camera at it. Receipt Snap reads the merchant, date, total and tax on your iPhone and keeps the record there. Nothing is uploaded, and there is no account to make."),
         "drivesnap":   ("Every business mile, logged on the day it happens.",
                         "DriveSnap detects drives automatically, asks for the purpose with one swipe, and exports a log an examiner can read. No drive caps; your location history never leaves the phone."),
+        "paidsnap":    ("Make the invoice on your iPhone instead.",
+                        "Pick your country and PaidSnap sets the heading, the tax number label and the tax lines, works out the totals, and sends a real PDF from your phone. No account to make."),
     }
     t, x = defaults[app]
     return f'''<aside class="cta-card">
   <div><span class="k">{a['name']}</span><h3>{title or t}</h3><p>{text or x}</p>
-    <p class="fine">{"App Store · Free · Data Not Collected" if a["store"] else "iPhone · No drive caps · Free to track"}</p></div>
+    <p class="fine">{a.get("fine") or ("App Store · Free · Data Not Collected" if a["store"] else "iPhone · No drive caps · Free to track")}</p></div>
   <a class="btn btn-primary" href="{href}" data-app="{app}" data-place="{place}">{label}</a>
 </aside>'''
 
@@ -302,9 +309,10 @@ def rail_card(app):
     a = APPS[app]
     href = app_link(app)
     copy = {"receiptsnap": "Reads a receipt on your iPhone in two seconds and keeps it there. Free, no account.",
-            "drivesnap": "Logs every business drive automatically. No caps, nothing uploaded."}[app]
+            "drivesnap": "Logs every business drive automatically. No caps, nothing uploaded.",
+            "paidsnap": "Invoices with your country's tax lines, sent as a real PDF from your iPhone. No account."}[app]
     return f'''<div class="rail-card"><span class="k">From Dune Apps</span><h4>{a['name']}</h4><p>{copy}</p>
-  <a class="btn btn-primary btn-sm" href="{href}" data-app="{app}" data-place="rail">{"Get it free" if a["store"] else "See the app"}</a></div>'''
+  <a class="btn btn-primary btn-sm" href="{href}" data-app="{app}" data-place="rail">{a.get("label") or ("Get it free" if a["store"] else "See the app")}</a></div>'''
 
 
 def faq_html(pairs):
@@ -490,18 +498,23 @@ def write_llms(posts):
              f"- [Receipt Snap]({SITE}/receiptsnap/): reads merchant, date, total and tax from a receipt on the iPhone in about two seconds. Free; Pro removes the 15-scan monthly cap. App Store: {APP_STORE}",
              f"- [DriveSnap]({SITE}/drivesnap/): detects drives automatically, one-swipe classification, CSV export and year-end report. No drive caps on the free tier.",
              f"- [DriveSnap vs MileIQ]({SITE}/compare/drivesnap-vs-mileiq/): side-by-side, including where MileIQ is better.",
+             f"- [PaidSnap]({SITE}/paidsnap/): invoice maker for iPhone. Country packs set the heading, tax number label and tax lines for 16 countries; real PDF; no account. Free plan: three documents a month. App Store: {APPS['paidsnap']['store']}",
              "", "## Guides"]
     for p in posts:
         lines.append(f"- [{p['title']}]({SITE}/{p['out']}): {p['description']}")
     lines += ["", "## Tools",
               f"- [Free mileage log template]({SITE}/posts/mileage-log-template.html): CSV download and a printable sheet.",
-              f"- [Printable mileage log]({SITE}/templates/mileage-log/)",
+              f"- [Printable mileage log]({SITE}/templates/mileage-log/): print page, plus PDF in A4 and US Letter, XLSX with formulas, CSV.",
+              f"- [Delivery driver mileage deduction calculator]({SITE}/posts/delivery-driver-mileage-deduction.html): 2026 split rate, parking and tolls, estimated tax effect.",
+              f"- [Free invoice templates by country]({SITE}/invoice-templates/): UAE, India, UK, US, Canada and Australia, each with the legally required fields cited, a PDF and a fill-in-the-browser version.",
               "", "## Facts the guides are built on (verified September 2026)",
               "- IRS standard mileage rate 2026: 72.5 cents/mile 1 Jan–30 Jun; 76 cents/mile 1 Jul–31 Dec. 2025 was 70 cents.",
               "- IRS: receipts not required for expenses under $75 except lodging (Publication 463); keep records 3 years, 6 if income understated by more than 25%.",
               "- HMRC approved mileage rate: 55p/mile for the first 10,000 business miles from 6 April 2026 (45p before), 25p after; self-employed keep records 5 years after the 31 January deadline; VAT records 6 years.",
               "- ATO: written evidence required when total work-related claims exceed $300; records kept 5 years.",
               "- CRA: records kept 6 years from the end of the tax year they relate to.",
-              "- UAE FTA: VAT records kept 5 years; 15 years for real estate."]
+              "- UAE FTA: VAT records kept 5 years; 15 years for real estate.",
+              "- IRS: Form 1099-NEC reporting threshold is $2,000 for payments made after 31 December 2025 (was $600). Verified 15 November 2026.",
+              "- UAE e-invoicing (Ministerial Decision 244 of 2025): businesses with revenue under AED 50 million must implement by 1 July 2027; business-to-consumer transactions are outside the system. Verified 15 November 2026."]
     (ROOT / "llms.txt").write_text("\n".join(lines) + "\n")
     print("llms.txt")

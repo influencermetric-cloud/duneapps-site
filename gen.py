@@ -20,7 +20,8 @@ GROUPS = [
     ("Mileage and the deduction",
      "The rates, the log, and what the IRS and HMRC actually ask to see.",
      ["irs-mileage-rate-2026", "hmrc-mileage-rates-2026", "irs-mileage-log-requirements",
-      "mileage-log-template", "mileage-log-for-irs-audit", "forgot-to-track-doordash-miles",
+      "mileage-log-template", "mileage-log-for-irs-audit", "delivery-driver-mileage-deduction",
+      "forgot-to-track-doordash-miles",
       "is-mileiq-free"]),
     ("Receipts and records",
      "What counts as proof, how long to keep it, and what a valid invoice shows.",
@@ -59,6 +60,14 @@ hub_body = f'''<section class="hub-head"><div class="wrap">
   <div class="grid" style="grid-template-columns:1fr">{card(INDEX[FEATURED], featured=True)}</div>
 </div></section>
 {groups_html}
+<section class="hub-group"><div class="wrap">
+  <div class="gh"><h2>Free templates</h2><p>Files to download and pages to fill in, each with the rules it follows cited.</p></div>
+  <div class="grid g-3">
+    <a class="post-card reveal" href="/invoice-templates/"><span class="topic">Invoices</span><h3>Invoice templates by country</h3><p>UAE, India, UK, US, Canada and Australia. The fields each tax authority requires, a PDF, and a version you fill in here and print.</p><span class="when">6 countries · PDF and online</span></a>
+    <a class="post-card reveal" href="/templates/mileage-log/"><span class="topic">Mileage</span><h3>Printable mileage log</h3><p>The columns the IRS and HMRC ask for. PDF in A4 and US Letter, an Excel workbook with the 2026 rates, and a CSV.</p><span class="when">PDF · XLSX · CSV</span></a>
+    <a class="post-card reveal" href="/posts/delivery-driver-mileage-deduction.html"><span class="topic">Calculator</span><h3>Delivery driver mileage deduction</h3><p>DoorDash, Uber Eats, Instacart and Grubhub. Both 2026 IRS rates, parking and tolls, and what it does to your tax.</p><span class="when">2026 rates</span></a>
+  </div>
+</div></section>
 <section class="section" style="padding-top:60px"><div class="wrap"><div class="final reveal" style="background:var(--card);border-radius:40px;padding:64px 32px;text-align:center;box-shadow:var(--e2)">
   <h2 style="font-size:clamp(1.8rem,4vw,2.6rem)">The apps do the record-keeping these guides describe.</h2>
   <p style="max-width:56ch;margin:16px auto 0">Receipt Snap reads receipts on your iPhone. DriveSnap logs every business drive automatically. Neither has a server, an account, or anywhere to send your data.</p>
@@ -99,7 +108,7 @@ rows = "".join("<tr>" + "<td></td>" * 7 + "</tr>" for _ in range(22))
 tpl_body = f'''<div class="wrap tpl" style="max-width:1000px;margin:36px auto 80px">
   <div class="no-print" style="display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap;margin-bottom:8px">
     <div><span class="eyebrow">Free template</span><h1 style="font-size:2rem;margin-top:12px">Printable mileage log</h1>
-      <p style="max-width:60ch;margin-top:10px">One page, 22 trips. The columns are the ones the IRS and HMRC ask for: date, where, why, miles, plus odometer readings so the miles are provable. Print it and keep it in the glovebox. There is also an <a href="/downloads/mileage-log-template.xlsx" download>Excel workbook</a>, a <a href="/downloads/mileage-log-template.csv" download>CSV</a> and a <a href="/downloads/mileage-log-template.pdf">ready made PDF</a>.</p></div>
+      <p style="max-width:60ch;margin-top:10px">One page, 22 trips. The columns are the ones the IRS and HMRC ask for: date, where, why, miles, plus odometer readings so the miles are provable. Print it and keep it in the glovebox. There is also an <a href="/downloads/mileage-log-template.xlsx" download>Excel workbook</a> with the 2026 rates and totals built in, a <a href="/downloads/mileage-log-template.csv" download>CSV</a>, and a ready made 24-trip PDF in <a href="/downloads/mileage-log-template.pdf">A4</a> or <a href="/downloads/mileage-log-template-letter.pdf">US Letter</a>.</p></div>
     <button class="btn btn-primary" onclick="window.print()">Print this page</button>
   </div>
   <p style="font-size:.9rem;color:var(--faint)" class="no-print">Tip: fill it in the same day, never round the miles, and write the purpose in words a stranger would understand.</p>
@@ -116,7 +125,7 @@ tpl_body = f'''<div class="wrap tpl" style="max-width:1000px;margin:36px auto 80
   <p style="font-size:.82rem;color:var(--faint);margin-top:14px">IRS 2026 rate: 72.5¢ per business mile to 30 June, 76¢ from 1 July. HMRC 2026/27: 55p for the first 10,000 business miles, then 25p. Rates checked against IRS.gov and GOV.UK on 21 September 2026. Free template and guide at duneapps.com</p>
 </div>'''
 render(out="templates/mileage-log/index.html", title="Printable mileage log (free) · Dune Apps",
-       description="A free printable one page mileage log with the columns the IRS and HMRC require: date, from and to, purpose, odometer, miles, parking. 24 trips a page.",
+       description="A free printable mileage log with the columns the IRS and HMRC require: date, from and to, purpose, odometer, miles, parking. Print page, PDF in A4 or US Letter, Excel and CSV.",
        canonical=f"{SITE}/templates/mileage-log/", body=tpl_body, priority="0.6")
 print("printable template")
 
@@ -225,9 +234,9 @@ try:
 except ImportError:
     pdfcanvas = None
 
-if pdfcanvas:
-    W, H = landscape(A4)
-    c = pdfcanvas.Canvas(str(dl / "mileage-log-template.pdf"), pagesize=(W, H))
+def draw_mileage_pdf(path, pagesize):
+    W, H = landscape(pagesize)
+    c = pdfcanvas.Canvas(str(path), pagesize=(W, H))
     c.setTitle("Free mileage log 2026")
     c.setAuthor("Dune Apps")
     c.setSubject("Printable mileage log with the fields the IRS and HMRC require")
@@ -247,8 +256,10 @@ if pdfcanvas:
     y -= 8 * mm
     c.setFont("Helvetica", 9); c.setFillColor(INK)
     x_at = L
-    for label, w in (("Vehicle", 74 * mm), ("Year", 30 * mm),
-                     ("Odometer at year start", 84 * mm), ("Odometer at year end", 84 * mm)):
+    # Widths are shares of the line, so the same fields fit A4 and US Letter.
+    shares = (("Vehicle", 74), ("Year", 30), ("Odometer at year start", 84), ("Odometer at year end", 84))
+    unit = (R - L) / sum(w for _, w in shares)
+    for label, w in ((lb, w * unit) for lb, w in shares):
         c.drawString(x_at, y, label + ":")
         c.setStrokeColor(LINE); c.setLineWidth(0.6)
         c.line(x_at + c.stringWidth(label + ": ", "Helvetica", 9), y - 1.2, x_at + w - 8 * mm, y - 1.2)
@@ -299,4 +310,10 @@ if pdfcanvas:
                        "Keep odometer readings for 1 January and 31 December so the yearly total can be shown.")
     c.showPage()
     c.save()
-    print("pdf template")
+
+
+if pdfcanvas:
+    from reportlab.lib.pagesizes import letter
+    draw_mileage_pdf(dl / "mileage-log-template.pdf", A4)
+    draw_mileage_pdf(dl / "mileage-log-template-letter.pdf", letter)
+    print("pdf template (A4, Letter)")

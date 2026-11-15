@@ -611,7 +611,7 @@ POSTS = [
 <div class="callout">
   <h3>Four files, all free</h3>
   <p><strong><a href="/downloads/mileage-log-template.xlsx">Excel workbook (.xlsx)</a></strong>. A real spreadsheet, not a CSV renamed. Sixty trip rows, the deduction column already formulated, a totals row, and a second sheet holding the 2026 rates and the rules they come from. Opens in Excel, Numbers, LibreOffice and Google Sheets.</p>
-  <p><strong><a href="/downloads/mileage-log-template.pdf">Printable PDF</a></strong>. One landscape page, 24 trips, with a worked example printed faintly in the first row so the form explains itself. Made for the glovebox.</p>
+  <p><strong>Printable PDF, in <a href="/downloads/mileage-log-template.pdf">A4</a> or <a href="/downloads/mileage-log-template-letter.pdf">US Letter</a></strong>. One landscape page, 24 trips, with a worked example printed faintly in the first row so the form explains itself. Made for the glovebox.</p>
   <p><strong><a href="/downloads/mileage-log-template.csv" download>CSV</a></strong>. The plainest possible version, for importing anywhere.</p>
   <p><strong><a href="/templates/mileage-log/">Printable page</a></strong>. The same log as a web page, if you would rather press print than download anything. It strips the site chrome automatically.</p>
   <p style="color:var(--faint);font-size:.92rem">No email address, no sign up, no watermark, nothing to unsubscribe from.</p>
@@ -920,7 +920,7 @@ POSTS = [
  "takeaways": [
    "Keep VAT records for <strong>5 years</strong>; <strong>15 years</strong> for anything relating to real estate.",
    "A full tax invoice needs the words 'Tax Invoice', the supplier's name, address and <strong>TRN</strong>, a sequential number and date, a description, the net, the VAT rate and amount, and the gross.",
-   "A <strong>simplified tax invoice</strong> is allowed for supplies under AED 10,000 or to unregistered customers. Most retail receipts are one.",
+   "A <strong>simplified tax invoice</strong> is allowed for supplies of AED 10,000 or less to a registered customer, or any supply to an unregistered one. Most retail receipts are one.",
    "The 15-digit TRN is the surest sign a receipt is a UAE one, and the reason an amount with no symbol is in dirhams.",
    "Electronic records are accepted if complete, legible and producible on request. Photograph the whole receipt: a crop that loses the TRN loses the invoice.",
  ],
@@ -930,7 +930,7 @@ POSTS = [
    ("What must a UAE tax invoice show?",
     "The words 'Tax Invoice', the supplier's name, address and TRN, the date of issue, a description of the goods or services, the amount excluding tax, the VAT rate and amount, and the gross total. Where the recipient is registered, their name, address and TRN are required too."),
    ("What is a simplified tax invoice?",
-    "A shorter form permitted where the supply is under AED 10,000 or the customer is not VAT-registered. It still needs the words 'Tax Invoice', the supplier's name, address and TRN, the date, a description of the supply, and the total with the VAT amount shown."),
+    "A shorter form permitted where the customer is not VAT-registered, or is registered and the supply is AED 10,000 or less. It still needs the words 'Tax Invoice', the supplier's name, address and TRN, the date, a description of the supply, and the total with the VAT amount shown."),
    ("What is a TRN?",
     "A Tax Registration Number: the 15-digit number the Federal Tax Authority issues to a VAT-registered business. It must appear on the tax invoices that business issues, and it is the marker that identifies a receipt as a UAE one."),
  ],
@@ -966,7 +966,7 @@ POSTS = [
 
 <h3>When a simplified invoice is enough</h3>
 
-<p>A shorter form is permitted where the supply is under <strong>AED 10,000</strong>, or the customer is not VAT-registered. It still has to carry the words "Tax Invoice", the supplier's name, address and TRN, the date, a description of the supply, and the total with the VAT amount shown. Most retail receipts you collect in the UAE are simplified tax invoices.</p>
+<p>A shorter form is permitted where the customer is not VAT-registered, or is registered and the supply is <strong>AED 10,000 or less</strong>. It still has to carry the words "Tax Invoice", the supplier's name, address and TRN, the date, a description of the supply, and the total with the VAT amount shown. Most retail receipts you collect in the UAE are simplified tax invoices.</p>
 
 <h2>The TRN is the thing worth noticing</h2>
 
@@ -1025,7 +1025,7 @@ POSTS = [
    ("IRS Publication 463, Chapter 5 (incomplete records, sampling, timely-kept records)", _IRS_P463),
    ("IRS: Standard mileage rates", _IRS_RATES),
  ],
- "related": ["mileage-log-for-irs-audit", "is-mileiq-free", "irs-mileage-log-requirements"],
+ "related": ["delivery-driver-mileage-deduction", "mileage-log-for-irs-audit", "irs-mileage-log-requirements"],
  "body": """
 <h2>What you cannot do</h2>
 
@@ -1602,5 +1602,209 @@ POSTS = [
 },
 
 ]
+
+# ===========================================================================
+# 14. Delivery drivers: the deduction worked out, platform by platform
+# ===========================================================================
+_IRS_P587 = "https://www.irs.gov/publications/p587"
+_IRS_SE = "https://www.irs.gov/taxtopics/tc554"
+_IRS_1099NEC = "https://www.irs.gov/faqs/small-business-self-employed-other-business/form-1099-nec-independent-contractors/form-1099-nec-independent-contractors"
+_UBER_TAX = "https://help.uber.com/en/driving-and-delivering/article/tax-summary-questions-?nodeId=f7266968-bc67-4217-9e0a-c216d6b61de3"
+_DD_TAX = "https://help.doordash.com/en-us/dashers/article/common-dasher-tax-questions?ctry=us"
+_GH_1099 = "https://driver-support.grubhub.com/hc/en-us/articles/360035687032-How-will-I-receive-my-1099-form"
+_IC_FUEL = "https://company.instacart.com/shopper-community/new-and-expanded-fuel-savings-for-instacart-shoppers"
+
+DRIVER_CALC_HTML = '''
+<div class="calc" id="drv-calc">
+  <h3>Delivery mileage deduction, 2026</h3>
+  <p class="hint">Use the business miles from your own log, split at 30 June because the IRS rate changed on 1 July. Works the same for DoorDash, Uber Eats, Instacart, Grubhub, or all four together.</p>
+  <div class="row">
+    <div><label for="d1">Business miles, 1 Jan to 30 Jun 2026</label><input id="d1" type="number" inputmode="decimal" min="0" placeholder="e.g. 6200"></div>
+    <div><label for="d2">Business miles, 1 Jul to 31 Dec 2026</label><input id="d2" type="number" inputmode="decimal" min="0" placeholder="e.g. 5800"></div>
+  </div>
+  <div class="row" style="margin-top:14px">
+    <div><label for="d3">Business parking and tolls ($)</label><input id="d3" type="number" inputmode="decimal" min="0" placeholder="0"></div>
+    <div><label for="d4">Miles the apps reported (optional)</label><input id="d4" type="number" inputmode="decimal" min="0" placeholder="e.g. 8400"></div>
+  </div>
+  <div class="row" style="margin-top:14px">
+    <div><label for="d5">Your federal income tax bracket</label>
+      <select id="d5"><option value="0.10">10%</option><option value="0.12" selected>12%</option><option value="0.22">22%</option><option value="0.24">24%</option><option value="0.32">32%</option><option value="0.35">35%</option><option value="0.37">37%</option></select></div>
+    <div></div>
+  </div>
+  <div class="out"><span class="n" id="drv-out">$0.00</span><small>deduction on Schedule C, car and truck expenses</small></div>
+  <p class="lines" id="drv-lines">Enter your miles to see the two halves of the year worked out.</p>
+  <p class="lines" id="drv-tax"></p>
+  <p class="lines" id="drv-gap"></p>
+  <noscript><p class="lines">The sum, if the calculator does not run: (January to June miles × $0.725) + (July to December miles × $0.76) + business parking and tolls.</p></noscript>
+</div>'''
+DRIVER_CALC_JS = '''<script>
+(function(){
+  var $=function(i){return document.getElementById(i);};
+  var d1=$('d1'), d2=$('d2'), d3=$('d3'), d4=$('d4'), d5=$('d5');
+  if(!d1) return;
+  var f=function(n){return n.toLocaleString('en-US',{style:'currency',currency:'USD'});};
+  var v=function(el){return Math.max(0,parseFloat(el.value)||0);};
+  var go=function(){
+    var a=v(d1), b=v(d2), p=v(d3), rep=v(d4), br=parseFloat(d5.value)||0;
+    var x=a*0.725, y=b*0.76, ded=x+y+p;
+    $('drv-out').textContent=f(ded);
+    if(!(a||b||p)){
+      $('drv-lines').textContent='Enter your miles to see the two halves of the year worked out.';
+      $('drv-tax').textContent=''; $('drv-gap').textContent=''; return;
+    }
+    $('drv-lines').textContent=a.toLocaleString()+' mi × 72.5¢ = '+f(x)+'   ·   '+b.toLocaleString()+' mi × 76¢ = '+f(y)+(p?'   ·   parking and tolls '+f(p):'');
+    var se=ded*0.9235*0.153, inc=ded*br;
+    $('drv-tax').textContent='Roughly '+f(se+inc)+' less tax: about '+f(se)+' of self-employment tax and '+f(inc)+' of income tax at '+Math.round(br*100)+'%. An estimate, not a quote.';
+    var miles=a+b;
+    if(rep>0 && miles>0){
+      var gap=miles-rep, per=(x+y)/miles;
+      $('drv-gap').textContent= gap>0 ? ('Your log has '+gap.toLocaleString()+' more miles than the apps reported. At your average rate that is '+f(gap*per)+' of deduction the platform figure leaves out.')
+        : ('The apps reported '+(-gap).toLocaleString()+' more miles than your log. Check your log for missing trips before you file, and do not claim miles you cannot show.');
+    } else { $('drv-gap').textContent=''; }
+  };
+  [d1,d2,d3,d4,d5].forEach(function(el){el.addEventListener('input',go);el.addEventListener('change',go);});
+})();
+</script>'''
+
+POSTS.append({
+ "out": "posts/delivery-driver-mileage-deduction.html",
+ "slug": "delivery-driver-mileage-deduction",
+ "seo_title": "DoorDash and Uber Eats Mileage Deduction 2026: Calculator",
+ "meta": "2026 delivery mileage deduction: 72.5¢ a mile to June, 76¢ from July. What DoorDash, Uber, Instacart and Grubhub mileage numbers miss, and the log you need.",
+ "title": "DoorDash, Uber Eats, Instacart and Grubhub mileage: the 2026 deduction, worked out",
+ "description": "A calculator for the 2026 delivery mileage deduction with both IRS rates, what each platform's own mileage figure counts and leaves out, which miles are deductible, and what the log has to show.",
+ "dek": "The apps send you a mileage number in January or February. It is the smallest your deduction could be, not the deduction. Here is how to work out the real one, and what you need to prove it.",
+ "topic": "Mileage",
+ "date_iso": "2026-11-15", "updated": "2026-11-15",
+ "og": "og-delivery-driver-mileage-deduction.png",
+ "cta": "drivesnap",
+ "cta_title": "Log the miles between orders, too.",
+ "cta_text": "DriveSnap detects drives on its own, whether or not an order is active, so the drive to the restaurant and the miles between offers land in the log with the date and the route. Tracking is free and has no drive cap.",
+ "checked": (f'Checked against the <a href="{_IRS_RATES}">IRS standard mileage rates page</a>, '
+             f'<a href="{_IRS_P463}">Publication 463</a> and each platform’s own help pages on 15 November 2026.'),
+ "takeaways": [
+   "<strong>The sum:</strong> January to June business miles × 72.5¢, plus July to December × 76¢, plus business parking and tolls.",
+   "Uber’s tax summary counts <strong>online miles</strong>. DoorDash emails an estimate of <strong>on-delivery</strong> miles. We found no tax mileage report from Instacart or Grubhub.",
+   "Miles driven while you work count, including between orders. The first drive from home and the last drive home are the ones the IRS may call commuting.",
+   "You cannot deduct an estimate. Publication 463 wants a written record of the date, the place, the purpose and the miles, kept at or near the time.",
+   "For 2026 payments a platform only has to send a 1099-NEC at <strong>$2,000</strong>. The income is taxable either way, and so is the deduction available.",
+ ],
+ "faq": [
+   ("Does DoorDash track my miles for taxes?",
+    "DoorDash emails US Dashers an estimate of their on-delivery mileage, by 28 February. Its own help page says the estimate may not reflect all of your deductible business miles and asks you to keep your own records. It is a useful check on your log, not a replacement for it."),
+   ("Can I use the online miles on my Uber tax summary as my deduction?",
+    "Use them to check your log, not as the log. Uber counts miles driven while you are online: waiting for a trip, on the way to a pickup and during the trip. That total has no dates, places or purposes, which is what the IRS asks a record to show. It also misses business driving you did offline, and it can include driving the IRS treats as commuting."),
+   ("Can I deduct gas as well as the mileage rate?",
+    "No. The standard mileage rate stands in for the whole cost of running the car, fuel included. Business parking fees and tolls are the exception: Publication 463 says you can deduct them in addition to the standard mileage rate."),
+   ("Is the drive from home to my first pickup deductible?",
+    "It depends on whether your home is your principal place of business. If it is, Publication 463 lets you deduct the trip from home to another work location. If it is not and you have no regular place of work, the IRS treats daily trips from home to places inside your metropolitan area as commuting. Log those legs as their own entries, so either answer is supported, and ask a tax professional which applies to you."),
+   ("Do I need a 1099 to claim the mileage deduction?",
+    "No. The deduction depends on the driving and the record, not the form. For payments made in 2026 the reporting threshold for a 1099-NEC rose from $600 to $2,000, so many part-time drivers will not get one. The income still goes on Schedule C, and the car expenses go on the same form."),
+ ],
+ "sources": [
+   ("IRS: Standard mileage rates (72.5¢ to 30 June 2026, 76¢ from 1 July)", _IRS_RATES),
+   ("IRS Publication 463: car expenses, commuting, records, sampling", _IRS_P463),
+   ("IRS Publication 587: Business use of your home (principal place of business)", _IRS_P587),
+   ("IRS Topic 554: Self-employment tax (12.4% + 2.9%, on 92.35% of net earnings)", _IRS_SE),
+   ("IRS: Form 1099-NEC and independent contractors ($2,000 for payments after 31 Dec 2025)", _IRS_1099NEC),
+   ("Uber: Tax summary questions (online miles)", _UBER_TAX),
+   ("DoorDash: Dasher guide to taxes (on-delivery mileage estimate)", _DD_TAX),
+   ("Grubhub for Drivers: How will I receive my 1099 form?", _GH_1099),
+   ("Instacart: Fuel savings for shoppers (estimated batch mileage)", _IC_FUEL),
+ ],
+ "related": ["forgot-to-track-doordash-miles", "irs-mileage-log-requirements", "mileage-log-template"],
+ "script": DRIVER_CALC_JS,
+ "body": """
+<h2>The sum</h2>
+
+<p>The 2026 deduction for a delivery driver using the standard mileage rate is three numbers added together:</p>
+
+<table class="facts">
+  <thead><tr><th>Part</th><th>How it is worked out</th></tr></thead>
+  <tbody>
+    <tr><td><strong>January to June</strong></td><td>Business miles driven from 1 January to 30 June × <strong>$0.725</strong></td></tr>
+    <tr><td><strong>July to December</strong></td><td>Business miles driven from 1 July to 31 December × <strong>$0.76</strong></td></tr>
+    <tr><td><strong>Parking and tolls</strong></td><td>Business parking fees and tolls, at what you actually paid</td></tr>
+  </tbody>
+</table>
+
+<p>The rate changed on 1 July, which is why the year splits in two. Each trip takes the rate in force on the day you drove it. Applying one rate to the whole year is wrong for half of the year whichever rate you pick, and <a href="/posts/irs-mileage-rate-2026.html">the 2026 rate page</a> covers what to do if you have already filed that way.</p>
+
+<p>The rate covers fuel, so do not add fuel receipts on top. Parking and tolls are different. Publication 463, on the standard mileage rate: <em>"In addition to using the standard mileage rate, you can deduct any business-related parking fees and tolls."</em></p>
+""" + DRIVER_CALC_HTML + """
+
+<h3>A worked example</h3>
+
+<p>A driver logs 6,200 business miles from January to June and 5,800 from July to December, and pays $140 in tolls and parking on deliveries.</p>
+
+<ul>
+  <li>6,200 × $0.725 = <strong>$4,495.00</strong></li>
+  <li>5,800 × $0.76 = <strong>$4,408.00</strong></li>
+  <li>Parking and tolls: <strong>$140.00</strong></li>
+  <li>Deduction: <strong>$9,043.00</strong></li>
+</ul>
+
+<p>Because a driver is self-employed, that deduction lowers two taxes. Self-employment tax is 12.4% for Social Security plus 2.9% for Medicare, and the IRS applies it to 92.35% of net earnings, so $9,043 less profit is roughly $1,278 less self-employment tax. At a 12% income tax bracket it is about $1,085 less income tax as well. Around $2,360 in total, from a log. The calculator above does the same sum with your numbers, as an estimate: it leaves out the qualified business income deduction and assumes your earnings are under the Social Security wage base.</p>
+
+<h2>What each app's mileage number counts</h2>
+
+<p>Every platform's figure stops somewhere short of your real business driving. These are the platforms' own descriptions, read on 15 November 2026:</p>
+
+<table class="facts">
+  <thead><tr><th>Platform</th><th>What it gives you</th><th>What that leaves out</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Uber and Uber Eats</strong></td><td>A tax summary, available by 31 January, with your <strong>online miles</strong>. Uber says that covers waiting for a trip, the drive to the pickup and the trip itself.</td><td>Everything you drive with the app off. A single yearly total, with no dates, places or purposes.</td></tr>
+    <tr><td><strong>DoorDash</strong></td><td>An email by 28 February with an estimate of your <strong>on-delivery mileage</strong>, for Dashers who delivered by car.</td><td>Driving while you wait for the next offer. DoorDash's own help page says the estimate may not reflect all of your deductible business miles.</td></tr>
+    <tr><td><strong>Instacart</strong></td><td>An estimated mileage for each batch, shown before you accept it.</td><td>We found no yearly mileage report for tax in Instacart's help pages. A pre-acceptance estimate is a planning number, not a record of the drive.</td></tr>
+    <tr><td><strong>Grubhub</strong></td><td>Your 1099, in the driver app and portal from February.</td><td>Grubhub's driver help on tax forms describes the 1099 and mentions no mileage report. Assume none.</td></tr>
+  </tbody>
+</table>
+
+<p>Two things follow. First, if you drive for more than one app, no single platform's number can be right: miles spent waiting for DoorDash while Uber was off are in neither of them. Second, the platform numbers are still worth keeping, because they are records made by somebody else. Next to your own log they show the log is not invented.</p>
+
+<!--cta-->
+
+<h2>Which miles count</h2>
+
+<p>The driving you do while you are working is business driving: to the restaurant or the store, to the customer, and between one job and the next while you are available for offers. Most of a delivery day is that.</p>
+
+<p>The disputed part is the first and last leg of the day. Publication 463 is direct about commuting: <em>"You can't deduct commuting expenses no matter how far your home is from your regular place of work."</em> A delivery driver has no regular place of work, and for that case the rule is that you <em>"can't deduct daily transportation costs between your home and temporary work sites within your metropolitan area."</em></p>
+
+<p>The exception is a home office. If your home qualifies as your principal place of business, Publication 463 says <em>"you can deduct your daily transportation costs between your home and another work location in the same trade or business."</em> Whether a driver's home qualifies is a test in <a href="https://www.irs.gov/publications/p587" rel="noopener">Publication 587</a>, and it is the question to put to a tax professional if your first and last legs are long.</p>
+
+<p>The practical answer is to log those legs as separate entries with their own start and end. If your home office counts, they are already in the log. If it does not, you leave them out of the total and the rest of the record still stands. A log that blends the drive from home into the first delivery cannot be split later.</p>
+
+<h2>What the log has to show</h2>
+
+<p>The IRS will not accept a figure worked out at the end of the year. Publication 463: <em>"You can't deduct amounts that you approximate or estimate."</em> What it accepts is a written record, and for car use it asks for:</p>
+
+<ul>
+  <li>the <strong>date</strong> you used the car,</li>
+  <li>your <strong>business destination</strong>,</li>
+  <li>the <strong>business purpose</strong>,</li>
+  <li>the <strong>mileage for each business use</strong>, and the <strong>total miles for the year</strong>, which is why the odometer reading on 1 January and 31 December matters.</li>
+</ul>
+
+<p>Delivery work has one advantage here, and Publication 463 names it: <em>"the nature of your work, such as making deliveries, provides circumstantial evidence of the use of your car for business purposes. Invoices of deliveries establish when you used the car for business."</em> Your order history in each app is that evidence. Keep a copy of it with the log.</p>
+
+<p>It has to be kept at the time, or near it. The weekly version is fine: <em>"If you maintain a log on a weekly basis that accounts for use during the week, the log is considered a timely kept record."</em> A year written up from memory in March is not that. <a href="/posts/irs-mileage-log-requirements.html">What the IRS requires in a mileage log</a> goes through each element, and the <a href="/posts/mileage-log-template.html">free mileage log</a> has the columns, as a PDF, a spreadsheet with the 2026 rates built in, and a CSV.</p>
+
+<p>If months are already gone, the rules allow less than most advice suggests and more than you might fear: <a href="/posts/forgot-to-track-doordash-miles.html">what to do when you forgot to track your miles</a> covers the incomplete-records rule and sampling.</p>
+
+<h2>Forms and dates for the 2026 tax year</h2>
+
+<table class="facts">
+  <thead><tr><th>What</th><th>When</th></tr></thead>
+  <tbody>
+    <tr><td>Uber tax summary with online miles</td><td>By 31 January 2027</td></tr>
+    <tr><td>DoorDash on-delivery mileage estimate</td><td>By 28 February 2027</td></tr>
+    <tr><td>Grubhub 1099 in the app and portal</td><td>From February 2027</td></tr>
+    <tr><td>1099-NEC threshold for 2026 payments</td><td><strong>$2,000</strong>, up from $600</td></tr>
+  </tbody>
+</table>
+
+<p>The higher threshold means a driver who earned $1,500 on one app may get no form from it. The income is still yours to report on Schedule C, and the car expenses go on the same form. A missing 1099 does not shrink the deduction either.</p>
+""",
+})
 
 INDEX = {p["slug"]: p for p in POSTS}

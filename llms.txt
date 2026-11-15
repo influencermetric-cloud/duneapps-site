@@ -6,6 +6,7 @@
 - [Receipt Snap](https://duneapps.com/receiptsnap/): reads merchant, date, total and tax from a receipt on the iPhone in about two seconds. Free; Pro removes the 15-scan monthly cap. App Store: https://apps.apple.com/app/id6806519870
 - [DriveSnap](https://duneapps.com/drivesnap/): detects drives automatically, one-swipe classification, CSV export and year-end report. No drive caps on the free tier.
 - [DriveSnap vs MileIQ](https://duneapps.com/compare/drivesnap-vs-mileiq/): side-by-side, including where MileIQ is better.
+- [PaidSnap](https://duneapps.com/paidsnap/): invoice maker for iPhone. Country packs set the heading, tax number label and tax lines for 16 countries; real PDF; no account. Free plan: three documents a month. App Store: https://apps.apple.com/app/id6814346014
 
 ## Guides
 - [IRS mileage rate 2026: 72.5¢, then 76¢ from 1 July](https://duneapps.com/posts/irs-mileage-rate-2026.html): The IRS raised the standard mileage rate midyear. 72.5 cents a mile applies from January to June 2026 and 76 cents from July. How to split your miles, what the rate includes, and a calculator.
@@ -21,10 +22,13 @@
 - [Receipt apps pay you pennies because your data is worth dollars](https://duneapps.com/posts/receipt-apps-pay-you-pennies.html): The biggest receipt apps in the App Store are not expense trackers. They are purchase-data companies. What they actually sell, what it costs you, and what I built instead.
 - [Is MileIQ free? Yes, for 40 drives a month](https://duneapps.com/posts/is-mileiq-free.html): MileIQ is free for 40 drives a month, then logging stops. What the cap does to a tax record, what the paid plan costs now, and how the free tiers compare.
 - [Will your mileage log survive an IRS audit?](https://duneapps.com/posts/mileage-log-for-irs-audit.html): What an examiner rejects in a mileage log, the Publication 463 rule behind each one, the two allowances nobody uses, and a checklist to grade your log.
+- [DoorDash, Uber Eats, Instacart and Grubhub mileage: the 2026 deduction, worked out](https://duneapps.com/posts/delivery-driver-mileage-deduction.html): A calculator for the 2026 delivery mileage deduction with both IRS rates, what each platform's own mileage figure counts and leaves out, which miles are deductible, and what the log has to show.
 
 ## Tools
 - [Free mileage log template](https://duneapps.com/posts/mileage-log-template.html): CSV download and a printable sheet.
-- [Printable mileage log](https://duneapps.com/templates/mileage-log/)
+- [Printable mileage log](https://duneapps.com/templates/mileage-log/): print page, plus PDF in A4 and US Letter, XLSX with formulas, CSV.
+- [Delivery driver mileage deduction calculator](https://duneapps.com/posts/delivery-driver-mileage-deduction.html): 2026 split rate, parking and tolls, estimated tax effect.
+- [Free invoice templates by country](https://duneapps.com/invoice-templates/): UAE, India, UK, US, Canada and Australia, each with the legally required fields cited, a PDF and a fill-in-the-browser version.
 
 ## Facts the guides are built on (verified September 2026)
 - IRS standard mileage rate 2026: 72.5 cents/mile 1 Jan–30 Jun; 76 cents/mile 1 Jul–31 Dec. 2025 was 70 cents.
@@ -33,3 +37,5 @@
 - ATO: written evidence required when total work-related claims exceed $300; records kept 5 years.
 - CRA: records kept 6 years from the end of the tax year they relate to.
 - UAE FTA: VAT records kept 5 years; 15 years for real estate.
+- IRS: Form 1099-NEC reporting threshold is $2,000 for payments made after 31 December 2025 (was $600). Verified 15 November 2026.
+- UAE e-invoicing (Ministerial Decision 244 of 2025): businesses with revenue under AED 50 million must implement by 1 July 2027; business-to-consumer transactions are outside the system. Verified 15 November 2026.

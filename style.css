@@ -543,9 +543,12 @@ table.facts td strong { white-space: nowrap; }
 .calc .hint { font-size: .92rem; color: var(--faint); margin-bottom: 18px; }
 .calc .row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
 .calc label { display: block; font-size: .84rem; font-weight: 600; color: var(--text); margin-bottom: 6px; }
-.calc input { width: 100%; font: inherit; font-size: 1.1rem; padding: 12px 14px; border-radius: 12px;
+.calc input, .calc select { width: 100%; font: inherit; font-size: 1.1rem; padding: 12px 14px; border-radius: 12px;
   border: 1px solid var(--line-2); background: var(--bg); color: var(--text); }
-.calc input:focus { outline: 2px solid var(--teal); outline-offset: 1px; border-color: transparent; }
+.calc select { -webkit-appearance: none; appearance: none; padding-right: 38px; cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%2359666A' stroke-width='1.6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: right 14px center; }
+.calc input:focus, .calc select:focus { outline: 2px solid var(--teal); outline-offset: 1px; border-color: transparent; }
 .calc .out { margin-top: 18px; padding-top: 18px; border-top: 1px solid var(--line);
   display: grid; grid-template-columns: 1fr auto; gap: 10px; align-items: baseline; }
 .calc .out .n { font-size: 2rem; font-weight: 600; color: var(--teal); letter-spacing: -.03em;
