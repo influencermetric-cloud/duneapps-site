@@ -19,7 +19,9 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.14"
-      - run: pip install reportlab==5.1.0 openpyxl==3.1.5
+      # No reportlab/openpyxl here on purpose: the downloads (PDF, XLSX) embed a
+      # creation time, so rebuilding them daily would commit noise. They change
+      # only when rebuilt locally with .venv.
       - run: PYTHONDONTWRITEBYTECODE=1 python3 build_all.py
       - name: Commit and push if a draft went live
         id: commit
