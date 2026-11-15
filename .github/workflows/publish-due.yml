@@ -20,11 +20,11 @@ jobs:
         with:
           python-version: "3.14"
       - run: pip install reportlab==5.1.0 openpyxl==3.1.5
-      - run: python3 build_all.py
+      - run: PYTHONDONTWRITEBYTECODE=1 python3 build_all.py
       - name: Commit and push if a draft went live
         id: commit
         run: |
-          git add -A -- . ':(exclude)__pycache__'
+          git add -A
           if git diff --cached --quiet; then echo "Nothing due today."; exit 0; fi
           git diff --cached --name-only --diff-filter=A -- 'posts/*.html' | sed 's#^#https://duneapps.com/#' > new_urls.txt
           git -c user.name="duneapps publisher" -c user.email="41898282+github-actions[bot]@users.noreply.github.com" \
