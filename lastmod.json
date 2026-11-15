@@ -1,0 +1,46 @@
+{
+ "https://duneapps.com/": {
+  "date": "2026-11-15",
+  "sha256": "0c895ddfcff8a8a8f8e4cf7d52ba96aec5a2434657421b4e9a175b9c0b2ed2f7"
+ },
+ "https://duneapps.com/compare/drivesnap-vs-mileiq/": {
+  "date": "2026-11-15",
+  "sha256": "dc22743535c102194360bb4b7be4c76dc53e4fe5fe8ba144e37d90e96ebc9573"
+ },
+ "https://duneapps.com/drivesnap/": {
+  "date": "2026-11-15",
+  "sha256": "fc4cc171a7f5c10df2f079d64f234c8207f7ae42cba4c2bd699839609eada9ce"
+ },
+ "https://duneapps.com/invoice-templates/": {
+  "date": "2026-11-15",
+  "sha256": "79076191328268e75dfd1ff41c7530e90b798c67801d3796633c09a6fd6a0c9d"
+ },
+ "https://duneapps.com/paidsnap/": {
+  "date": "2026-11-15",
+  "sha256": "cf730430a8b69b817fc8e11cf9e5f17d2b9605e1157dbc9543aff95f73a0d836"
+ },
+ "https://duneapps.com/paidsnap/privacy/": {
+  "date": "2026-11-15",
+  "sha256": "a696d13b6eae6de5327cc9dd15665513825b096795bde2bd7c015c65e8a50ec7"
+ },
+ "https://duneapps.com/receiptsnap/": {
+  "date": "2026-11-15",
+  "sha256": "a0fe2ebac7dda8327531d403dd97335c600eac0719e3e6f8d1746b57b2b68333"
+ },
+ "https://duneapps.com/templates/mileage-log/": {
+  "date": "2026-11-15",
+  "sha256": "19d5db6884f173a3795240bb637364b58257f052059b34de0ab0be473dcf1012"
+ },
+ "https://duneapps.com/todo/": {
+  "date": "2026-11-15",
+  "sha256": "809dd6e69d943e2ffb116144323ad5024e8754c04b08da1cf06840a461fb7e92"
+ },
+ "https://duneapps.com/todo/privacy/": {
+  "date": "2026-11-15",
+  "sha256": "e79fc59f731d87c1a0a063183d7ad5c4c3d970d8703326a7994ef4991a542648"
+ },
+ "https://duneapps.com/writing/": {
+  "date": "2026-11-15",
+  "sha256": "d1ed336b70d8359b4dc61caa37d02f9075a2f5171f39aa628d0860814c07cf60"
+ }
+}

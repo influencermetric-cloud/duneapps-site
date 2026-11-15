@@ -1807,4 +1807,29 @@ POSTS.append({
 """,
 })
 
+# Scheduled posts (16 Nov 2026). Drafts live in content_drafts.py, each with a
+# "publish_on" date (IST). A draft joins POSTS only from that date, so the daily
+# rebuild (.github/workflows/publish-due.yml) publishes it. A draft's
+# "link_from" lists live posts that should show it first in their related cards
+# once it is out. Preview everything with DUNE_PUBLISH_DATE=2099-01-01.
+import datetime as _dt
+import os as _os
+
+try:
+    from content_drafts import DRAFTS
+except ImportError:
+    DRAFTS = []
+
+PUBLISH_DATE = _os.environ.get("DUNE_PUBLISH_DATE") or _dt.datetime.now(
+    _dt.timezone(_dt.timedelta(hours=5, minutes=30))).date().isoformat()
+POSTS.extend(d for d in DRAFTS if d["publish_on"] <= PUBLISH_DATE)
+
 INDEX = {p["slug"]: p for p in POSTS}
+
+for _d in DRAFTS:
+    if _d["slug"] not in INDEX:
+        continue
+    for _src in _d.get("link_from", []):
+        _rel = INDEX[_src]["related"] if _src in INDEX else None
+        if _rel is not None and _d["slug"] not in _rel:
+            INDEX[_src]["related"] = [_d["slug"]] + _rel[:max(len(_rel) - 1, 2)]

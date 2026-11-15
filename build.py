@@ -13,6 +13,7 @@ This file also owns:
   - the sitemap, robots and llms.txt, generated from the pages actually rendered
 """
 import datetime
+import hashlib
 from topic_art import topic_art
 import html
 import json
@@ -246,7 +247,7 @@ def render(*, out, title, description, canonical, body, style="", head="",
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(page)
     if not noindex:
-        PAGES.append((out, lastmod or TODAY, priority))
+        PAGES.append((out, lastmod, priority))
     return path
 
 
@@ -476,7 +477,28 @@ def render_go_pages():
 # ---------------------------------------------------------------------------
 # Sitemap, robots, llms.txt
 # ---------------------------------------------------------------------------
+LASTMOD_STORE = ROOT / "lastmod.json"
+
+
+def _page_lastmod(loc, out, store, previous):
+    """A page without its own date keeps its last date until its HTML changes.
+
+    Stamping the build date on every page told Google that all 31 pages changed
+    on every build, which teaches it to ignore our lastmod (16 Nov 2026).
+    """
+    digest = hashlib.sha256((ROOT / out).read_bytes()).hexdigest()
+    known = store.get(loc)
+    if known and known["sha256"] == digest:
+        return known["date"]
+    date = previous.get(loc) if known is None and previous.get(loc) else TODAY
+    store[loc] = {"sha256": digest, "date": date}
+    return date
+
+
 def write_sitemap():
+    store = json.loads(LASTMOD_STORE.read_text()) if LASTMOD_STORE.exists() else {}
+    old = ROOT / "sitemap.xml"
+    previous = dict(re.findall(r"<loc>([^<]+)</loc><lastmod>([^<]+)</lastmod>", old.read_text())) if old.exists() else {}
     seen, rows = set(), []
     for out, lastmod, prio in PAGES:
         loc = SITE + "/" + out
@@ -484,9 +506,11 @@ def write_sitemap():
         if loc in seen:
             continue
         seen.add(loc)
+        lastmod = lastmod or _page_lastmod(loc, out, store, previous)
         rows.append(f"  <url><loc>{loc}</loc><lastmod>{lastmod}</lastmod><priority>{prio}</priority></url>")
     (ROOT / "sitemap.xml").write_text('<?xml version="1.0" encoding="UTF-8"?>\n'
         '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + "\n".join(rows) + "\n</urlset>\n")
+    LASTMOD_STORE.write_text(json.dumps(store, indent=1, sort_keys=True) + "\n")
     (ROOT / "robots.txt").write_text(f"User-agent: *\nAllow: /\nDisallow: /go/\n\nSitemap: {SITE}/sitemap.xml\n")
     print(f"sitemap: {len(rows)} urls")
 

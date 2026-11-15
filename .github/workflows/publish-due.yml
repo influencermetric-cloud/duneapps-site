@@ -1,0 +1,45 @@
+# Publishes scheduled guides every morning (added 16 Nov 2026).
+# Drafts sit in content_drafts.py with a "publish_on" date; content_posts.py adds
+# each one to the site from that date. This job rebuilds the site at 07:05 IST
+# and commits only when the output changed, i.e. when a draft fell due.
+name: Publish scheduled guides
+on:
+  schedule:
+    - cron: "35 1 * * *"
+  workflow_dispatch:
+permissions:
+  contents: write
+  pages: write
+concurrency: publish-due
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.14"
+      - run: pip install reportlab==5.1.0 openpyxl==3.1.5
+      - run: python3 build_all.py
+      - name: Commit and push if a draft went live
+        id: commit
+        run: |
+          git add -A -- . ':!__pycache__'
+          if git diff --cached --quiet; then echo "Nothing due today."; exit 0; fi
+          git diff --cached --name-only --diff-filter=A -- 'posts/*.html' | sed 's#^#https://duneapps.com/#' > new_urls.txt
+          git -c user.name="duneapps publisher" -c user.email="41898282+github-actions[bot]@users.noreply.github.com" \
+            commit -m "Publish scheduled guides $(TZ=Asia/Kolkata date +%F)"
+          git push
+          echo "pushed=1" >> "$GITHUB_OUTPUT"
+      - name: Rebuild GitHub Pages
+        if: steps.commit.outputs.pushed == '1'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh api -X POST "repos/${{ github.repository }}/pages/builds"
+      - name: Tell IndexNow about new guides
+        if: steps.commit.outputs.pushed == '1'
+        run: |
+          [ -s new_urls.txt ] || exit 0
+          KEY=bab5a8644f25bc6fb3be6d75b749b427
+          python3 -c "import json,sys; print(json.dumps({'host':'duneapps.com','key':'$KEY','keyLocation':'https://duneapps.com/$KEY.txt','urlList':[l.strip() for l in open('new_urls.txt') if l.strip()]}))" > body.json
+          curl -s -o /dev/null -w "IndexNow %{http_code}\n" -H 'Content-Type: application/json' --data @body.json https://api.indexnow.org/indexnow
