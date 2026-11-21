@@ -24,6 +24,7 @@
 - [Will your mileage log survive an IRS audit?](https://duneapps.com/posts/mileage-log-for-irs-audit.html): What an examiner rejects in a mileage log, the Publication 463 rule behind each one, the two allowances nobody uses, and a checklist to grade your log.
 - [DoorDash, Uber Eats, Instacart and Grubhub mileage: the 2026 deduction, worked out](https://duneapps.com/posts/delivery-driver-mileage-deduction.html): A calculator for the 2026 delivery mileage deduction with both IRS rates, what each platform's own mileage figure counts and leaves out, which miles are deductible, and what the log has to show.
 - [Standard mileage rate vs actual expenses: which one wins for 2026](https://duneapps.com/posts/standard-mileage-rate-vs-actual-expenses.html): A calculator that compares the two IRS car deduction methods with both 2026 rates, a cost per mile table that shows which wins, two worked examples, and the first-year rule that decides what you can use later.
+- [Schedule C expense categories: every line on the 2026 form, and what goes on it](https://duneapps.com/posts/schedule-c-expense-categories.html): Every expense line on the 2026 Schedule C with what belongs on it and the record to keep, the new vehicle loan interest line, where awkward costs like phones, software and platform fees go, and worked examples for a driver, a freelancer and a seller.
 
 ## Tools
 - [Free mileage log template](https://duneapps.com/posts/mileage-log-template.html): CSV download and a printable sheet.
